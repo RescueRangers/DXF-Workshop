@@ -123,4 +123,10 @@
   <data name="PlxContents" xml:space="preserve">
     <value>Zawartość pliku PLX</value>
   </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>Ciemny motyw</value>
+  </data>
+  <data name="LightTheme" xml:space="preserve">
+    <value>Jasny motyw</value>
+  </data>
 </root>

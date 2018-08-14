@@ -26,18 +26,19 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{lex:Loc Key=PlxFileName}"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Left"
-                   Margin="5"/>
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0">
+            <TextBlock Text="{lex:Loc Key=PlxFileName}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Margin="5 12" />
 
-        <TextBox MaxLength="31"
-                 Text="{Binding PlxFileName, Mode=TwoWay}" 
-                 Grid.Column="1" 
-                 Grid.ColumnSpan="2" 
-                 Grid.Row="0" 
-                 Margin="5" 
-                 VerticalAlignment="Center"/>
+            <TextBox MaxLength="31"
+                     Text="{Binding PlxFileName, Mode=TwoWay}"
+                     Margin="5 0"
+                     VerticalAlignment="Center"
+                     mah:TextBoxHelper.ClearTextButton="True" 
+                     MinWidth="350"/>
+            </StackPanel>
 
         <Button Command="{Binding GetFilesCommand}"
                 Grid.Column="0"
@@ -85,9 +86,9 @@
                   Header="{lex:Loc Key=PlxContents}">
 
             <DataGrid GridLinesVisibility="Vertical"
-                       ItemsSource="{Binding PlxFile.DxfFiles}"
-                       AutoGenerateColumns="False"
-                       CanUserAddRows="False">
+                        ItemsSource="{Binding PlxFile.DxfFiles}"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="*"
                                          Header="{lex:Loc Key=Name}"

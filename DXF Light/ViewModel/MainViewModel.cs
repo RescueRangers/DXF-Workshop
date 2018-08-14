@@ -280,6 +280,8 @@ namespace DXF_Light.ViewModel
         private void GetFilePath()
         {
             FilePath = _ioService.OpenFileDialog(_appFilePath, CsvFiles);
+            
+            if(!string.IsNullOrWhiteSpace(FilePath)) ReadCsv();
         }
 
         
