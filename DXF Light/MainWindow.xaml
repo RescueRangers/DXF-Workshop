@@ -1,0 +1,78 @@
+﻿<mah:MetroWindow x:Class="DXF_Light.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:LocalizeDictionary.DesignCulture="en"
+        lex:ResxLocalizationProvider.DefaultAssembly="DXFWorkshop"
+        lex:ResxLocalizationProvider.DefaultDictionary="Resources"
+        xmlns:local="clr-namespace:DXF_Light"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+        xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:command="http://www.galasoft.ch/mvvmlight"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:behaviours="http://metro.mahapps.com/winfx/xaml/shared"
+        mc:Ignorable="d ignore" ShowIconOnTitleBar="True"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        Height="400"
+        Width="600"
+        Title="{lex:LocText Key=Title}"
+        DataContext="{Binding Main, Source={StaticResource Locator}}">    
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <command:EventToCommand Command="{Binding Mode=OneWay, Path=LoadedCommand}"
+                                PassEventArgsToCommand="True" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid dd:DragDrop.IsDropTarget="True"
+          dd:DragDrop.DropHandler="{Binding}">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <Menu IsMainMenu="True" DockPanel.Dock="Left" Width="350"> 
+                <MenuItem Header="{lex:Loc Key=File}">
+                    <MenuItem Header="{lex:Loc Key=Exit}" Command="{Binding ExitCommand}"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="{lex:Loc Key=Language}">
+                    <MenuItem Header="{lex:Loc Key=English}" Command="{Binding EnglishCommand}"></MenuItem>
+                    <MenuItem Header="{lex:Loc Key=Polish}" Command="{Binding PolishCommand}"></MenuItem>
+                </MenuItem>
+            </Menu>
+            <mah:ToggleSwitch OffLabel="{lex:Loc Key=LightTheme}" 
+                              OnLabel="{lex:Loc Key=DarkTheme}" 
+                              CheckChangedCommandParameter="1" 
+                              IsCheckedChanged="ToggleSwitch_OnIsCheckedChanged"  
+                              DockPanel.Dock="Right" 
+                              CheckChangedCommand="Close"/>
+        </DockPanel>
+        <TabControl Grid.Row="1">
+            <TabItem IsSelected="True" Header="{lex:Loc Key=PlxTab}">
+                <local:PlxView/>
+            </TabItem>
+            <TabItem Header="{lex:Loc Key=DxfTab}">
+                <local:DxfView/>
+            </TabItem>
+            
+        </TabControl>
+    </Grid>
+
+
+</mah:MetroWindow>
+

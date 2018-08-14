@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>DxfWorks</id>
+    <version>1.2.0.0</version>
+    <title>Dxf Workshop</title>
+    <authors>Radoslaw Radomski</authors>
+    <owners></owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Dxf Workshop</description>
+    <language>en</language>
+  </metadata>
+  <files>
+    <file src="C:\Users\user\source\repos\DXF Light\DXF Light\bin\Release\*" target="lib\net45\" exclude="*.pdb;*.vshost.*"/>
+    <file src="C:\Users\user\source\repos\DXF Light\DXF Light\bin\Release\en\*" target="lib\net45\en\" exclude="*.pdb;*.vshost.*"/>
+    <file src="C:\Users\user\source\repos\DXF Light\DXF Light\bin\Release\pl\*" target="lib\net45\pl\" exclude="*.pdb;*.vshost.*"/>
+  </files>
+</package>
