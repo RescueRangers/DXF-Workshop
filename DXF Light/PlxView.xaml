@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DXF_Light"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
@@ -12,19 +13,19 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="180"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
-                    
+
         <TextBlock Text="{lex:Loc Key=PlxFileName}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"
@@ -42,18 +43,40 @@
                 Grid.Column="0"
                 Grid.Row="3"
                 VerticalAlignment="Center"
-                Content="{lex:Loc Key=SelectFilesButton}"
-                Padding="5"
-                Margin="5"/>
+                Style="{StaticResource AccentedSquareButtonStyle}">
 
-        <Button Margin="5"
-                VerticalAlignment="Center"
-                Padding="5"
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{lex:Loc Key=SelectFilesButton}"
+                           VerticalAlignment="Center"
+                           FontSize="16"/>
+
+                <iconPacks:PackIconMaterial Kind="FileImport" 
+                                            Width="24"
+                                            Height="24"
+                                            Margin="15 4 2 4"/>
+            </StackPanel>
+            
+            
+        </Button>
+
+        <Button VerticalAlignment="Center"
                 Grid.Row="3"
                 Grid.Column="3"
-                Content="{lex:Loc Key=CreateFileButton}"
-                Command="{Binding CreatePlxCommand}"/>
-         
+                Command="{Binding CreatePlxCommand}"
+                Style="{StaticResource AccentedSquareButtonStyle}">
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{lex:Loc Key=CreateFileButton}"
+                           VerticalAlignment="Center"
+                           FontSize="16"/>
+
+                <iconPacks:PackIconMaterial Kind="ContentSave" 
+                                            Width="24"
+                                            Height="24"
+                                            Margin="15 4 2 4"/>
+            </StackPanel>
+        </Button>
+
         <GroupBox Margin="5"
                   Grid.Row="1" 
                   Grid.Column="0"
@@ -61,38 +84,38 @@
                   Grid.RowSpan="2"
                   Header="{lex:Loc Key=PlxContents}">
 
-             <DataGrid GridLinesVisibility="Vertical"
+            <DataGrid GridLinesVisibility="Vertical"
                        ItemsSource="{Binding PlxFile.DxfFiles}"
                        AutoGenerateColumns="False"
                        CanUserAddRows="False">
-                 <DataGrid.Columns>
-                     <DataGridTextColumn Width="*"
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*"
                                          Header="{lex:Loc Key=Name}"
                                          Binding="{Binding Name}"/>
-                     <mah:DataGridNumericUpDownColumn HideUpDownButtons="True"
+                    <mah:DataGridNumericUpDownColumn HideUpDownButtons="True"
                                                       CanUserResize="False"
                                                       Width="70"
                                                       Header="{lex:Loc Key=Qty}"
                                                       Binding="{Binding Qty}"/>
-                     <mah:DataGridNumericUpDownColumn HideUpDownButtons="True"
+                    <mah:DataGridNumericUpDownColumn HideUpDownButtons="True"
                                                       CanUserResize="False"
                                                       Width="70"
                                                       Header="{lex:Loc Key=Group}"
                                                       Binding="{Binding Group}"/>
-                     <mah:DataGridNumericUpDownColumn HideUpDownButtons="True"
+                    <mah:DataGridNumericUpDownColumn HideUpDownButtons="True"
                                                       IsReadOnly="True" 
                                                       Width="Auto"
                                                       Header="{lex:Loc Key=Width}" 
                                                       Binding="{Binding Width}"/>
-                     <mah:DataGridNumericUpDownColumn HideUpDownButtons="True"
+                    <mah:DataGridNumericUpDownColumn HideUpDownButtons="True"
                                                       IsReadOnly="True"
                                                       Width="Auto" 
                                                       Header="{lex:Loc Key=Length}"
                                                       Binding="{Binding Length}"/>
-                 </DataGrid.Columns>
-             </DataGrid>
-         </GroupBox>           
-        
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
         <GroupBox Margin="5" 
                   Header="{lex:Loc Key=Options}" 
                   Grid.Row="0" 
@@ -131,7 +154,7 @@
                                     Grid.Column="1"
                                     VerticalAlignment="Center"
                                     Margin="5"/>
-                
+
                 <Separator Grid.Row="1" 
                            Grid.Column="0" 
                            Grid.ColumnSpan="2" 

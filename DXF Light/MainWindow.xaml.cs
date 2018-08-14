@@ -11,6 +11,9 @@ namespace DXF_Light
     /// </summary>
     public partial class MainWindow
     {
+        private readonly Accent _accentLight = ThemeManager.DetectAppStyle(Application.Current).Item2;
+        private readonly Accent _accentDark = ThemeManager.GetAccent("Olive");
+
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
         /// </summary>
@@ -26,11 +29,11 @@ namespace DXF_Light
             var theme = ThemeManager.DetectAppStyle(Application.Current);
             if (toggleSwitch.IsChecked == true)
             {
-                ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, ThemeManager.GetAppTheme("BaseDark"));
+                ThemeManager.ChangeAppStyle(Application.Current, _accentDark, ThemeManager.GetAppTheme("BaseDark"));
             }
             else
             {
-                ThemeManager.ChangeAppStyle(Application.Current, theme.Item2, ThemeManager.GetAppTheme("BaseLight"));
+                ThemeManager.ChangeAppStyle(Application.Current, _accentLight, ThemeManager.GetAppTheme("BaseLight"));
             }
         }
     }
