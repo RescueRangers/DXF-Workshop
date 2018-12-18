@@ -80,6 +80,10 @@
             <TabItem Header="{lex:Loc Key=DxfTab}">
                 <local:DxfView/>
             </TabItem>
+
+            <TabItem Header="Ply files">
+                <local:PlyView/>
+            </TabItem>
             
         </TabControl>
     </Grid>

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="DXF_Light.DxfView"
+﻿<UserControl x:Class="DXF_Light.PlyView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -46,7 +46,7 @@
                        HorizontalAlignment="Left"
                        Margin="5 12" />
 
-            <TextBox Text="{Binding FilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox Text="{Binding PlyFilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Margin="5 0"
                      VerticalAlignment="Center"
                      Width="350"
@@ -91,7 +91,7 @@
         <Button VerticalAlignment="Center"
                 Grid.Row="3"
                 Grid.Column="5"
-                Command="{Binding CreateDxfsCommand}"
+                Command="{Binding CreatePliesCommand}"
                 Style="{StaticResource AccentedSquareButtonStyle}">
             
             <StackPanel Orientation="Horizontal">
@@ -114,7 +114,7 @@
                   Margin="5" 
                   Header="{lex:Loc Key=DxfFiles}">
 
-            <DataGrid ItemsSource="{Binding DxfFiles}"
+            <DataGrid ItemsSource="{Binding PlyFiles}"
                       AutoGenerateColumns="False"
                       GridLinesVisibility="Vertical"
                       mah:DataGridHelper.EnableCellEditAssist="True"
@@ -123,12 +123,24 @@
                     <DataGridTextColumn Width="*" 
                                         Binding="{Binding Name, Mode=TwoWay}" 
                                         Header="{lex:Loc Key=Name}"/>
-                    <mah:DataGridNumericUpDownColumn Width="Auto" Binding="{Binding Width, Mode=TwoWay}"
-                                                     Header="{lex:Loc Key=Width}"
+                    <mah:DataGridNumericUpDownColumn Width="Auto" Binding="{Binding L1, Mode=TwoWay}"
+                                                     Header="L1"
                                                      HideUpDownButtons="True"/>
                     <mah:DataGridNumericUpDownColumn Width="Auto"
-                                                     Binding="{Binding Length, Mode=TwoWay}"
-                                                     Header="{lex:Loc Key=Length}" 
+                                                     Binding="{Binding L2, Mode=TwoWay}"
+                                                     Header="L2" 
+                                                     HideUpDownButtons="True"/>
+                    <mah:DataGridNumericUpDownColumn Width="Auto"
+                                                     Binding="{Binding L3, Mode=TwoWay}"
+                                                     Header="L3" 
+                                                     HideUpDownButtons="True"/>
+                    <mah:DataGridNumericUpDownColumn Width="Auto"
+                                                     Binding="{Binding L4, Mode=TwoWay}"
+                                                     Header="L4" 
+                                                     HideUpDownButtons="True"/>
+                    <mah:DataGridNumericUpDownColumn Width="Auto"
+                                                     Binding="{Binding W, Mode=TwoWay}"
+                                                     Header="W" 
                                                      HideUpDownButtons="True"/>
                     <DataGridTextColumn Width="Auto" 
                                         Binding="{Binding Material, Mode=TwoWay}"

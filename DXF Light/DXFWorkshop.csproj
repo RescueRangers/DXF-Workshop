@@ -189,6 +189,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="PlyView.xaml.cs">
+      <DependentUpon>PlyView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DxfView.xaml.cs">
       <DependentUpon>DxfView.xaml</DependentUpon>
     </Compile>
@@ -197,6 +200,7 @@
     <Compile Include="Model\IDataService.cs" />
     <Compile Include="Model\PlxFile.cs" />
     <Compile Include="Model\PlxOptions.cs" />
+    <Compile Include="Model\PlyFile.cs" />
     <Compile Include="PlxView.xaml.cs">
       <DependentUpon>PlxView.xaml</DependentUpon>
     </Compile>
@@ -215,6 +219,10 @@
     <Compile Include="SingleInstance.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="PlyView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="DxfView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -270,6 +278,7 @@
     </EmbeddedResource>
     <None Include="DXF Light_TemporaryKey.pfx" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="Ply-1.dxf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

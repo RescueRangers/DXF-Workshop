@@ -33,7 +33,7 @@
                        Margin="5 12" />
 
             <TextBox MaxLength="31"
-                     Text="{Binding PlxFileName, Mode=TwoWay}"
+                     Text="{Binding PlxFileName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Margin="5 0"
                      VerticalAlignment="Center"
                      mah:TextBoxHelper.ClearTextButton="True" 

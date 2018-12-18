@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media.Animation;
 using DXF_Light.Model;
 using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
@@ -15,6 +16,7 @@ namespace DXF_Light.Servicess
     public class IOService : IIOService
     {
         private const string ResourceFile = "DXF_Light.template.dxf";
+        private const string VestasResourceFile = "DXF_Light.Ply-1.dxf";
         private readonly int[] _lineNumbers = {733,735,749,751,765,767,781,783};
 
 
@@ -144,8 +146,6 @@ namespace DXF_Light.Servicess
                     continue;
                 }
 
-                    
-
                 var dxfFile = new DxfFile
                 {
                     Name = dxfFileInfo.Name.Remove(dxfFileInfo.Name.Length - 4),
@@ -165,6 +165,66 @@ namespace DXF_Light.Servicess
         {
             throw new NotImplementedException();
         }
+
+        public void CreatePlyDxf(Action<Exception> callback, List<PlyFile> plyFiles, string path)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            try
+            {
+                foreach (var file in plyFiles)
+                {
+                    var linesToWrite = new List<string>();
+
+                    var destination = file.Material != null ? $@"{path}\{file.Material}\" : $@"{path}\";
+                    Directory.CreateDirectory(destination);
+
+                    var upperLength = (file.L3 + file.L4) + (file.L1 - file.L3);
+
+                    linesToWrite.Add(upperLength.ToString("F1"));
+                    linesToWrite.Add(file.W.ToString("F1", CultureInfo.InvariantCulture));
+                    linesToWrite.Add((file.L1 - file.L3).ToString("F1", CultureInfo.InvariantCulture));
+                    linesToWrite.Add(file.W.ToString("F1", CultureInfo.InvariantCulture));
+                    linesToWrite.Add("0.0");
+                    linesToWrite.Add("0.0");
+                    linesToWrite.Add((file.L1 + file.L2).ToString("F1", CultureInfo.InvariantCulture));
+                    linesToWrite.Add("0.0");
+
+                    // Read from the target file and write to a new file.
+                    var lineNumber = 0;
+
+                    // ReSharper disable once AssignNullToNotNullAttribute
+                    using (var reader = new StreamReader(assembly.GetManifestResourceStream(ResourceFile)))
+                    {
+                        using (var writer = new StreamWriter(destination + file.Name + ".dxf"))
+                        {
+                            var i = 0;
+                            string line;
+                            while ((line = reader.ReadLine()) != null)
+                            {
+                                if (i < 8 && lineNumber == _lineNumbers[i])
+                                {
+                                    writer.WriteLine(linesToWrite[i]);
+                                    i++;
+                                }
+                                else
+                                {
+                                    writer.WriteLine(line);
+                                }
+                                lineNumber++;
+                            }
+                        }
+                    }
+
+                }
+                callback(null);
+            }
+            catch (Exception e)
+            {
+                callback(e);
+            }
+        }
+
 
         public void CreateDxfFiles(Action<Exception> callback, List<DxfFile> dxfFiles, string path)
         {
@@ -223,8 +283,6 @@ namespace DXF_Light.Servicess
             {
                 callback(e);
             }
-
-            
         }
 
         private static double AbsoluteValue(double firstNumber, double secondNumber)

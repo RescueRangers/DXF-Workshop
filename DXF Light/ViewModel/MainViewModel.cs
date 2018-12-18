@@ -56,6 +56,7 @@ namespace DXF_Light.ViewModel
         private PlxFile _plxFile;
         private PlxOptions _plxOptions;
         private ObservableCollection<DxfFile> _dxfFiles;
+        private string _plyFilePath;
         private static string _startupArgument;
 
         public PlxOptions PlxOptions
@@ -68,6 +69,12 @@ namespace DXF_Light.ViewModel
         {
             get => _filePath;
             set => Set(ref _filePath, value);
+        }
+
+        public string PlyFilePath
+        {
+            get => _plyFilePath;
+            set => Set(nameof(PlyFilePath), ref _plyFilePath, value);
         }
 
         public string Delimiter
@@ -94,6 +101,8 @@ namespace DXF_Light.ViewModel
             set => Set(ref _dxfFiles, value);
         }
 
+        public ObservableCollection<PlyFile> PlyFiles { get; set; }
+
         public string PlxFileName
         {
             get => _plxFileName;
@@ -110,6 +119,7 @@ namespace DXF_Light.ViewModel
         public ICommand PolishCommand { get; private set; }
         public ICommand AddDxfCommand { get; private set; }
         public ICommand LoadedCommand { get; private set; }
+        public ICommand CreatePliesCommand { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -121,6 +131,7 @@ namespace DXF_Light.ViewModel
             _dataService = dataService;
             PlxOptions = new PlxOptions();
             DxfFiles = new ObservableCollection<DxfFile>();
+            PlyFiles = new ObservableCollection<PlyFile>();
             LoadCommands();
         }
 
@@ -137,6 +148,37 @@ namespace DXF_Light.ViewModel
             EnglishCommand = new RelayCommand(English, () => true);
             AddDxfCommand = new RelayCommand(AddDxf, () => true);
             LoadedCommand = new RelayCommand(Loaded, () => true);
+            CreatePliesCommand = new RelayCommand(CreatePlies, () => PlyFiles != null && PlyFiles.Any());
+        }
+
+        private async void CreatePlies()
+        {
+            _ioService.GetFolder(
+                (item, error) =>
+                {
+                    if (error != null)
+                    {
+                        // Report error here
+                        _ioService.Message(error.Message, Properties.Resources.Error);
+                        _savePath = null;
+                        return;
+                    }
+
+                    _savePath = item;
+
+                });
+
+            if (_savePath == null) return;
+
+            await Task.Run( () =>_ioService.CreatePlyDxf((error) =>
+            {
+                if (error != null)
+                {
+                    _ioService.Message(error.Message, Properties.Resources.Error);
+                }
+
+                _ioService.Message(Properties.Resources.Success + _savePath, Properties.Resources.FileOperation);
+            }, PlyFiles.ToList(), _savePath));
         }
 
         private void Loaded()
@@ -254,8 +296,6 @@ namespace DXF_Light.ViewModel
 
                 _ioService.Message(Properties.Resources.Success + _savePath, Properties.Resources.FileOperation);
             }, DxfFiles.ToList(), _savePath));
-            
-            
         }
 
         
