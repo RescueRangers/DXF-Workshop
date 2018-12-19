@@ -8,6 +8,7 @@
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -85,7 +86,38 @@
                   Grid.RowSpan="2"
                   Header="{lex:Loc Key=PlxContents}">
 
-            <DataGrid GridLinesVisibility="Vertical"
+            <Syncfusion:SfDataGrid ItemsSource="{Binding PlxFile.DxfFiles}"
+                                   AutoGenerateColumns="False"
+                                   IsReadOnly="False"
+                                   AllowEditing="True"
+                                   ColumnSizer="AutoLastColumnFill"
+                                   AllowDeleting="True">
+                <Syncfusion:SfDataGrid.Columns>
+                    <Syncfusion:GridTextColumn MappingName="Name"
+                                               HeaderText="{lex:Loc Key=Name}"
+                                               ColumnSizer="AutoLastColumnFill"
+                                               IsReadOnly="True"
+                                               AllowEditing="False"/>
+                    <Syncfusion:GridNumericColumn MappingName="Qty"
+                                                  HeaderText="{lex:Loc Key=Qty}"
+                                                  AllowEditing="True"/>
+                    <Syncfusion:GridNumericColumn MappingName="Group"
+                                                  HeaderText="{lex:Loc Key=Group}"
+                                                  AllowEditing="True"/>
+                    <Syncfusion:GridNumericColumn MappingName="Width"
+                                                  HeaderText="{lex:Loc Key=Width}"
+                                                  IsReadOnly="True"
+                                                  AllowEditing="False"/>
+                    <Syncfusion:GridNumericColumn MappingName="Length"
+                                                  HeaderText="{lex:Loc Key=Length}"
+                                                  IsReadOnly="True"
+                                                  AllowEditing="False"/>
+                </Syncfusion:SfDataGrid.Columns>
+
+            </Syncfusion:SfDataGrid>
+
+
+            <!--<DataGrid GridLinesVisibility="Vertical"
                         ItemsSource="{Binding PlxFile.DxfFiles}"
                         AutoGenerateColumns="False"
                         CanUserAddRows="False">
@@ -114,7 +146,7 @@
                                                       Header="{lex:Loc Key=Length}"
                                                       Binding="{Binding Length}"/>
                 </DataGrid.Columns>
-            </DataGrid>
+            </DataGrid>-->
         </GroupBox>
 
         <GroupBox Margin="5" 

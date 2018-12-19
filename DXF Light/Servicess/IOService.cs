@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Animation;
 using DXF_Light.Model;
+using DXF_Light.Properties;
 using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
@@ -16,7 +18,6 @@ namespace DXF_Light.Servicess
     public class IOService : IIOService
     {
         private const string ResourceFile = "DXF_Light.template.dxf";
-        private const string VestasResourceFile = "DXF_Light.Ply-1.dxf";
         private readonly int[] _lineNumbers = {733,735,749,751,765,767,781,783};
 
 
@@ -42,8 +43,15 @@ namespace DXF_Light.Servicess
         {
             var fb = new FolderBrowserDialog();
 
+            if (!string.IsNullOrWhiteSpace(Settings.Default.InitialFolder))
+            {
+                fb.SelectedPath = Settings.Default.InitialFolder;
+            }
+
             if (fb.ShowDialog() == DialogResult.OK)
             {
+                Settings.Default.InitialFolder = fb.SelectedPath;
+                Settings.Default.Save();
                 callback(fb.SelectedPath, null);
             }
             else

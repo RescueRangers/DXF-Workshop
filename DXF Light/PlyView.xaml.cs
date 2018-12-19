@@ -24,5 +24,10 @@ namespace DXF_Light
         {
             InitializeComponent();
         }
+
+        private void SfDataGrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

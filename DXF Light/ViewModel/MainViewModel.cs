@@ -179,6 +179,8 @@ namespace DXF_Light.ViewModel
 
                 _ioService.Message(Properties.Resources.Success + _savePath, Properties.Resources.FileOperation);
             }, PlyFiles.ToList(), _savePath));
+
+            PlyFiles.Clear();
         }
 
         private void Loaded()
@@ -296,9 +298,9 @@ namespace DXF_Light.ViewModel
 
                 _ioService.Message(Properties.Resources.Success + _savePath, Properties.Resources.FileOperation);
             }, DxfFiles.ToList(), _savePath));
-        }
 
-        
+            DxfFiles.Clear();
+        }
 
         private void ReadCsv()
         {

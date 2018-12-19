@@ -8,6 +8,7 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
              mc:Ignorable="d" 
              lex:LocalizeDictionary.DesignCulture="en"
              lex:ResxLocalizationProvider.DefaultAssembly="DXFWorkshop"
@@ -71,22 +72,7 @@
             </StackPanel>
         </Button>
         
-        <!--<Button Command="{Binding ReadFileCommand}"
-                Grid.Column="2"
-                Grid.Row="3"
-                VerticalAlignment="Center"
-                Style="{StaticResource AccentedSquareButtonStyle}">
-            
-            <StackPanel Orientation="Horizontal" >
-                <TextBlock Text="{lex:Loc Key=OpenButton}"
-                           VerticalAlignment="Center" 
-                           FontSize="16"/>
-                <iconPacks:PackIconMaterial Kind="OpenInApp" 
-                                            Width="24"
-                                            Height="24"
-                                            Margin="15 4 2 4"/>
-            </StackPanel>
-        </Button>-->
+        
 
         <Button VerticalAlignment="Center"
                 Grid.Row="3"
@@ -114,7 +100,30 @@
                   Margin="5" 
                   Header="{lex:Loc Key=DxfFiles}">
 
-            <DataGrid ItemsSource="{Binding DxfFiles}"
+            <Syncfusion:SfDataGrid ItemsSource="{Binding DxfFiles}"
+                                   AutoGenerateColumns="False"
+                                   AddNewRowPosition="Bottom"
+                                   IsReadOnly="False"
+                                   ColumnSizer="AutoLastColumnFill"
+                                   AllowEditing="True"
+                                   AllowDeleting="True">
+                <Syncfusion:SfDataGrid.Columns>
+                    <Syncfusion:GridTextColumn MappingName="Name"
+                                               HeaderText="{lex:Loc Key=Name}"
+                                               ColumnSizer="AutoLastColumnFill"/>
+                    <Syncfusion:GridNumericColumn MappingName="Width"
+                                                  HeaderText="{lex:Loc Key=Width}"/>
+                    <Syncfusion:GridNumericColumn MappingName="Length"
+                                                  HeaderText="{lex:Loc Key=Length}"/>
+                    <Syncfusion:GridTextColumn MappingName="Material"
+                                               HeaderText="{lex:Loc Key=Material}"/>
+                    
+
+                </Syncfusion:SfDataGrid.Columns>
+
+            </Syncfusion:SfDataGrid>
+
+            <!--<DataGrid ItemsSource="{Binding DxfFiles}"
                       AutoGenerateColumns="False"
                       GridLinesVisibility="Vertical"
                       mah:DataGridHelper.EnableCellEditAssist="True"
@@ -135,7 +144,7 @@
                                         Header="{lex:Loc Key=Material}"/>
                 </DataGrid.Columns>
 
-            </DataGrid>
+            </DataGrid>-->
         </GroupBox>
         
         <GroupBox Margin="5" 
