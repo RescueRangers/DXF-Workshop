@@ -143,6 +143,7 @@ namespace DXF_Light.Servicess
                     {
                         Name = dxfFileInfo.Name.Remove(dxfFileInfo.Name.Length - 4)
                     });
+                    directoryName = dxfFileInfo.DirectoryName;
                     continue;
                 }
 
@@ -181,7 +182,7 @@ namespace DXF_Light.Servicess
 
                     var upperLength = (file.L3 + file.L4) + (file.L1 - file.L3);
 
-                    linesToWrite.Add(upperLength.ToString("F1"));
+                    linesToWrite.Add(upperLength.ToString("F1", CultureInfo.InvariantCulture));
                     linesToWrite.Add(file.W.ToString("F1", CultureInfo.InvariantCulture));
                     linesToWrite.Add((file.L1 - file.L3).ToString("F1", CultureInfo.InvariantCulture));
                     linesToWrite.Add(file.W.ToString("F1", CultureInfo.InvariantCulture));
