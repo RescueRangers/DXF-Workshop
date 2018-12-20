@@ -57,6 +57,7 @@ namespace DXF_Light.ViewModel
         private PlxOptions _plxOptions;
         private ObservableCollection<DxfFile> _dxfFiles;
         private string _plyFilePath;
+        private ObservableCollection<PlyFile> _plyFiles;
         private static string _startupArgument;
 
         public PlxOptions PlxOptions
@@ -101,7 +102,11 @@ namespace DXF_Light.ViewModel
             set => Set(ref _dxfFiles, value);
         }
 
-        public ObservableCollection<PlyFile> PlyFiles { get; set; }
+        public ObservableCollection<PlyFile> PlyFiles
+        {
+            get => _plyFiles;
+            set => Set(nameof(PlyFiles), ref _plyFiles, value);
+        }
 
         public string PlxFileName
         {
@@ -120,6 +125,8 @@ namespace DXF_Light.ViewModel
         public ICommand AddDxfCommand { get; private set; }
         public ICommand LoadedCommand { get; private set; }
         public ICommand CreatePliesCommand { get; set; }
+        public ICommand GetPlyFilePathCommand { get; set; }
+        public ICommand ReadPlyFileCommand { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -149,6 +156,36 @@ namespace DXF_Light.ViewModel
             AddDxfCommand = new RelayCommand(AddDxf, () => true);
             LoadedCommand = new RelayCommand(Loaded, () => true);
             CreatePliesCommand = new RelayCommand(CreatePlies, () => PlyFiles != null && PlyFiles.Any());
+            GetPlyFilePathCommand = new RelayCommand(GetPlyFilePath, () => true);
+            ReadPlyFileCommand = new RelayCommand(ReadPlyCsv, () => !string.IsNullOrWhiteSpace(PlyFilePath));
+        }
+
+        private void ReadPlyCsv()
+        {
+            _dataService.GetPlyData(
+                (items, error) =>
+                {
+                    if (error != null)
+                    {
+                        // Report error here
+                        _ioService.Message(error.Message, Properties.Resources.Error);
+                        return;
+                    }
+
+                    PlyFiles = new ObservableCollection<PlyFile>(items);
+
+                }, _plyFilePath.Trim('"'), _delimiter, _headers ? 1 : 0);
+        }
+
+        private void GetPlyFilePath()
+        {
+            var defaultPath = string.IsNullOrWhiteSpace(Properties.Settings.Default.InitialFolder)
+                ? _appFilePath
+                : Properties.Settings.Default.InitialFolder;
+
+            PlyFilePath = _ioService.OpenFileDialog(defaultPath, CsvFiles);
+            
+            if(!string.IsNullOrWhiteSpace(PlyFilePath)) ReadPlyCsv();
         }
 
         private async void CreatePlies()
@@ -316,12 +353,16 @@ namespace DXF_Light.ViewModel
 
                     DxfFiles = new ObservableCollection<DxfFile>(items);
 
-                }, _filePath, _delimiter, _headers ? 1 : 0);
+                }, _filePath.Trim('"'), _delimiter, _headers ? 1 : 0);
         }
 
         private void GetFilePath()
         {
-            FilePath = _ioService.OpenFileDialog(_appFilePath, CsvFiles);
+            var defaultPath = string.IsNullOrWhiteSpace(Properties.Settings.Default.InitialFolder)
+                ? _appFilePath
+                : Properties.Settings.Default.InitialFolder;
+
+            FilePath = _ioService.OpenFileDialog(defaultPath, CsvFiles);
             
             if(!string.IsNullOrWhiteSpace(FilePath)) ReadCsv();
         }

@@ -51,7 +51,6 @@
                      Margin="5 0"
                      VerticalAlignment="Center"
                      Width="350"
-                     Grid.ColumnSpan="3"
                      IsReadOnly="True"/>
             </StackPanel>
 
@@ -122,29 +121,7 @@
                 </Syncfusion:SfDataGrid.Columns>
 
             </Syncfusion:SfDataGrid>
-
-            <!--<DataGrid ItemsSource="{Binding DxfFiles}"
-                      AutoGenerateColumns="False"
-                      GridLinesVisibility="Vertical"
-                      mah:DataGridHelper.EnableCellEditAssist="True"
-                      mah:DataGridRowHelper.SelectionUnit="FullRow">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Width="*" 
-                                        Binding="{Binding Name, Mode=TwoWay}" 
-                                        Header="{lex:Loc Key=Name}"/>
-                    <mah:DataGridNumericUpDownColumn Width="Auto" Binding="{Binding Width, Mode=TwoWay}"
-                                                     Header="{lex:Loc Key=Width}"
-                                                     HideUpDownButtons="True"/>
-                    <mah:DataGridNumericUpDownColumn Width="Auto"
-                                                     Binding="{Binding Length, Mode=TwoWay}"
-                                                     Header="{lex:Loc Key=Length}" 
-                                                     HideUpDownButtons="True"/>
-                    <DataGridTextColumn Width="Auto" 
-                                        Binding="{Binding Material, Mode=TwoWay}"
-                                        Header="{lex:Loc Key=Material}"/>
-                </DataGrid.Columns>
-
-            </DataGrid>-->
+            
         </GroupBox>
         
         <GroupBox Margin="5" 

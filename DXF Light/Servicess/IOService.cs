@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Media.Animation;
 using DXF_Light.Model;
 using DXF_Light.Properties;
 using MessageBox = System.Windows.MessageBox;
@@ -31,7 +29,12 @@ namespace DXF_Light.Servicess
 
             var results = fod.ShowDialog();
 
-            return results == true ? fod.FileName : string.Empty;
+            if (results != true) return string.Empty;
+
+            var fileInfo = new FileInfo(fod.FileName);
+            Settings.Default.InitialFolder = fileInfo.DirectoryName;
+            Settings.Default.Save();
+            return fod.FileName;
         }
 
         public void Message(string messageText, string title)
@@ -233,7 +236,6 @@ namespace DXF_Light.Servicess
                 callback(e);
             }
         }
-
 
         public void CreateDxfFiles(Action<Exception> callback, List<DxfFile> dxfFiles, string path)
         {

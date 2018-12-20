@@ -22,5 +22,21 @@ namespace DXF_Light.Design
             callback(dxfs, null);
         }
 
+        public void GetPlyData(Action<List<PlyFile>, Exception> callback, string filePath, string delimiter, int headers)
+        {
+            var item = new PlyFile()
+            {
+                L1 = 1500,
+                L2 = 1270,
+                L3 = 1278,
+                L4 = 260,
+                W = 1260,
+                Name = "Ply-01"
+            };
+
+            var plies = new List<PlyFile>{item};
+
+            callback(plies, null);
+        }
     }
 }

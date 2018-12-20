@@ -9,6 +9,7 @@
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              lex:LocalizeDictionary.DesignCulture="en"
              lex:ResxLocalizationProvider.DefaultAssembly="DXFWorkshop"
@@ -51,11 +52,10 @@
                      Margin="5 0"
                      VerticalAlignment="Center"
                      Width="350"
-                     Grid.ColumnSpan="3"
                      IsReadOnly="True"/>
         </StackPanel>
 
-        <Button Command="{Binding GetFilePathCommand}" 
+        <Button Command="{Binding GetPlyFilePathCommand}" 
                 Grid.Column="5" 
                 Grid.Row="0" 
                 VerticalAlignment="Center" 
@@ -97,7 +97,7 @@
                   Margin="5" 
                   Header="{lex:Loc Key=DxfFiles}">
 
-            <syncfusion:SfDataGrid ItemsSource="{Binding PlyFiles}"
+            <syncfusion:SfDataGrid ItemsSource="{Binding PlyFiles, Mode=TwoWay}"
                                    AutoGenerateColumns="False"
                                    AddNewRowPosition="Bottom"
                                    IsReadOnly="False"
