@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
+using NuGet;
 
 namespace DXF_Light.Model
 {
@@ -877,6 +878,11 @@ EOF";
             }
 
             return true;
+        }
+
+        public void AddCuts(IEnumerable<decimal> cuts)
+        {
+            InternalCuts.AddRange(cuts.Select(i => new InternalCut(i)));
         }
 
         public string CreateDxf()

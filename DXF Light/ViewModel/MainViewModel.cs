@@ -59,7 +59,21 @@ namespace DXF_Light.ViewModel
         private string _plyFilePath;
         private ObservableCollection<PlyFile> _plyFiles;
         private NoContourDxf _noContourDxf = new NoContourDxf();
+        private int _numberOfCuts;
+        private decimal _cutLength;
         private static string _startupArgument;
+
+        public decimal CutLength
+        {
+            get => _cutLength;
+            set => Set(ref _cutLength, value);
+        }
+
+        public int NumberOfCuts
+        {
+            get => _numberOfCuts;
+            set => Set(ref _numberOfCuts, value);
+        }
 
         public PlxOptions PlxOptions
         {
@@ -135,6 +149,7 @@ namespace DXF_Light.ViewModel
         public ICommand GetPlyFilePathCommand { get; set; }
         public ICommand ReadPlyFileCommand { get; set; }
         public ICommand CreateNcDxfCommand { get; set; }
+        public ICommand AddCutsCommand { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -167,6 +182,13 @@ namespace DXF_Light.ViewModel
             GetPlyFilePathCommand = new RelayCommand(GetPlyFilePath, () => true);
             ReadPlyFileCommand = new RelayCommand(ReadPlyCsv, () => !string.IsNullOrWhiteSpace(PlyFilePath));
             CreateNcDxfCommand = new RelayCommand(CreateNcDxf, () => NoContourDxf.IsValid);
+            AddCutsCommand = new RelayCommand(AddCuts, () => CutLength > 0 && NumberOfCuts > 0);
+        }
+
+        private void AddCuts()
+        {
+            var cuts = Enumerable.Repeat(CutLength, NumberOfCuts);
+            NoContourDxf.AddCuts(cuts);
         }
 
         private async void CreateNcDxf()

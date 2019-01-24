@@ -38,6 +38,7 @@
                      Margin="5 0"
                      VerticalAlignment="Center"
                      mah:TextBoxHelper.ClearTextButton="True" 
+                     mah:TextBoxHelper.SelectAllOnFocus="True"
                      MinWidth="350"/>
             </StackPanel>
 
@@ -116,37 +117,6 @@
 
             </Syncfusion:SfDataGrid>
 
-
-            <!--<DataGrid GridLinesVisibility="Vertical"
-                        ItemsSource="{Binding PlxFile.DxfFiles}"
-                        AutoGenerateColumns="False"
-                        CanUserAddRows="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Width="*"
-                                         Header="{lex:Loc Key=Name}"
-                                         Binding="{Binding Name}"/>
-                    <mah:DataGridNumericUpDownColumn HideUpDownButtons="True"
-                                                      CanUserResize="False"
-                                                      Width="70"
-                                                      Header="{lex:Loc Key=Qty}"
-                                                      Binding="{Binding Qty}"/>
-                    <mah:DataGridNumericUpDownColumn HideUpDownButtons="True"
-                                                      CanUserResize="False"
-                                                      Width="70"
-                                                      Header="{lex:Loc Key=Group}"
-                                                      Binding="{Binding Group}"/>
-                    <mah:DataGridNumericUpDownColumn HideUpDownButtons="True"
-                                                      IsReadOnly="True" 
-                                                      Width="Auto"
-                                                      Header="{lex:Loc Key=Width}" 
-                                                      Binding="{Binding Width}"/>
-                    <mah:DataGridNumericUpDownColumn HideUpDownButtons="True"
-                                                      IsReadOnly="True"
-                                                      Width="Auto" 
-                                                      Header="{lex:Loc Key=Length}"
-                                                      Binding="{Binding Length}"/>
-                </DataGrid.Columns>
-            </DataGrid>-->
         </GroupBox>
 
         <GroupBox Margin="5" 

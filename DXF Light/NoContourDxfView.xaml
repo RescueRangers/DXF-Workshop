@@ -7,6 +7,8 @@
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              lex:LocalizeDictionary.DesignCulture="en"
              lex:ResxLocalizationProvider.DefaultAssembly="DXFWorkshop"
@@ -106,6 +108,52 @@
                                                   MappingName="Cut"/>
                 </syncfusion:SfDataGrid.Columns>
             </syncfusion:SfDataGrid>
+
+        </GroupBox>
+
+        <GroupBox Margin="5" 
+                  Header="{lex:Loc Key=Options}" 
+                  Grid.Row="0" 
+                  Grid.Column="6" 
+                  Grid.RowSpan="4">
+            
+            <StackPanel>
+                
+                    <TextBlock Text="Add cuts to file"
+                               TextAlignment="Center"
+                               FontStyle="Normal"
+                               FontSize="14"
+                               FontWeight="ExtraBold"
+                               Height="20"/>
+                <StackPanel Orientation="Horizontal"
+                            Height="30">
+                    <TextBlock Text="Number of cuts:"
+                               VerticalAlignment="Center"
+                               Width="110"/>
+                    <TextBox Width="50"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Right"
+                             HorizontalContentAlignment="Right"
+                             mah:TextBoxHelper.SelectAllOnFocus="True"
+                             Text="{Binding NumberOfCuts, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Height="30">
+                    <TextBlock Text="Cut length:"
+                               VerticalAlignment="Center"
+                               Width="110"/>
+                    <TextBox Width="50"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Right"
+                             HorizontalContentAlignment="Right"
+                             mah:TextBoxHelper.SelectAllOnFocus="True"
+                             Text="{Binding CutLength, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <Button Content="Add cuts"
+                        Style="{StaticResource AccentedSquareButtonStyle}"
+                        Margin="0 10"
+                        Command="{Binding AddCutsCommand}"/>
+            </StackPanel>
 
         </GroupBox>
 

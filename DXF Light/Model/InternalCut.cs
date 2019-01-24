@@ -10,5 +10,16 @@ namespace DXF_Light.Model
     {
         public decimal Cut { get; set; }
 
+        public InternalCut()
+        {
+            
+        }
+
+        public InternalCut(decimal  cut)
+        {
+            Cut = cut;
+        }
+
     }
+
 }
