@@ -17,5 +17,6 @@ namespace DXF_Light.Servicess
         void CreatePlx(Action<Exception> callback, PlxFile plxFile, string path);
         void CreateDxfFiles(Action<Exception> callback, List<DxfFile> dxfFiles, string path);
         void CreatePlyDxf(Action<Exception> callback, List<PlyFile> plyFiles, string path);
+        void CreateNCDxf(Action<Exception> callback, NoContourDxf nCDxf, string path);
     }
 }

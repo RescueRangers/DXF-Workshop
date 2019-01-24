@@ -237,6 +237,18 @@ namespace DXF_Light.Servicess
             }
         }
 
+        public void CreateNCDxf(Action<Exception> callback, NoContourDxf nCDxf, string path)
+        {
+            try
+            {
+                File.WriteAllText(path + @"\" + nCDxf.Name + ".dxf", nCDxf.CreateDxf());
+            }
+            catch (Exception e)
+            {
+                callback(e);
+            }
+        }
+
         public void CreateDxfFiles(Action<Exception> callback, List<DxfFile> dxfFiles, string path)
         {
             var assembly = Assembly.GetExecutingAssembly();

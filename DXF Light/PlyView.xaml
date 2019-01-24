@@ -125,42 +125,6 @@
 
             </syncfusion:SfDataGrid>
 
-            <!--<DataGrid ItemsSource="{Binding PlyFiles}"
-                      AutoGenerateColumns="False"
-                      GridLinesVisibility="Vertical"
-                      mah:DataGridHelper.EnableCellEditAssist="True"
-                      mah:DataGridRowHelper.SelectionUnit="FullRow"
-                      SelectionMode="Single"
-                      SelectionUnit="Cell">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Width="*" 
-                                        Binding="{Binding Name, Mode=TwoWay}" 
-                                        Header="{lex:Loc Key=Name}"/>
-                    <mah:DataGridNumericUpDownColumn Width="Auto" Binding="{Binding L1, Mode=TwoWay}"
-                                                     Header="L1"
-                                                     HideUpDownButtons="True"/>
-                    <mah:DataGridNumericUpDownColumn Width="Auto"
-                                                     Binding="{Binding L2, Mode=TwoWay}"
-                                                     Header="L2" 
-                                                     HideUpDownButtons="True"/>
-                    <mah:DataGridNumericUpDownColumn Width="Auto"
-                                                     Binding="{Binding L3, Mode=TwoWay}"
-                                                     Header="L3" 
-                                                     HideUpDownButtons="True"/>
-                    <mah:DataGridNumericUpDownColumn Width="Auto"
-                                                     Binding="{Binding L4, Mode=TwoWay}"
-                                                     Header="L4" 
-                                                     HideUpDownButtons="True"/>
-                    <mah:DataGridNumericUpDownColumn Width="Auto"
-                                                     Binding="{Binding W, Mode=TwoWay}"
-                                                     Header="W" 
-                                                     HideUpDownButtons="True"/>
-                    <DataGridTextColumn Width="Auto" 
-                                        Binding="{Binding Material, Mode=TwoWay}"
-                                        Header="{lex:Loc Key=Material}"/>
-                </DataGrid.Columns>
-
-            </DataGrid>-->
         </GroupBox>
 
         <GroupBox Margin="5" 

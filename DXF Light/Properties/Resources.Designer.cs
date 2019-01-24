@@ -106,6 +106,15 @@ namespace DXF_Light.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cut position.
+        /// </summary>
+        public static string CUT {
+            get {
+                return ResourceManager.GetString("CUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dark theme.
         /// </summary>
         public static string DarkTheme {
@@ -309,6 +318,24 @@ namespace DXF_Light.Properties {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No contour DXF.
+        /// </summary>
+        public static string NCDXF {
+            get {
+                return ResourceManager.GetString("NCDXF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No contour DXF.
+        /// </summary>
+        public static string NCDXFTab {
+            get {
+                return ResourceManager.GetString("NCDXFTab", resourceCulture);
             }
         }
         

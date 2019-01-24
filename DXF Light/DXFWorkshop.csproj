@@ -199,6 +199,11 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Model\InternalCut.cs" />
+    <Compile Include="Model\NoContourDxf.cs" />
+    <Compile Include="NoContourDxfView.xaml.cs">
+      <DependentUpon>NoContourDxfView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PlyView.xaml.cs">
       <DependentUpon>PlyView.xaml</DependentUpon>
     </Compile>
@@ -229,6 +234,10 @@
     <Compile Include="SingleInstance.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="NoContourDxfView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PlyView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

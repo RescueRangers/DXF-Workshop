@@ -58,12 +58,19 @@ namespace DXF_Light.ViewModel
         private ObservableCollection<DxfFile> _dxfFiles;
         private string _plyFilePath;
         private ObservableCollection<PlyFile> _plyFiles;
+        private NoContourDxf _noContourDxf = new NoContourDxf();
         private static string _startupArgument;
 
         public PlxOptions PlxOptions
         {
             get => _plxOptions;
             set => Set(ref _plxOptions, value);
+        }
+
+        public NoContourDxf NoContourDxf
+        {
+            get => _noContourDxf;
+            set => Set(ref _noContourDxf, value);
         }
 
         public string FilePath
@@ -127,6 +134,7 @@ namespace DXF_Light.ViewModel
         public ICommand CreatePliesCommand { get; set; }
         public ICommand GetPlyFilePathCommand { get; set; }
         public ICommand ReadPlyFileCommand { get; set; }
+        public ICommand CreateNcDxfCommand { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -158,6 +166,39 @@ namespace DXF_Light.ViewModel
             CreatePliesCommand = new RelayCommand(CreatePlies, () => PlyFiles != null && PlyFiles.Any());
             GetPlyFilePathCommand = new RelayCommand(GetPlyFilePath, () => true);
             ReadPlyFileCommand = new RelayCommand(ReadPlyCsv, () => !string.IsNullOrWhiteSpace(PlyFilePath));
+            CreateNcDxfCommand = new RelayCommand(CreateNcDxf, () => NoContourDxf.IsValid);
+        }
+
+        private async void CreateNcDxf()
+        {
+            _ioService.GetFolder(
+                (item, error) =>
+                {
+                    if (error != null)
+                    {
+                        // Report error here
+                        _ioService.Message(error.Message, Properties.Resources.Error);
+                        _savePath = null;
+                        return;
+                    }
+
+                    _savePath = item;
+
+                });
+
+            if (_savePath == null) return;
+
+            await Task.Run( () =>_ioService.CreateNCDxf((error) =>
+            {
+                if (error != null)
+                {
+                    _ioService.Message(error.Message, Properties.Resources.Error);
+                }
+
+                _ioService.Message(Properties.Resources.Success + _savePath, Properties.Resources.FileOperation);
+            }, NoContourDxf, _savePath));
+
+            NoContourDxf = new NoContourDxf();
         }
 
         private void ReadPlyCsv()
@@ -256,7 +297,7 @@ namespace DXF_Light.ViewModel
         private void Polish()
         {
             LocalizeDictionary.Instance.SetCurrentThreadCulture = true;    
-            LocalizeDictionary.Instance.Culture = new CultureInfo("pl");   
+            LocalizeDictionary.Instance.Culture = new CultureInfo("pl");
         }
 
         private void Exit()
@@ -367,14 +408,6 @@ namespace DXF_Light.ViewModel
             if(!string.IsNullOrWhiteSpace(FilePath)) ReadCsv();
         }
 
-        
-
-        ////public override void Cleanup()
-        ////{
-        ////    // Clean up if needed
-
-        ////    base.Cleanup();
-        ////}
         public void DragOver(IDropInfo dropInfo)
         {
             var dragFileList = ((DataObject)dropInfo.Data).GetFileDropList().Cast<string>();

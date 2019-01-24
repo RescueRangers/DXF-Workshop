@@ -237,4 +237,13 @@
   <data name="LightTheme" xml:space="preserve">
     <value>Light theme</value>
   </data>
+  <data name="CUT" xml:space="preserve">
+    <value>Cut position</value>
+  </data>
+  <data name="NCDXF" xml:space="preserve">
+    <value>No contour DXF</value>
+  </data>
+  <data name="NCDXFTab" xml:space="preserve">
+    <value>No contour DXF</value>
+  </data>
 </root>

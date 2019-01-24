@@ -85,6 +85,10 @@
                 <local:PlyView/>
             </TabItem>
             
+            <TabItem Header="{lex:Loc Key=NCDXFTab}">
+                <local:NoContourDxfView/>
+            </TabItem>
+            
         </TabControl>
     </Grid>
 

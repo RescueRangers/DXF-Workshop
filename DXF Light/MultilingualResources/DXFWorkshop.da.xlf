@@ -166,6 +166,18 @@
           <source>Light theme</source>
           <target state="new">Light theme</target>
         </trans-unit>
+        <trans-unit id="NCDXF" translate="yes" xml:space="preserve">
+          <source>No contour DXF</source>
+          <target state="new">No contour DXF</target>
+        </trans-unit>
+        <trans-unit id="NCDXFTab" translate="yes" xml:space="preserve">
+          <source>No contour DXF</source>
+          <target state="new">No contour DXF</target>
+        </trans-unit>
+        <trans-unit id="CUT" translate="yes" xml:space="preserve">
+          <source>Cut position</source>
+          <target state="new">Cut position</target>
+        </trans-unit>
       </group>
     </body>
   </file>
