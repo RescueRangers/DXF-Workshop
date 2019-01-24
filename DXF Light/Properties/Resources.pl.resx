@@ -129,4 +129,13 @@
   <data name="LightTheme" xml:space="preserve">
     <value>Jasny motyw</value>
   </data>
+  <data name="NCDXF" xml:space="preserve">
+    <value>Plik DXF bez konturów</value>
+  </data>
+  <data name="NCDXFTab" xml:space="preserve">
+    <value>DXF bez konturów</value>
+  </data>
+  <data name="CUT" xml:space="preserve">
+    <value>Pozycja cięcia</value>
+  </data>
 </root>

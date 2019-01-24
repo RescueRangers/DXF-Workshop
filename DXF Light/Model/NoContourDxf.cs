@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -745,98 +746,83 @@ ________________
  70
      1
   0
-VERTEX
-  5
-59
-  8
-1
-  6
-________________
 ";
 
         #endregion
 
         #region Lines
 
-        private const string Vertex = @" 62
-     9
- 10
-{0}
- 20
-{1}
- 30
-0.0
-  0
-VERTEX
+        private const string Vertex = @"VERTEX
   5
-{2:X}
-  8
-1
-  6
-________________";
-
-        private const string VertesEnd = @" 62
-     9
- 10
-{0}
- 20
-{1}
- 30
-0.0
-  0
-SEQEND
-  5
-{2:X}
+{0:X}
   8
 1
   6
 ________________
  62
      9
-  0
-LINE
+ 10
+{1:F}
+ 20
+{2:F}
+ 30
+0.0
+  0";
+        
+
+        private const string VertexEnd = @"SEQEND
   5
-40
+5D
+  8
+1
+  6
+________________
+ 62
+     9
+  0";
+
+        private const string Line = @"LINE
+  5
+{0:X}
   8
 11
   6
-________________";
-
-        private const string Line = @" 62
+________________
+ 62
    212
  10
-{0}
+{1:F}
  20
 0.0
  30
 0.0
  11
-{1}
+{2:F}
  21
-{2}
+{3:F}
  31
 0.0
-  0
-LINE
-  5
-{3:X}
-  8
-11
-  6
-________________";
+  0";
 
-        private const string EndOfFile = @" 62
+        private const string EndOfFile = @"LINE
+  5
+{0:X}
+  8
+7
+  6
+________________0
+ 62
     52
  10
-628.9557017700643
+125.0
  20
-507.0213959482022
+100.0
  30
 0.0
  11
-1128.955701770064
+225.0
  21
-507.0213959482022
+100.0
  31
 0.0
   0
@@ -900,27 +886,30 @@ EOF";
             var cutLength = InternalCuts.Sum(s => s.Cut);
 
             
-            dxfBuilder.AppendLine(string.Format(Vertex, -1, Height + 1, 90));
-            dxfBuilder.AppendLine(string.Format(Vertex, -1, -1, 91));
-            dxfBuilder.AppendLine(string.Format(Vertex, cutLength + 1, -1, 92));
-            dxfBuilder.AppendLine(string.Format(VertesEnd, cutLength + 1, Height + 1, 93));
+            dxfBuilder.AppendLine(string.Format(Vertex, 89, -1, Height + 1));
+            dxfBuilder.AppendLine(string.Format(Vertex, 90, -1, -1));
+            dxfBuilder.AppendLine(string.Format(Vertex, 91, cutLength + 1, -1));
+            dxfBuilder.AppendLine(string.Format(Vertex, 92, cutLength + 1, Height));
+            dxfBuilder.AppendLine(VertexEnd);
 
-            dxfBuilder.AppendLine(string.Format(Line, 0, 0, Height, 65));
+            dxfBuilder.AppendLine(string.Format(Line, 64, 0, 0, Height));
 
             decimal previousCut = 0;
 
-            for (var i = 0; i < InternalCuts.Count; i++)
+            var i = 0;
+
+            for (i = 0; i < InternalCuts.Count; i++)
             {
                 var cut = InternalCuts[i].Cut + previousCut;
 
-                dxfBuilder.AppendLine(string.Format(Line, cut, cut, Height, i + 66));
+                dxfBuilder.AppendLine(string.Format(Line, i + 65, cut, cut, Height));
 
                 previousCut = cut;
             }
 
             dxfBuilder.Length = dxfBuilder.Length - 2;
             dxfBuilder.AppendLine("0");
-            dxfBuilder.AppendLine(EndOfFile);
+            dxfBuilder.AppendLine(string.Format(EndOfFile, i + 65));
 
             return dxfBuilder.ToString();
         }
