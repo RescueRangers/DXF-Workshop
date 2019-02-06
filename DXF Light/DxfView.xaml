@@ -8,7 +8,6 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
              mc:Ignorable="d" 
              lex:LocalizeDictionary.DesignCulture="en"
              lex:ResxLocalizationProvider.DefaultAssembly="DXFWorkshop"
@@ -99,7 +98,22 @@
                   Margin="5" 
                   Header="{lex:Loc Key=DxfFiles}">
 
-            <Syncfusion:SfDataGrid ItemsSource="{Binding DxfFiles}"
+            <DataGrid ItemsSource="{Binding DxfFiles, Mode=TwoWay}"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{lex:Loc Key=Name}"
+                                        Binding="{Binding Name}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="{lex:Loc Key=Width}"
+                                        Binding="{Binding Width}"/>
+                    <DataGridTextColumn Header="{lex:Loc Key=Length}"
+                                        Binding="{Binding Length}"/>
+                    <DataGridTextColumn Header="{lex:Loc Key=Material}"
+                                        Binding="{Binding Material}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!--<Syncfusion:SfDataGrid ItemsSource="{Binding DxfFiles}"
                                    AutoGenerateColumns="False"
                                    AddNewRowPosition="Bottom"
                                    IsReadOnly="False"
@@ -120,7 +134,7 @@
 
                 </Syncfusion:SfDataGrid.Columns>
 
-            </Syncfusion:SfDataGrid>
+            </Syncfusion:SfDataGrid>-->
             
         </GroupBox>
         

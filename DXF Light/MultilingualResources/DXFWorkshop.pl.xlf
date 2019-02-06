@@ -178,6 +178,10 @@
           <source>Cut position</source>
           <target state="translated">Pozycja cięcia</target>
         </trans-unit>
+        <trans-unit id="LoadCuts" translate="yes" xml:space="preserve">
+          <source>Load cuts from .csv</source>
+          <target state="translated">Załaduj cięcia z pliku .csv</target>
+        </trans-unit>
       </group>
     </body>
   </file>

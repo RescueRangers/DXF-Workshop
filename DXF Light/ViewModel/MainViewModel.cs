@@ -150,6 +150,7 @@ namespace DXF_Light.ViewModel
         public ICommand ReadPlyFileCommand { get; set; }
         public ICommand CreateNcDxfCommand { get; set; }
         public ICommand AddCutsCommand { get; set; }
+        public ICommand LoadCutsCommand { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -183,6 +184,31 @@ namespace DXF_Light.ViewModel
             ReadPlyFileCommand = new RelayCommand(ReadPlyCsv, () => !string.IsNullOrWhiteSpace(PlyFilePath));
             CreateNcDxfCommand = new RelayCommand(CreateNcDxf, () => NoContourDxf.IsValid);
             AddCutsCommand = new RelayCommand(AddCuts, () => CutLength > 0 && NumberOfCuts > 0);
+            LoadCutsCommand = new RelayCommand(LoadCuts, () => true);
+        }
+
+        private void LoadCuts()
+        {
+            var defaultPath = string.IsNullOrWhiteSpace(Properties.Settings.Default.InitialFolder)
+                ? _appFilePath
+                : Properties.Settings.Default.InitialFolder;
+
+            FilePath = _ioService.OpenFileDialog(defaultPath, CsvFiles);
+
+            if (string.IsNullOrWhiteSpace(FilePath))
+                return;
+
+            _dataService.GetNCDxfData(((cuts, exception) =>
+            {
+                if (exception != null)
+                {
+                    _ioService.Message(exception.Message, Properties.Resources.Error);
+                    return;
+                }
+
+                NoContourDxf.InternalCuts = new ObservableCollection<InternalCut>(cuts);
+
+            }), _filePath, _delimiter, _headers ? 1 : 0);
         }
 
         private void AddCuts()

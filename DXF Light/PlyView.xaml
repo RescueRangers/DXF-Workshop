@@ -8,7 +8,6 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              lex:LocalizeDictionary.DesignCulture="en"
@@ -97,34 +96,28 @@
                   Margin="5" 
                   Header="{lex:Loc Key=DxfFiles}">
 
-            <syncfusion:SfDataGrid ItemsSource="{Binding PlyFiles, Mode=TwoWay}"
-                                   AutoGenerateColumns="False"
-                                   AddNewRowPosition="Bottom"
-                                   IsReadOnly="False"
-                                   ColumnSizer="AutoLastColumnFill"
-                                   AllowEditing="True"
-                                   AllowDeleting="True">
-                <syncfusion:SfDataGrid.Columns>
-                    <syncfusion:GridTextColumn MappingName="Name"
-                                               HeaderText="{lex:Loc Key=Name}"
-                                               ColumnSizer="AutoLastColumnFill"/>
-                    <syncfusion:GridNumericColumn MappingName="W"
-                                                  HeaderText="W"/>
-                    <syncfusion:GridNumericColumn MappingName="L1"
-                                                  HeaderText="L1"/>
-                    <syncfusion:GridNumericColumn MappingName="L2"
-                                                  HeaderText="L2"/>
-                    <syncfusion:GridNumericColumn MappingName="L3"
-                                                  HeaderText="L3"/>
-                    <syncfusion:GridNumericColumn MappingName="L4"
-                                                  HeaderText="L4"/>
-                    <syncfusion:GridTextColumn MappingName="Material"
-                                               HeaderText="{lex:Loc Key=Material}"/>
-
-                </syncfusion:SfDataGrid.Columns>
-
-            </syncfusion:SfDataGrid>
-
+            <DataGrid ItemsSource="{Binding PlyFiles, Mode=TwoWay}"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{lex:Loc Key=Name}"
+                                        Binding="{Binding Name}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="W"
+                                        Binding="{Binding W}"/>
+                    <DataGridTextColumn Header="L1"
+                                        Binding="{Binding L1}"/>
+                    <DataGridTextColumn Header="L2"
+                                        Binding="{Binding L2}"/>
+                    <DataGridTextColumn Header="L3"
+                                        Binding="{Binding L3}"/>
+                    <DataGridTextColumn Header="L4"
+                                        Binding="{Binding L4}"/>
+                    <DataGridTextColumn Header="{lex:Loc Key=Material}"
+                                        Binding="{Binding Material}"
+                                        Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            
         </GroupBox>
 
         <GroupBox Margin="5" 

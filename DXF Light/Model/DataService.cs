@@ -46,5 +46,21 @@ namespace DXF_Light.Model
             }
         }
 
+        public void GetNCDxfData(Action<List<InternalCut>, Exception> callback, string filePath, string delimiter, int headers)
+        {
+            try
+            {
+                var engine = new DelimitedFileEngine<InternalCut>(Encoding.Default);
+                engine.Options.Delimiter = delimiter;
+                engine.Options.IgnoreFirstLines = headers;
+                var result = engine.ReadFile(filePath).ToList();
+                callback(result, null);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                callback(null, e);
+            }
+        }
     }
 }

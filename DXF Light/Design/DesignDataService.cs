@@ -38,5 +38,11 @@ namespace DXF_Light.Design
 
             callback(plies, null);
         }
+
+        public void GetNCDxfData(Action<List<InternalCut>, Exception> callback, string filePath, string delimiter, int headers)
+        {
+            var cuts = new List<InternalCut>{new InternalCut(714), new InternalCut(714), new InternalCut(851)};
+            callback(cuts, null);
+        }
     }
 }

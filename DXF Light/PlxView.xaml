@@ -87,7 +87,24 @@
                   Grid.RowSpan="2"
                   Header="{lex:Loc Key=PlxContents}">
 
-            <Syncfusion:SfDataGrid ItemsSource="{Binding PlxFile.DxfFiles}"
+            <DataGrid ItemsSource="{Binding PlxFile.DxfFiles, Mode=TwoWay}"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{lex:Loc Key=Name}"
+                                        Binding="{Binding Name}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="{lex:Loc Key=Qty}"
+                                        Binding="{Binding Qty}"/>
+                    <DataGridTextColumn Header="{lex:Loc Key=Group}"
+                                        Binding="{Binding Group}"/>
+                    <DataGridTextColumn Header="{lex:Loc Key=Width}"
+                                        Binding="{Binding Width}"/>
+                    <DataGridTextColumn Header="{lex:Loc Key=Length}"
+                                        Binding="{Binding Length}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!--<Syncfusion:SfDataGrid ItemsSource="{Binding PlxFile.DxfFiles}"
                                    AutoGenerateColumns="False"
                                    IsReadOnly="False"
                                    AllowEditing="True"
@@ -115,7 +132,7 @@
                                                   AllowEditing="False"/>
                 </Syncfusion:SfDataGrid.Columns>
 
-            </Syncfusion:SfDataGrid>
+            </Syncfusion:SfDataGrid>-->
 
         </GroupBox>
 

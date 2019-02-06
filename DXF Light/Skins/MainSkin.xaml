@@ -1,33 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:Syncfusion="http://schemas.syncfusion.com/wpf">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-    <Style TargetType="Syncfusion:GridRowHeaderCell">
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="Gray" />
-        <Setter Property="BorderThickness" Value="0,0,1,1" />
-        <Setter Property="Padding" Value="0,0,0,0" />
-        <Setter Property="FontFamily" Value=" Segoe UI" />
-        <Setter Property="FontSize" Value="12" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Syncfusion:GridRowHeaderCell">
-                    <Border x:Name="PART_RowHeaderCellBorder"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid>
-                            <TextBlock Text="{Binding RowIndex, RelativeSource={RelativeSource TemplatedParent}}"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"/>
-                        </Grid>
-                    </Border>
-
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+    
     
 </ResourceDictionary>

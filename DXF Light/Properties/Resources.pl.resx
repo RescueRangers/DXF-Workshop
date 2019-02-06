@@ -138,4 +138,7 @@
   <data name="CUT" xml:space="preserve">
     <value>Pozycja cięcia</value>
   </data>
+  <data name="LoadCuts" xml:space="preserve">
+    <value>Załaduj cięcia z pliku .csv</value>
+  </data>
 </root>

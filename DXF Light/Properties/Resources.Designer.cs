@@ -286,6 +286,15 @@ namespace DXF_Light.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Load cuts from .csv.
+        /// </summary>
+        public static string LoadCuts {
+            get {
+                return ResourceManager.GetString("LoadCuts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Material.
         /// </summary>
         public static string Material {

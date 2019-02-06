@@ -246,4 +246,7 @@
   <data name="NCDXFTab" xml:space="preserve">
     <value>No contour DXF</value>
   </data>
+  <data name="LoadCuts" xml:space="preserve">
+    <value>Load cuts from .csv</value>
+  </data>
 </root>
