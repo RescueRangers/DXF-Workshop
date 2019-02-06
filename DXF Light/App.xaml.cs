@@ -8,7 +8,6 @@ using System.Windows;
 using System.Windows.Interop;
 using DXF_Light.ViewModel;
 using GalaSoft.MvvmLight.Threading;
-using Squirrel;
 
 namespace DXF_Light
 {

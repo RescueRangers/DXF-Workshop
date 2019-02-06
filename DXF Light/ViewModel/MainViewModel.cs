@@ -19,7 +19,6 @@ using System.Windows.Data;
 using System.Windows.Navigation;
 using GongSolutions.Wpf.DragDrop;
 using Microsoft.Practices.ServiceLocation;
-using NuGet;
 using WPFLocalizeExtension.Engine;
 
 namespace DXF_Light.ViewModel
