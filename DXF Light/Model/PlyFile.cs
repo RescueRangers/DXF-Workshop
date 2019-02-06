@@ -11,10 +11,15 @@ namespace DXF_Light.Model
     public class PlyFile
     {
         public string Name { get; set; }
+        [FieldConverter(ConverterKind.Decimal, ",")]
         public decimal W { get; set; }
+        [FieldConverter(ConverterKind.Decimal, ",")]
         public decimal L1 { get; set; }
+        [FieldConverter(ConverterKind.Decimal, ",")]
         public decimal L2 { get; set; }
+        [FieldConverter(ConverterKind.Decimal, ",")]
         public decimal L3 { get; set; }
+        [FieldConverter(ConverterKind.Decimal, ",")]
         public decimal L4 { get; set; }
 
         [FieldOptional]

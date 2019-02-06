@@ -6,7 +6,9 @@ namespace DXF_Light.Model
     public class DxfFile
     {
         public string Name { get; set; }
+        [FieldConverter(ConverterKind.Decimal, ",")]
         public double Width { get; set; }
+        [FieldConverter(ConverterKind.Decimal, ",")]
         public double Length { get; set; }
         [FieldOptional]
         public string Material { get; set; }

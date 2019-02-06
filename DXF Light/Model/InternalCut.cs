@@ -10,6 +10,7 @@ namespace DXF_Light.Model
     [DelimitedRecord(";")]
     public class InternalCut
     {
+        [FieldConverter(ConverterKind.Decimal, ",")]
         public decimal Cut { get; set; }
 
         public InternalCut()
