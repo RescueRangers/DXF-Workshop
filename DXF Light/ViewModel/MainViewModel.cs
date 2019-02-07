@@ -59,10 +59,10 @@ namespace DXF_Light.ViewModel
         private ObservableCollection<PlyFile> _plyFiles;
         private NoContourDxf _noContourDxf = new NoContourDxf();
         private int _numberOfCuts;
-        private decimal _cutLength;
+        private double _cutLength;
         private static string _startupArgument;
 
-        public decimal CutLength
+        public double CutLength
         {
             get => _cutLength;
             set => Set(ref _cutLength, value);

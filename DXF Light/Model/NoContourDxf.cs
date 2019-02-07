@@ -879,7 +879,7 @@ EOF";
             return true;
         }
 
-        public void AddCuts(IEnumerable<decimal> cuts)
+        public void AddCuts(IEnumerable<double> cuts)
         {
             InternalCuts.AddRange(cuts.Select(i => new InternalCut(i)));
         }
@@ -899,7 +899,7 @@ EOF";
 
             dxfBuilder.AppendLine(string.Format(Line, 64, 0, 0, Height));
 
-            decimal previousCut = 0;
+            double previousCut = 0;
 
             var i = 0;
 
