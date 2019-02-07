@@ -198,7 +198,11 @@
     <Compile Include="Servicess\IIOService.cs" />
     <Compile Include="Servicess\IOService.cs" />
     <Compile Include="SingleInstance.cs" />
+    <Compile Include="ViewModel\DxfTabViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\NoContourDxfViewModel.cs" />
+    <Compile Include="ViewModel\PlxTabViewModel.cs" />
+    <Compile Include="ViewModel\PlyTabVewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="NoContourDxfView.xaml">
       <SubType>Designer</SubType>

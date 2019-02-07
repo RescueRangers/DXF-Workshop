@@ -39,8 +39,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid dd:DragDrop.IsDropTarget="True"
-          dd:DragDrop.DropHandler="{Binding}">
+    <Grid >
         
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>
@@ -74,18 +73,30 @@
         </DockPanel>
         <TabControl Grid.Row="1">
             <TabItem IsSelected="True"
-                     Header="{lex:Loc Key=PlxTab}">
+                     Header="{lex:Loc Key=PlxTab}"
+                     DataContext="{Binding Children[0]}"
+                     dd:DragDrop.IsDropTarget="True"
+                     dd:DragDrop.DropHandler="{Binding}">
                 <local:PlxView/>
             </TabItem>
-            <TabItem Header="{lex:Loc Key=DxfTab}">
+            <TabItem Header="{lex:Loc Key=DxfTab}"
+                     DataContext="{Binding Children[1]}"
+                     dd:DragDrop.IsDropTarget="True"
+                     dd:DragDrop.DropHandler="{Binding}">
                 <local:DxfView/>
             </TabItem>
 
-            <TabItem Header="Ply files">
+            <TabItem Header="Ply files"
+                     DataContext="{Binding Children[2]}"
+                     dd:DragDrop.IsDropTarget="True"
+                     dd:DragDrop.DropHandler="{Binding}">
                 <local:PlyView/>
             </TabItem>
             
-            <TabItem Header="{lex:Loc Key=NCDXFTab}">
+            <TabItem Header="{lex:Loc Key=NCDXFTab}"
+                     DataContext="{Binding Children[3]}"
+                     dd:DragDrop.IsDropTarget="True"
+                     dd:DragDrop.DropHandler="{Binding}">
                 <local:NoContourDxfView/>
             </TabItem>
             
