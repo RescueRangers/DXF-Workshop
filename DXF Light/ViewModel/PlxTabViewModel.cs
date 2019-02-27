@@ -94,7 +94,7 @@ namespace DXF_Light.ViewModel
 
         private void ClearData()
         {
-            PlxFile = null;
+            PlxFile = new PlxFile(new List<DxfFile>());
             SavePath = null;
             PlxFileName = null;
         }
