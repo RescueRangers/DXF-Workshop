@@ -19,7 +19,7 @@ namespace DXF_Light.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -84,6 +84,15 @@ namespace DXF_Light.Properties {
         public static string CreateFilesButton {
             get {
                 return ResourceManager.GetString("CreateFilesButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create .xin files from .dxf files.
+        /// </summary>
+        public static string CreateXinFiles {
+            get {
+                return ResourceManager.GetString("CreateXinFiles", resourceCulture);
             }
         }
         
@@ -453,6 +462,15 @@ namespace DXF_Light.Properties {
         public static string Width {
             get {
                 return ResourceManager.GetString("Width", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create xin.
+        /// </summary>
+        public static string XinTab {
+            get {
+                return ResourceManager.GetString("XinTab", resourceCulture);
             }
         }
     }

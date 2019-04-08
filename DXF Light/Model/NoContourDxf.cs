@@ -852,7 +852,6 @@ EOF";
             set => Set(ref _name, value);
         }
 
-        private decimal _width;
         private ObservableCollection<InternalCut> _internalCuts = new ObservableCollection<InternalCut>();
         private decimal _height;
         private string _name;

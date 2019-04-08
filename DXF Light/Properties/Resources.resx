@@ -249,4 +249,10 @@
   <data name="LoadCuts" xml:space="preserve">
     <value>Load cuts from .csv</value>
   </data>
+  <data name="CreateXinFiles" xml:space="preserve">
+    <value>Create .xin files from .dxf files</value>
+  </data>
+  <data name="XinTab" xml:space="preserve">
+    <value>Create xin</value>
+  </data>
 </root>

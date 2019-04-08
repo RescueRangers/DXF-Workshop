@@ -99,7 +99,14 @@
                      dd:DragDrop.DropHandler="{Binding}">
                 <local:NoContourDxfView/>
             </TabItem>
-            
+
+            <TabItem Header="{lex:Loc Key=XinTab}"
+                     DataContext="{Binding Children[4]}"
+                     dd:DragDrop.IsDropTarget="True"
+                     dd:DragDrop.DropHandler="{Binding}">
+                <local:XinView/>
+            </TabItem>
+
         </TabControl>
     </Grid>
 

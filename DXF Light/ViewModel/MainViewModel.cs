@@ -87,7 +87,8 @@ namespace DXF_Light.ViewModel
                 new PlxTabViewModel(_ioService), 
                 new DxfTabViewModel(dataService, _ioService),
                 new PlyTabVewModel(dataService, _ioService),
-                new NoContourDxfViewModel(dataService, _ioService)
+                new NoContourDxfViewModel(dataService, _ioService),
+                new XinTabViewModel(dataService, _ioService)
             };
         }
 
