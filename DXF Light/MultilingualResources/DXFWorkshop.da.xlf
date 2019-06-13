@@ -5,7 +5,7 @@
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6900.0" tool-company="Microsoft" />
     </header>
     <body>
-      <group id="DXFWORKSHOP/PROPERTIES/RESOURCES.RESX" datatype="resx">
+      <group id="DXFWORKSHOP/PROPERTIES/RESOURCES.RESX">
         <trans-unit id="CreateFileButton" translate="yes" xml:space="preserve">
           <source>CreateFile</source>
           <target state="new">CreateFile</target>
@@ -150,13 +150,13 @@
           <source>File doesn't exist</source>
           <target state="new">File doesn't exist</target>
         </trans-unit>
-        <trans-unit id="PlxContents" translate="yes" xml:space="preserve">
-          <source>Contents of a PLX file</source>
-          <target state="new">Contents of a PLX file</target>
-        </trans-unit>
         <trans-unit id="DxfFiles" translate="yes" xml:space="preserve">
           <source>Dxf files</source>
           <target state="new">Dxf files</target>
+        </trans-unit>
+        <trans-unit id="PlxContents" translate="yes" xml:space="preserve">
+          <source>Contents of a PLX file</source>
+          <target state="new">Contents of a PLX file</target>
         </trans-unit>
         <trans-unit id="DarkTheme" translate="yes" xml:space="preserve">
           <source>Dark theme</source>
@@ -166,6 +166,10 @@
           <source>Light theme</source>
           <target state="new">Light theme</target>
         </trans-unit>
+        <trans-unit id="CUT" translate="yes" xml:space="preserve">
+          <source>Cut position</source>
+          <target state="new">Cut position</target>
+        </trans-unit>
         <trans-unit id="NCDXF" translate="yes" xml:space="preserve">
           <source>No contour DXF</source>
           <target state="new">No contour DXF</target>
@@ -174,13 +178,17 @@
           <source>No contour DXF</source>
           <target state="new">No contour DXF</target>
         </trans-unit>
-        <trans-unit id="CUT" translate="yes" xml:space="preserve">
-          <source>Cut position</source>
-          <target state="new">Cut position</target>
-        </trans-unit>
         <trans-unit id="LoadCuts" translate="yes" xml:space="preserve">
           <source>Load cuts from .csv</source>
           <target state="new">Load cuts from .csv</target>
+        </trans-unit>
+        <trans-unit id="CreateXinFiles" translate="yes" xml:space="preserve">
+          <source>Create .xin files from .dxf files</source>
+          <target state="new">Create .xin files from .dxf files</target>
+        </trans-unit>
+        <trans-unit id="XinTab" translate="yes" xml:space="preserve">
+          <source>Create xin</source>
+          <target state="new">Create xin</target>
         </trans-unit>
       </group>
     </body>

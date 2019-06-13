@@ -105,8 +105,8 @@ namespace DXF_Light.Servicess
                     var dxfFile = new DxfFile
                     {
                         Name = dxfFileInfo.Name.Remove(dxfFileInfo.Name.Length - 4),
-                        Length = Math.Round(AbsoluteValue(firstLength, secondLength)),
-                        Width = Math.Round(AbsoluteValue(firstWidth, secondWidth))
+                        Length = Math.Round(AbsoluteValue(firstLength, secondLength)).ToString(),
+                        Width = Math.Round(AbsoluteValue(firstWidth, secondWidth)).ToString()
                     };
 
 
@@ -161,8 +161,8 @@ namespace DXF_Light.Servicess
                 var dxfFile = new DxfFile
                 {
                     Name = dxfFileInfo.Name.Remove(dxfFileInfo.Name.Length - 4),
-                    Length = Math.Round(AbsoluteValue(firstLength, secondLength)),
-                    Width = Math.Round(AbsoluteValue(firstWidth, secondWidth))
+                    Length = Math.Round(AbsoluteValue(firstLength, secondLength)).ToString(),
+                    Width = Math.Round(AbsoluteValue(firstWidth, secondWidth)).ToString()
                 };
 
 
@@ -262,8 +262,8 @@ namespace DXF_Light.Servicess
                     var destination = file.Material != null ? $@"{path}\{file.Material}\" : $@"{path}\";
                     Directory.CreateDirectory(destination);
 
-                    var hToWrite = (file.Length / 2).ToString("F1",CultureInfo.InvariantCulture);
-                    var wToWrite = (file.Width / 2).ToString("F1",CultureInfo.InvariantCulture);
+                    var hToWrite = (double.Parse(file.Length) / 2).ToString("F1",CultureInfo.InvariantCulture);
+                    var wToWrite = (double.Parse(file.Width) / 2).ToString("F1",CultureInfo.InvariantCulture);
                     linesToWrite.Add("-" + hToWrite);
                     linesToWrite.Add("-" + wToWrite);
                     linesToWrite.Add(hToWrite);

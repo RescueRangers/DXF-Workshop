@@ -5,182 +5,190 @@
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6900.0" tool-company="Microsoft" />
     </header>
     <body>
-      <group id="DXFWORKSHOP/PROPERTIES/RESOURCES.RESX" datatype="resx">
+      <group id="DXFWORKSHOP/PROPERTIES/RESOURCES.RESX">
         <trans-unit id="CreateFileButton" translate="yes" xml:space="preserve">
           <source>CreateFile</source>
-          <target state="translated">Stwórz plik</target>
+          <target state="new">CreateFile</target>
         </trans-unit>
         <trans-unit id="CreateFilesButton" translate="yes" xml:space="preserve">
           <source>Create file(s)</source>
-          <target state="translated">Stwórz plik(i)</target>
+          <target state="new">Create file(s)</target>
         </trans-unit>
         <trans-unit id="CsvFile" translate="yes" xml:space="preserve">
           <source>CSV file:</source>
-          <target state="translated">Plik csv:</target>
+          <target state="new">CSV file:</target>
         </trans-unit>
         <trans-unit id="CSVHeaders" translate="yes" xml:space="preserve">
           <source>Select if your csv file has headers</source>
-          <target state="translated">Zaznacz jeżeli plik csv ma nagłówki</target>
+          <target state="new">Select if your csv file has headers</target>
         </trans-unit>
         <trans-unit id="Delimiter" translate="yes" xml:space="preserve">
           <source>Delimiter</source>
-          <target state="translated">Znak rozdzielenia</target>
+          <target state="new">Delimiter</target>
         </trans-unit>
         <trans-unit id="DxfTab" translate="yes" xml:space="preserve">
           <source>Create dxf</source>
-          <target state="translated">Stwórz dxf</target>
+          <target state="new">Create dxf</target>
         </trans-unit>
         <trans-unit id="English" translate="yes" xml:space="preserve">
           <source>English</source>
-          <target state="translated">Angielski</target>
+          <target state="new">English</target>
         </trans-unit>
         <trans-unit id="Exit" translate="yes" xml:space="preserve">
           <source>Exit</source>
-          <target state="translated">Zamknij</target>
+          <target state="new">Exit</target>
         </trans-unit>
         <trans-unit id="File" translate="yes" xml:space="preserve">
           <source>File</source>
-          <target state="translated">Plik</target>
+          <target state="new">File</target>
         </trans-unit>
         <trans-unit id="Group" translate="yes" xml:space="preserve">
           <source>Group</source>
-          <target state="translated">Grupa</target>
+          <target state="new">Group</target>
         </trans-unit>
         <trans-unit id="Height" translate="yes" xml:space="preserve">
           <source>Height</source>
-          <target state="translated">Wysokość</target>
+          <target state="new">Height</target>
         </trans-unit>
         <trans-unit id="Language" translate="yes" xml:space="preserve">
           <source>Language</source>
-          <target state="translated">Język</target>
+          <target state="new">Language</target>
         </trans-unit>
         <trans-unit id="Material" translate="yes" xml:space="preserve">
           <source>Material</source>
-          <target state="translated">Materiał</target>
+          <target state="new">Material</target>
         </trans-unit>
         <trans-unit id="MaterialLength" translate="yes" xml:space="preserve">
           <source>Material length</source>
-          <target state="translated">Długość materiału</target>
+          <target state="new">Material length</target>
         </trans-unit>
         <trans-unit id="MaterialWIdth" translate="yes" xml:space="preserve">
           <source>Material width</source>
-          <target state="translated">Szerokość materiału</target>
+          <target state="new">Material width</target>
         </trans-unit>
         <trans-unit id="Name" translate="yes" xml:space="preserve">
           <source>Name</source>
-          <target state="translated">Nazwa</target>
+          <target state="new">Name</target>
         </trans-unit>
         <trans-unit id="OpenButton" translate="yes" xml:space="preserve">
           <source>Open</source>
-          <target state="translated">Otwórz</target>
+          <target state="new">Open</target>
         </trans-unit>
         <trans-unit id="Options" translate="yes" xml:space="preserve">
           <source>Options</source>
-          <target state="translated">Opcje</target>
+          <target state="new">Options</target>
         </trans-unit>
         <trans-unit id="PlxFileName" translate="yes" xml:space="preserve">
           <source>File name:</source>
-          <target state="translated">Nazwa pliku:</target>
+          <target state="new">File name:</target>
         </trans-unit>
         <trans-unit id="PlxTab" translate="yes" xml:space="preserve">
           <source>Create plx</source>
-          <target state="translated">Stwórz plx</target>
+          <target state="new">Create plx</target>
         </trans-unit>
         <trans-unit id="Polish" translate="yes" xml:space="preserve">
           <source>Polish</source>
-          <target state="translated">Polski</target>
+          <target state="new">Polish</target>
         </trans-unit>
         <trans-unit id="Qty" translate="yes" xml:space="preserve">
           <source>Qty</source>
-          <target state="translated">Ilość</target>
+          <target state="new">Qty</target>
         </trans-unit>
         <trans-unit id="SelectFileButton" translate="yes" xml:space="preserve">
           <source>Select file</source>
-          <target state="translated">Wybierz plik</target>
+          <target state="new">Select file</target>
         </trans-unit>
         <trans-unit id="SelectFilesButton" translate="yes" xml:space="preserve">
           <source>Select files</source>
-          <target state="translated">Wybierz pliki</target>
+          <target state="new">Select files</target>
         </trans-unit>
         <trans-unit id="Title" translate="yes" xml:space="preserve">
           <source>Dxf Workshop</source>
-          <target state="translated">Warsztat dxf</target>
+          <target state="new">Dxf Workshop</target>
         </trans-unit>
         <trans-unit id="Width" translate="yes" xml:space="preserve">
           <source>Width</source>
-          <target state="translated">Szerokość</target>
+          <target state="new">Width</target>
         </trans-unit>
         <trans-unit id="FileSaved" translate="yes" xml:space="preserve">
           <source>File Saved</source>
-          <target state="translated">Plik zapisany</target>
+          <target state="new">File Saved</target>
         </trans-unit>
         <trans-unit id="FileSavedIn" translate="yes" xml:space="preserve">
           <source>File Saved in </source>
-          <target state="translated">Plik zapisany w </target>
+          <target state="new">File Saved in </target>
         </trans-unit>
         <trans-unit id="Error" translate="yes" xml:space="preserve">
           <source>Error</source>
-          <target state="translated">Błąd</target>
+          <target state="new">Error</target>
         </trans-unit>
         <trans-unit id="FileSavedMessage" translate="yes" xml:space="preserve">
           <source>File was saved in </source>
-          <target state="translated">Plik został zaisany w </target>
+          <target state="new">File was saved in </target>
         </trans-unit>
         <trans-unit id="FileSavedTitle" translate="yes" xml:space="preserve">
           <source>Saving</source>
-          <target state="translated">Operacja zapisu</target>
+          <target state="new">Saving</target>
         </trans-unit>
         <trans-unit id="FileOperation" translate="yes" xml:space="preserve">
           <source>File processing</source>
-          <target state="translated">Operacja na plikach</target>
+          <target state="new">File processing</target>
         </trans-unit>
         <trans-unit id="Success" translate="yes" xml:space="preserve">
           <source>Operation succesful processed files are in: </source>
-          <target state="translated">Operacja zakończona pomyślnie przetworzone pliki znajdują się w: </target>
+          <target state="new">Operation succesful processed files are in: </target>
         </trans-unit>
         <trans-unit id="Length" translate="yes" xml:space="preserve">
           <source>Length</source>
-          <target state="translated">Długość</target>
+          <target state="new">Length</target>
         </trans-unit>
         <trans-unit id="AddDxf" translate="yes" xml:space="preserve">
           <source>Add dxf</source>
-          <target state="translated">Dodaj dxf</target>
+          <target state="new">Add dxf</target>
         </trans-unit>
         <trans-unit id="FileNotExist" translate="yes" xml:space="preserve">
           <source>File doesn't exist</source>
-          <target state="translated">Plik nie istnije</target>
-        </trans-unit>
-        <trans-unit id="PlxContents" translate="yes" xml:space="preserve">
-          <source>Contents of a PLX file</source>
-          <target state="translated">Zawartość pliku PLX</target>
+          <target state="new">File doesn't exist</target>
         </trans-unit>
         <trans-unit id="DxfFiles" translate="yes" xml:space="preserve">
           <source>Dxf files</source>
-          <target state="new">Pliki DXF</target>
+          <target state="new">Dxf files</target>
+        </trans-unit>
+        <trans-unit id="PlxContents" translate="yes" xml:space="preserve">
+          <source>Contents of a PLX file</source>
+          <target state="new">Contents of a PLX file</target>
         </trans-unit>
         <trans-unit id="DarkTheme" translate="yes" xml:space="preserve">
           <source>Dark theme</source>
-          <target state="translated">Ciemny motyw</target>
+          <target state="new">Dark theme</target>
         </trans-unit>
         <trans-unit id="LightTheme" translate="yes" xml:space="preserve">
           <source>Light theme</source>
-          <target state="translated">Jasny motyw</target>
-        </trans-unit>
-        <trans-unit id="NCDXF" translate="yes" xml:space="preserve">
-          <source>No contour DXF</source>
-          <target state="translated">Plik DXF bez konturów</target>
-        </trans-unit>
-        <trans-unit id="NCDXFTab" translate="yes" xml:space="preserve">
-          <source>No contour DXF</source>
-          <target state="translated">DXF bez konturów</target>
+          <target state="new">Light theme</target>
         </trans-unit>
         <trans-unit id="CUT" translate="yes" xml:space="preserve">
           <source>Cut position</source>
-          <target state="translated">Pozycja cięcia</target>
+          <target state="new">Cut position</target>
+        </trans-unit>
+        <trans-unit id="NCDXF" translate="yes" xml:space="preserve">
+          <source>No contour DXF</source>
+          <target state="new">No contour DXF</target>
+        </trans-unit>
+        <trans-unit id="NCDXFTab" translate="yes" xml:space="preserve">
+          <source>No contour DXF</source>
+          <target state="new">No contour DXF</target>
         </trans-unit>
         <trans-unit id="LoadCuts" translate="yes" xml:space="preserve">
           <source>Load cuts from .csv</source>
-          <target state="translated">Załaduj cięcia z pliku .csv</target>
+          <target state="new">Load cuts from .csv</target>
+        </trans-unit>
+        <trans-unit id="CreateXinFiles" translate="yes" xml:space="preserve">
+          <source>Create .xin files from .dxf files</source>
+          <target state="new">Create .xin files from .dxf files</target>
+        </trans-unit>
+        <trans-unit id="XinTab" translate="yes" xml:space="preserve">
+          <source>Create xin</source>
+          <target state="new">Create xin</target>
         </trans-unit>
       </group>
     </body>
