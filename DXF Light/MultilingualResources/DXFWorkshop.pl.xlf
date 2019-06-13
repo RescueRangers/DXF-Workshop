@@ -1,194 +1,267 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en" target-language="pl" original="DXFWORKSHOP/PROPERTIES/RESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+<xliff version="1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file product-name="n/a" original="DXFWORKSHOP/PROPERTIES/RESOURCES.RESX" source-language="en" target-language="pl" datatype="xml" tool-id="MultilingualAppToolkit" build-num="n/a" product-version="n/a">
     <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6900.0" tool-company="Microsoft" />
+      <tool tool-company="Microsoft" tool-version="4.0.6900.0" tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" />
     </header>
     <body>
       <group id="DXFWORKSHOP/PROPERTIES/RESOURCES.RESX">
-        <trans-unit id="CreateFileButton" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="CreateFileButton">
           <source>CreateFile</source>
-          <target state="new">CreateFile</target>
+          <target xml:lang="pl" state="translated">Stwórz plik</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="CreateFilesButton" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="CreateFilesButton">
           <source>Create file(s)</source>
-          <target state="new">Create file(s)</target>
+          <target xml:lang="pl" state="translated">Stwórz plik(i)</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="CsvFile" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="CsvFile">
           <source>CSV file:</source>
-          <target state="new">CSV file:</target>
+          <target xml:lang="pl" state="translated">Plik CSV:</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="CSVHeaders" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="CSVHeaders">
           <source>Select if your csv file has headers</source>
-          <target state="new">Select if your csv file has headers</target>
+          <target xml:lang="pl" state="translated">Zaznacz jeżeli twój plik ma nagłówki</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="Delimiter" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Delimiter">
           <source>Delimiter</source>
-          <target state="new">Delimiter</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Separator</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="DxfTab" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="DxfTab">
           <source>Create dxf</source>
-          <target state="new">Create dxf</target>
+          <target xml:lang="pl" state="translated">Stwórz dxf</target>
+          <?sid 915164583-0?>
+          <alt-trans origin="autoFuzzy" tool="Swordfish" match-quality="78" ts="45">
+            <source>Create dxf</source>
+            <target state="translated" xml:lang="pl">Stwórz dxf</target>
+          </alt-trans>
         </trans-unit>
-        <trans-unit id="English" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="English">
           <source>English</source>
-          <target state="new">English</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Angielski</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="Exit" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Exit">
           <source>Exit</source>
-          <target state="new">Exit</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Zakończ</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="File" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="File">
           <source>File</source>
-          <target state="new">File</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Plik</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="Group" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Group">
           <source>Group</source>
-          <target state="new">Group</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Grupa</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="Height" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Height">
           <source>Height</source>
-          <target state="new">Height</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Wysokość</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="Language" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Language">
           <source>Language</source>
-          <target state="new">Language</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Język</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="Material" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Material">
           <source>Material</source>
-          <target state="new">Material</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Materiał</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="MaterialLength" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="MaterialLength">
           <source>Material length</source>
-          <target state="new">Material length</target>
+          <target xml:lang="pl" state="translated">Długość materiału</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="MaterialWIdth" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="MaterialWIdth">
           <source>Material width</source>
-          <target state="new">Material width</target>
+          <target xml:lang="pl" state="translated">Szerokość materiału</target>
+          <?sid 915164583-0?>
+          <alt-trans origin="autoFuzzy" tool="Swordfish" match-quality="71" ts="13">
+            <source>Material width</source>
+            <target state="translated" xml:lang="pl">Szerokość materiału</target>
+          </alt-trans>
         </trans-unit>
-        <trans-unit id="Name" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Name">
           <source>Name</source>
-          <target state="new">Name</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Nazwa</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="OpenButton" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="OpenButton">
           <source>Open</source>
-          <target state="new">Open</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Otwórz</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="Options" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Options">
           <source>Options</source>
-          <target state="new">Options</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Opcje</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="PlxFileName" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="PlxFileName">
           <source>File name:</source>
-          <target state="new">File name:</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Nazwa pliku:</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="PlxTab" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="PlxTab">
           <source>Create plx</source>
-          <target state="new">Create plx</target>
+          <target xml:lang="pl" state="needs-review-translation">Stwórz dxf</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          <?sid 915164583-0?>
+          <alt-trans origin="autoFuzzy" tool="Swordfish" match-quality="78" ts="45">
+            <source>Create plx</source>
+            <target state="needs-review-translation" xml:lang="pl">Stwórz dxf</target>
+            <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          </alt-trans>
+          <alt-trans origin="autoFuzzy" tool="Swordfish" match-quality="78" ts="5">
+            <source>Create plx</source>
+            <target state="needs-review-translation" xml:lang="pl">Stwórz dxf</target>
+            <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          </alt-trans>
         </trans-unit>
-        <trans-unit id="Polish" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Polish">
           <source>Polish</source>
-          <target state="new">Polish</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Polski</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="Qty" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Qty">
           <source>Qty</source>
-          <target state="new">Qty</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Ilość</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="SelectFileButton" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="SelectFileButton">
           <source>Select file</source>
-          <target state="new">Select file</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Wybierz plik</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="SelectFilesButton" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="SelectFilesButton">
           <source>Select files</source>
-          <target state="new">Select files</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Wybierz pliki</target>
+          <?sid 915164583-0?>
+          <alt-trans origin="autoFuzzy" tool="Swordfish" match-quality="91" ts="22">
+            <source>Select files</source>
+            <target state-qualifier="tm-suggestion" state="translated" xml:lang="pl">Wybierz pliki</target>
+          </alt-trans>
         </trans-unit>
-        <trans-unit id="Title" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Title">
           <source>Dxf Workshop</source>
-          <target state="new">Dxf Workshop</target>
+          <target xml:lang="pl" state="translated">Dxf Workshop</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="Width" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Width">
           <source>Width</source>
-          <target state="new">Width</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Szerokość</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="FileSaved" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="FileSaved">
           <source>File Saved</source>
-          <target state="new">File Saved</target>
+          <target xml:lang="pl" state="translated">Plik Zapisany</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="FileSavedIn" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="FileSavedIn">
           <source>File Saved in </source>
-          <target state="new">File Saved in </target>
+          <target xml:lang="pl" state="translated">Plik zapisany w </target>
+          <?sid 915164583-0?>
+          <alt-trans origin="autoFuzzy" tool="Swordfish" match-quality="76" ts="26">
+            <source>File Saved in </source>
+            <target state="translated" xml:lang="pl">Plik zapisany w </target>
+          </alt-trans>
         </trans-unit>
-        <trans-unit id="Error" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Error">
           <source>Error</source>
-          <target state="new">Error</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Błąd</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="FileSavedMessage" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="FileSavedMessage">
           <source>File was saved in </source>
-          <target state="new">File was saved in </target>
+          <target xml:lang="pl" state="translated">Plik został zapisany w </target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="FileSavedTitle" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="FileSavedTitle">
           <source>Saving</source>
-          <target state="new">Saving</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Trwa zapisywanie...</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="FileOperation" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="FileOperation">
           <source>File processing</source>
-          <target state="new">File processing</target>
+          <target xml:lang="pl" state="translated">Plik jest przetwarzany</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="Success" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Success">
           <source>Operation succesful processed files are in: </source>
-          <target state="new">Operation succesful processed files are in: </target>
+          <target xml:lang="pl" state="translated">Operacja zakończona sukcesem, przetworzone pliki zanjdują się w: </target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="Length" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="Length">
           <source>Length</source>
-          <target state="new">Length</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Długość</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="AddDxf" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="AddDxf">
           <source>Add dxf</source>
-          <target state="new">Add dxf</target>
+          <target xml:lang="pl" state="translated">Dodaj dxf</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="FileNotExist" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="FileNotExist">
           <source>File doesn't exist</source>
-          <target state="new">File doesn't exist</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Plik nie istnieje</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="DxfFiles" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="DxfFiles">
           <source>Dxf files</source>
-          <target state="new">Dxf files</target>
+          <target xml:lang="pl" state="translated">Pliki dxf</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="PlxContents" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="PlxContents">
           <source>Contents of a PLX file</source>
-          <target state="new">Contents of a PLX file</target>
+          <target xml:lang="pl" state="translated">Zawartość pliku PLX</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="DarkTheme" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="DarkTheme">
           <source>Dark theme</source>
-          <target state="new">Dark theme</target>
+          <target state-qualifier="tm-suggestion" xml:lang="pl" state="translated">Ciemny motyw</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="LightTheme" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="LightTheme">
           <source>Light theme</source>
-          <target state="new">Light theme</target>
+          <target xml:lang="pl" state="translated">Jasny motyw</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="CUT" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="CUT">
           <source>Cut position</source>
-          <target state="new">Cut position</target>
+          <target xml:lang="pl" state="translated">Pozycja cięcia</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="NCDXF" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="NCDXF">
           <source>No contour DXF</source>
-          <target state="new">No contour DXF</target>
+          <target xml:lang="pl" state="translated">DXF bez konturów</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="NCDXFTab" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="NCDXFTab">
           <source>No contour DXF</source>
-          <target state="new">No contour DXF</target>
+          <target state="translated" xml:lang="pl">DXF bez konturów</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="LoadCuts" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="LoadCuts">
           <source>Load cuts from .csv</source>
-          <target state="new">Load cuts from .csv</target>
+          <target xml:lang="pl" state="translated">Załaduj cięcia z pliku .csv</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="CreateXinFiles" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="CreateXinFiles">
           <source>Create .xin files from .dxf files</source>
-          <target state="new">Create .xin files from .dxf files</target>
+          <target xml:lang="pl" state="translated">Stwórz plik .xin z pliku .dxf</target>
+          <?sid 915164583-0?>
         </trans-unit>
-        <trans-unit id="XinTab" translate="yes" xml:space="preserve">
+        <trans-unit approved="yes" translate="yes" xml:space="preserve" id="XinTab">
           <source>Create xin</source>
-          <target state="new">Create xin</target>
+          <target xml:lang="pl" state="translated">Stwórz xin</target>
+          <?sid 915164583-0?>
         </trans-unit>
       </group>
     </body>
