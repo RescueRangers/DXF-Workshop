@@ -113,7 +113,10 @@
             Margin="5"
             Header="{lex:Loc Key=DxfFiles}">
 
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding DxfFiles, Mode=TwoWay}">
+            <DataGrid
+                AutoGenerateColumns="False"
+                ItemsSource="{Binding DxfFiles, Mode=TwoWay}"
+                SelectionUnit="FullRow">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="*"
@@ -124,29 +127,6 @@
                     <DataGridTextColumn Binding="{Binding Material}" Header="{lex:Loc Key=Material}" />
                 </DataGrid.Columns>
             </DataGrid>
-
-            <!--<Syncfusion:SfDataGrid ItemsSource="{Binding DxfFiles}"
-                                   AutoGenerateColumns="False"
-                                   AddNewRowPosition="Bottom"
-                                   IsReadOnly="False"
-                                   ColumnSizer="AutoLastColumnFill"
-                                   AllowEditing="True"
-                                   AllowDeleting="True">
-                <Syncfusion:SfDataGrid.Columns>
-                    <Syncfusion:GridTextColumn MappingName="Name"
-                                               HeaderText="{lex:Loc Key=Name}"
-                                               ColumnSizer="AutoLastColumnFill"/>
-                    <Syncfusion:GridNumericColumn MappingName="Width"
-                                                  HeaderText="{lex:Loc Key=Width}"/>
-                    <Syncfusion:GridNumericColumn MappingName="Length"
-                                                  HeaderText="{lex:Loc Key=Length}"/>
-                    <Syncfusion:GridTextColumn MappingName="Material"
-                                               HeaderText="{lex:Loc Key=Material}"/>
-
-
-                </Syncfusion:SfDataGrid.Columns>
-
-            </Syncfusion:SfDataGrid>-->
 
         </GroupBox>
 

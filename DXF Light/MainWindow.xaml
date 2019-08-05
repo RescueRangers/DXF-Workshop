@@ -1,34 +1,35 @@
-﻿<mah:MetroWindow x:Class="DXF_Light.MainWindow"
-                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 xmlns:lex="http://wpflocalizeextension.codeplex.com"
-                 lex:LocalizeDictionary.DesignCulture="en"
-                 lex:ResxLocalizationProvider.DefaultAssembly="DXFWorkshop"
-                 lex:ResxLocalizationProvider.DefaultDictionary="Resources"
-                 xmlns:local="clr-namespace:DXF_Light"
-                 xmlns:ignore="http://www.galasoft.ch/ignore"
-                 xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop"
-                 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-                 xmlns:command="http://www.galasoft.ch/mvvmlight"
-                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                 xmlns:behaviours="http://metro.mahapps.com/winfx/xaml/shared"
-                 mc:Ignorable="d ignore" ShowIconOnTitleBar="True"
-                 GlowBrush="{DynamicResource AccentColorBrush}"
-                 MinHeight="600"
-                 Height="600"
-                 Width="800"
-                 MinWidth="800"
-                 Title="{lex:LocText Key=Title}"
-                 DataContext="{Binding Main, Source={StaticResource Locator}}"
-                 WindowStartupLocation="CenterScreen">    
-    
+﻿<mah:MetroWindow
+    x:Class="DXF_Light.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviours="http://metro.mahapps.com/winfx/xaml/shared"
+    xmlns:command="http://www.galasoft.ch/mvvmlight"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:ignore="http://www.galasoft.ch/ignore"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    xmlns:local="clr-namespace:DXF_Light"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{lex:LocText Key=Title}"
+    Width="800"
+    Height="600"
+    MinWidth="800"
+    MinHeight="600"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="DXFWorkshop"
+    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
+    DataContext="{Binding Main, Source={StaticResource Locator}}"
+    GlowBrush="{DynamicResource AccentColorBrush}"
+    ShowIconOnTitleBar="True"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d ignore">
+
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <command:EventToCommand Command="{Binding Mode=OneWay, Path=LoadedCommand}"
-                                PassEventArgsToCommand="True" />
+            <command:EventToCommand Command="{Binding Mode=OneWay, Path=LoadedCommand}" PassEventArgsToCommand="True" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
@@ -39,72 +40,76 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid >
-        
+    <Grid>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <DockPanel>
-            <Menu IsMainMenu="True"
-                  DockPanel.Dock="Left" 
-                  MinWidth="380"
-                  Width="Auto">
-                 
+            <Menu
+                Width="Auto"
+                MinWidth="380"
+                DockPanel.Dock="Left"
+                IsMainMenu="True">
+
                 <MenuItem Header="{lex:Loc Key=File}">
-                    <MenuItem Header="{lex:Loc Key=Exit}" 
-                              Command="{Binding ExitCommand}"/>
+                    <MenuItem Command="{Binding ExitCommand}" Header="{lex:Loc Key=Exit}" />
                 </MenuItem>
                 <MenuItem Header="{lex:Loc Key=Language}">
-                    <MenuItem Header="{lex:Loc Key=English}" 
-                              Command="{Binding EnglishCommand}"/>
-                    <MenuItem Header="{lex:Loc Key=Polish}"
-                              Command="{Binding PolishCommand}"/>
+                    <MenuItem Command="{Binding EnglishCommand}" Header="{lex:Loc Key=English}" />
+                    <MenuItem Command="{Binding PolishCommand}" Header="{lex:Loc Key=Polish}" />
                 </MenuItem>
             </Menu>
-            <mah:ToggleSwitch OffLabel="{lex:Loc Key=LightTheme}" 
-                              OnLabel="{lex:Loc Key=DarkTheme}" 
-                              CheckChangedCommandParameter="1" 
-                              IsCheckedChanged="ToggleSwitch_OnIsCheckedChanged"  
-                              DockPanel.Dock="Bottom" 
-                              CheckChangedCommand="Close"
-                              HorizontalAlignment="Right"
-                              Margin="5 0"/>
+            <mah:ToggleSwitch
+                Margin="5,0"
+                HorizontalAlignment="Right"
+                CheckChangedCommand="Close"
+                CheckChangedCommandParameter="1"
+                DockPanel.Dock="Bottom"
+                IsCheckedChanged="ToggleSwitch_OnIsCheckedChanged"
+                OffLabel="{lex:Loc Key=LightTheme}"
+                OnLabel="{lex:Loc Key=DarkTheme}" />
         </DockPanel>
         <TabControl Grid.Row="1">
-            <TabItem IsSelected="True"
-                     Header="{lex:Loc Key=PlxTab}"
-                     DataContext="{Binding Children[0]}"
-                     dd:DragDrop.IsDropTarget="True"
-                     dd:DragDrop.DropHandler="{Binding}">
-                <local:PlxView/>
+            <TabItem
+                dd:DragDrop.DropHandler="{Binding}"
+                dd:DragDrop.IsDropTarget="True"
+                DataContext="{Binding Children[0]}"
+                Header="{lex:Loc Key=PlxTab}"
+                IsSelected="True">
+                <local:PlxView />
             </TabItem>
-            <TabItem Header="{lex:Loc Key=DxfTab}"
-                     DataContext="{Binding Children[1]}"
-                     dd:DragDrop.IsDropTarget="True"
-                     dd:DragDrop.DropHandler="{Binding}">
-                <local:DxfView/>
-            </TabItem>
-
-            <TabItem Header="Ply files"
-                     DataContext="{Binding Children[2]}"
-                     dd:DragDrop.IsDropTarget="True"
-                     dd:DragDrop.DropHandler="{Binding}">
-                <local:PlyView/>
-            </TabItem>
-            
-            <TabItem Header="{lex:Loc Key=NCDXFTab}"
-                     DataContext="{Binding Children[3]}"
-                     dd:DragDrop.IsDropTarget="True"
-                     dd:DragDrop.DropHandler="{Binding}">
-                <local:NoContourDxfView/>
+            <TabItem
+                dd:DragDrop.DropHandler="{Binding}"
+                dd:DragDrop.IsDropTarget="True"
+                DataContext="{Binding Children[1]}"
+                Header="{lex:Loc Key=DxfTab}">
+                <local:DxfView />
             </TabItem>
 
-            <TabItem Header="{lex:Loc Key=XinTab}"
-                     DataContext="{Binding Children[4]}"
-                     dd:DragDrop.IsDropTarget="True"
-                     dd:DragDrop.DropHandler="{Binding}">
-                <local:XinView/>
+            <TabItem
+                dd:DragDrop.DropHandler="{Binding}"
+                dd:DragDrop.IsDropTarget="True"
+                DataContext="{Binding Children[2]}"
+                Header="Ply files">
+                <local:PlyView />
+            </TabItem>
+
+            <TabItem
+                dd:DragDrop.DropHandler="{Binding}"
+                dd:DragDrop.IsDropTarget="True"
+                DataContext="{Binding Children[3]}"
+                Header="{lex:Loc Key=NCDXFTab}">
+                <local:NoContourDxfView />
+            </TabItem>
+
+            <TabItem
+                dd:DragDrop.DropHandler="{Binding}"
+                dd:DragDrop.IsDropTarget="True"
+                DataContext="{Binding Children[4]}"
+                Header="{lex:Loc Key=XinTab}">
+                <local:XinView />
             </TabItem>
 
         </TabControl>

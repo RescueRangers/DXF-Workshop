@@ -24,6 +24,5 @@ namespace DXF_Light
         {
             InitializeComponent();
         }
-        
     }
 }

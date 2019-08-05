@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using DXF_Light.Model;
+using DXF_Light.Properties;
 using DXF_Light.Servicess;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
@@ -129,6 +130,9 @@ namespace DXF_Light.ViewModel
                     DxfFiles = new ObservableCollection<DxfFile>(items);
 
                 }, _filePath.Trim('"'), _delimiter, _headers ? 1 : 0);
+
+            Settings.Default.InitialFolder = new FileInfo(_filePath.Trim('"')).DirectoryName;
+            Settings.Default.Save();
         }
 
         public void DragOver(IDropInfo dropInfo)
