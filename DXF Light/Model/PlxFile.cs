@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 
 namespace DXF_Light.Model
@@ -13,9 +11,9 @@ namespace DXF_Light.Model
     {
         #region PlxContents
 
-        private const string Top = 
+        private const string Top =
 @"#!/usr/lectra/bin/lanceplx
-# File generated with DXF workshop by Radoslaw Radomski 
+# File generated with DXF workshop by Radoslaw Radomski
 #
 UNT:UPOS:USRF:UANG:CVER:UVER:UKEY
 PLC:PNUM:TNUM:PNAM:PCOD:PTMC:PDAC:PTMT:PDAT:PCOM
@@ -35,7 +33,7 @@ IBA:INUM:VNUM:INLV:INAM:IEXT:IART:ICAN:ISIG:IFLG:IFLP:ISSS:ISPD:IFI1
 #
 # UNT:UPOS:USRF:UANG:CVER:UVER:UKEY
 #
-1::::102:102:\Bl0YBcBL@VkJOYGbRW1mJtC7S`pLOn10 
+1::::102:102:\Bl0YBcBL@VkJOYGbRW1mJtC7S`pLOn10
 #
 #
 # PLC:PNUM:TNUM:PNAM:PCOD:PTMC:PDAC:PTMT:PDAT:PCOM
@@ -112,7 +110,7 @@ IBA:INUM:VNUM:INLV:INAM:IEXT:IART:ICAN:ISIG:IFLG:IFLP:ISSS:ISPD:IFI1
         private const string Bottom = @"#
 EOF";
 
-        #endregion
+        #endregion PlxContents
 
         public ObservableCollection<DxfFile> DxfFiles
         {
@@ -157,21 +155,21 @@ EOF";
             var j = 0;
             foreach (var dxfFile in DxfFiles)
             {
-                var vartLine = $"12:{i+1}:1:{dxfFile.Qty}:{dxfFile.Group}:0:0:{dxfFile.Name}:dxf";
-                var ibaLine = $"14:{j+1}:1:{j}:{dxfFile.Name}::{dxfFile.Name}:::7:0:0:0:0";
+                var vartLine = $"12:{i + 1}:1:{dxfFile.Qty}:{dxfFile.Group}:0:0:{dxfFile.Name}:dxf";
+                var ibaLine = $"14:{j + 1}:1:{j}:{dxfFile.Name}::{dxfFile.Name}:::7:0:0:0:0";
                 _vart.AppendLine(vartLine);
                 _iba.AppendLine(ibaLine);
-                
+
                 if (dxfFile.Qty > 1)
                 {
                     for (var k = 1; k < dxfFile.Qty; k++)
                     {
                         j++;
-                        var ibaLineMultiple = $"14:{j+1}:1:{j}:{dxfFile.Name}::{dxfFile.Name}:::7:0:0:0:0";
+                        var ibaLineMultiple = $"14:{j + 1}:1:{j}:{dxfFile.Name}::{dxfFile.Name}:::7:0:0:0:0";
                         _iba.AppendLine(ibaLineMultiple);
                     }
                 }
-                
+
                 i++;
                 j++;
             }
@@ -181,12 +179,9 @@ EOF";
             plxFile.AppendLine(_iba.ToString());
             plxFile.AppendLine(Bottom);
 
-            
-            
-            return plxFile.ToString().Split(new[] {"\r\n", "\r", "\n"}, StringSplitOptions.None);
+            return plxFile.ToString().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
         }
 
-        #endregion
-
+        #endregion Methods
     }
 }

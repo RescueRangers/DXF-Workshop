@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 
 namespace DXF_Light.Model
@@ -748,7 +745,7 @@ ________________
   0
 ";
 
-        #endregion
+        #endregion DxfHead
 
         #region Lines
 
@@ -768,7 +765,6 @@ ________________
  30
 0.0
   0";
-        
 
         private const string VertexEnd = @"SEQEND
   5
@@ -830,7 +826,7 @@ ENDSEC
   0
 EOF";
 
-        #endregion
+        #endregion Lines
 
         public bool IsValid => ValidateDxf();
 
@@ -889,7 +885,6 @@ EOF";
 
             var cutLength = InternalCuts.Sum(s => s.Cut);
 
-            
             dxfBuilder.AppendLine(string.Format(Vertex, 89, -1, Height + 1));
             dxfBuilder.AppendLine(string.Format(Vertex, 90, -1, -1));
             dxfBuilder.AppendLine(string.Format(Vertex, 91, cutLength + 1, -1));
@@ -917,6 +912,5 @@ EOF";
 
             return dxfBuilder.ToString();
         }
-
     }
 }

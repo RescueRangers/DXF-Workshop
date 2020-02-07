@@ -17,7 +17,7 @@ namespace DXF_Light.Design
                 Name = "Ply-01"
             };
 
-            var dxfs = new List<DxfFile>{item};
+            var dxfs = new List<DxfFile> { item };
 
             callback(dxfs, null);
         }
@@ -34,14 +34,14 @@ namespace DXF_Light.Design
                 Name = "Ply-01"
             };
 
-            var plies = new List<PlyFile>{item};
+            var plies = new List<PlyFile> { item };
 
             callback(plies, null);
         }
 
         public void GetNCDxfData(Action<List<InternalCut>, Exception> callback, string filePath, string delimiter, int headers)
         {
-            var cuts = new List<InternalCut>{new InternalCut(714), new InternalCut(714), new InternalCut(851)};
+            var cuts = new List<InternalCut> { new InternalCut(714), new InternalCut(714), new InternalCut(851) };
             callback(cuts, null);
         }
     }

@@ -1,14 +1,14 @@
-﻿using DXF_Light.Model;
-using DXF_Light.Servicess;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
-using GongSolutions.Wpf.DragDrop;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using DXF_Light.Model;
+using DXF_Light.Servicess;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
+using GongSolutions.Wpf.DragDrop;
 
 namespace DXF_Light.ViewModel
 {
@@ -21,13 +21,13 @@ namespace DXF_Light.ViewModel
 
         public string SavePath { get => _savePath; set => _savePath = value; }
 
-        public ObservableCollection<DxfFile> DxfFiles 
+        public ObservableCollection<DxfFile> DxfFiles
         {
-            get => _dxfFiles; 
-            set => Set(nameof(DxfFiles), ref _dxfFiles, value); 
+            get => _dxfFiles;
+            set => Set(nameof(DxfFiles), ref _dxfFiles, value);
         }
 
-        public ICommand GetDxfFiles{ get; set; }
+        public ICommand GetDxfFiles { get; set; }
         public ICommand CreateXinFiles { get; set; }
 
         public XinTabViewModel(IDataService dataService, IIOService iOService)

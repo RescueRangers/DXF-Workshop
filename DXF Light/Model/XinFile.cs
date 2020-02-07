@@ -28,7 +28,6 @@ EOF";
 
             xinBuilder.AppendLine(string.Format(FileStructure, DateTime.UtcNow, DateTime.Now, dxfName));
 
-
             return xinBuilder.ToString().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None); ;
         }
     }

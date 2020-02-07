@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -85,7 +83,6 @@ namespace DXF_Light.ViewModel
                     }
 
                     PlyFiles = new ObservableCollection<PlyFile>(items);
-
                 }, _plyFilePath.Trim('"'), _delimiter, _headers ? 1 : 0);
 
             Settings.Default.InitialFolder = new FileInfo(_plyFilePath.Trim('"')).DirectoryName;
@@ -99,8 +96,8 @@ namespace DXF_Light.ViewModel
                 : Properties.Settings.Default.InitialFolder;
 
             PlyFilePath = _ioService.OpenFileDialog(defaultPath, CsvFiles);
-            
-            if(!string.IsNullOrWhiteSpace(PlyFilePath)) ReadPlyCsv();
+
+            if (!string.IsNullOrWhiteSpace(PlyFilePath)) ReadPlyCsv();
         }
 
         private async void CreatePlies()
@@ -117,12 +114,11 @@ namespace DXF_Light.ViewModel
                     }
 
                     _savePath = item;
-
                 });
 
             if (_savePath == null) return;
 
-            await Task.Run( () =>_ioService.CreatePlyDxf((error) =>
+            await Task.Run(() => _ioService.CreatePlyDxf((error) =>
             {
                 if (error != null)
                 {
@@ -158,7 +154,6 @@ namespace DXF_Light.ViewModel
                 _plyFilePath = dragFileList.First();
                 ReadPlyCsv();
             }
-
         }
     }
 }

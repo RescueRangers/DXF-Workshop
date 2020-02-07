@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -57,7 +55,6 @@ namespace DXF_Light.ViewModel
         public ICommand GetFilePathCommand { get; private set; }
         public ICommand CreateDxfsCommand { get; private set; }
 
-
         public DxfTabViewModel(IDataService dataService, IIOService ioService)
         {
             _dataService = dataService;
@@ -69,7 +66,6 @@ namespace DXF_Light.ViewModel
         {
             GetFilePathCommand = new RelayCommand(GetFilePath, () => true);
             CreateDxfsCommand = new RelayCommand(CreateDxfs, () => DxfFiles != null && DxfFiles.Count > 0);
-            
         }
 
         private async void CreateDxfs()
@@ -86,12 +82,11 @@ namespace DXF_Light.ViewModel
                     }
 
                     _savePath = item;
-
                 });
 
             if (_savePath == null) return;
 
-            await Task.Run( () =>_ioService.CreateDxfFiles((error) =>
+            await Task.Run(() => _ioService.CreateDxfFiles((error) =>
             {
                 if (error != null)
                 {
@@ -111,8 +106,8 @@ namespace DXF_Light.ViewModel
                 : Properties.Settings.Default.InitialFolder;
 
             FilePath = _ioService.OpenFileDialog(defaultPath, CsvFiles);
-            
-            if(!string.IsNullOrWhiteSpace(FilePath)) ReadCsv();
+
+            if (!string.IsNullOrWhiteSpace(FilePath)) ReadCsv();
         }
 
         private void ReadCsv()
@@ -128,7 +123,6 @@ namespace DXF_Light.ViewModel
                     }
 
                     DxfFiles = new ObservableCollection<DxfFile>(items);
-
                 }, _filePath.Trim('"'), _delimiter, _headers ? 1 : 0);
 
             Settings.Default.InitialFolder = new FileInfo(_filePath.Trim('"')).DirectoryName;
@@ -158,7 +152,6 @@ namespace DXF_Light.ViewModel
                 _filePath = dragFileList.First();
                 ReadCsv();
             }
-
         }
     }
 }

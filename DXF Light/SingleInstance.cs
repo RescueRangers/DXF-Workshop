@@ -3,7 +3,7 @@
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 // <summary>
-//     This class checks to make sure that only one instance of 
+//     This class checks to make sure that only one instance of
 //     this application is running at a time.
 // </summary>
 //-----------------------------------------------------------------------
@@ -23,7 +23,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace DXF_Light 
+namespace DXF_Light
 {
     internal enum WM
     {
@@ -106,7 +106,6 @@ namespace DXF_Light
         XBUTTONDBLCLK = 0x020D,
         MOUSEHWHEEL = 0x020E,
 
-
         CAPTURECHANGED = 0x0215,
 
         ENTERSIZEMOVE = 0x0231,
@@ -130,15 +129,18 @@ namespace DXF_Light
         DWMWINDOWMAXIMIZEDCHANGE = 0x0321,
 
         #region Windows 7
+
         DWMSENDICONICTHUMBNAIL = 0x0323,
         DWMSENDICONICLIVEPREVIEWBITMAP = 0x0326,
-        #endregion
+
+        #endregion Windows 7
 
         USER = 0x0400,
 
         // This is the hard-coded message value used by WinForms for Shell_NotifyIcon.
         // It's relatively safe to reuse.
         TRAYMOUSEMESSAGE = 0x800, //WM_USER + 1024
+
         APP = 0x8000,
     }
 
@@ -153,10 +155,8 @@ namespace DXF_Light
         [DllImport("shell32.dll", EntryPoint = "CommandLineToArgvW", CharSet = CharSet.Unicode)]
         private static extern IntPtr _CommandLineToArgvW([MarshalAs(UnmanagedType.LPWStr)] string cmdLine, out int numArgs);
 
-
         [DllImport("kernel32.dll", EntryPoint = "LocalFree", SetLastError = true)]
         private static extern IntPtr _LocalFree(IntPtr hMem);
-
 
         public static string[] CommandLineToArgvW(string cmdLine)
         {
@@ -182,22 +182,20 @@ namespace DXF_Light
             }
             finally
             {
-
                 IntPtr p = _LocalFree(argv);
                 // Otherwise LocalFree failed.
                 // Assert.AreEqual(IntPtr.Zero, p);
             }
         }
+    }
 
-    } 
-
-    public interface ISingleInstanceApp 
-    { 
-         bool SignalExternalCommandLineArgs(IList<string> args); 
-    } 
+    public interface ISingleInstanceApp
+    {
+        bool SignalExternalCommandLineArgs(IList<string> args);
+    }
 
     /// <summary>
-    /// This class checks to make sure that only one instance of 
+    /// This class checks to make sure that only one instance of
     /// this application is running at a time.
     /// </summary>
     /// <remarks>
@@ -207,9 +205,9 @@ namespace DXF_Light
     /// running as Administrator, can activate it with command line arguments.
     /// For most apps, this will not be much of an issue.
     /// </remarks>
-    public static class SingleInstance<TApplication>  
-                where   TApplication: Application ,  ISingleInstanceApp 
-                                    
+    public static class SingleInstance<TApplication>
+                where TApplication : Application, ISingleInstanceApp
+
     {
         #region Private Fields
 
@@ -248,7 +246,7 @@ namespace DXF_Light
         /// </summary>
         private static IList<string> commandLineArgs;
 
-        #endregion
+        #endregion Private Fields
 
         #region Public Properties
 
@@ -260,16 +258,16 @@ namespace DXF_Light
             get { return commandLineArgs; }
         }
 
-        #endregion
+        #endregion Public Properties
 
         #region Public Methods
 
         /// <summary>
-        /// Checks if the instance of the application attempting to start is the first instance. 
+        /// Checks if the instance of the application attempting to start is the first instance.
         /// If not, activates the first instance.
         /// </summary>
         /// <returns>True if this is the first instance of the application.</returns>
-        public static bool InitializeAsFirstInstance( string uniqueName )
+        public static bool InitializeAsFirstInstance(string uniqueName)
         {
             commandLineArgs = GetCommandLineArgs(uniqueName);
 
@@ -278,7 +276,7 @@ namespace DXF_Light
 
             string channelName = String.Concat(applicationIdentifier, Delimiter, ChannelNameSuffix);
 
-            // Create mutex based on unique application Id to check if this is the first instance of the application. 
+            // Create mutex based on unique application Id to check if this is the first instance of the application.
             bool firstInstance;
             singleInstanceMutex = new Mutex(true, applicationIdentifier, out firstInstance);
             if (firstInstance)
@@ -311,7 +309,7 @@ namespace DXF_Light
             }
         }
 
-        #endregion
+        #endregion Public Methods
 
         #region Private Methods
 
@@ -319,7 +317,7 @@ namespace DXF_Light
         /// Gets command line args - for ClickOnce deployed applications, command line args may not be passed directly, they have to be retrieved.
         /// </summary>
         /// <returns>List of command line arg strings.</returns>
-        private static IList<string> GetCommandLineArgs( string uniqueApplicationName )
+        private static IList<string> GetCommandLineArgs(string uniqueApplicationName)
         {
             string[] args = null;
             if (AppDomain.CurrentDomain.ActivationContext == null)
@@ -331,9 +329,9 @@ namespace DXF_Light
             {
                 // The application was clickonce deployed
                 // Clickonce deployed apps cannot recieve traditional commandline arguments
-                // As a workaround commandline arguments can be written to a shared location before 
-                // the app is launched and the app can obtain its commandline arguments from the 
-                // shared location               
+                // As a workaround commandline arguments can be written to a shared location before
+                // the app is launched and the app can obtain its commandline arguments from the
+                // shared location
                 string appFolderPath = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), uniqueApplicationName);
 
@@ -389,8 +387,8 @@ namespace DXF_Light
         }
 
         /// <summary>
-        /// Creates a client channel and obtains a reference to the remoting service exposed by the server - 
-        /// in this case, the remoting service exposed by the first instance. Calls a function of the remoting service 
+        /// Creates a client channel and obtains a reference to the remoting service exposed by the server -
+        /// in this case, the remoting service exposed by the first instance. Calls a function of the remoting service
         /// class to pass on command line arguments from the second instance to the first and cause it to activate itself.
         /// </summary>
         /// <param name="channelName">Application's IPC channel name.</param>
@@ -445,7 +443,7 @@ namespace DXF_Light
             ((TApplication)Application.Current).SignalExternalCommandLineArgs(args);
         }
 
-        #endregion
+        #endregion Private Methods
 
         #region Private Classes
 
@@ -480,6 +478,6 @@ namespace DXF_Light
             }
         }
 
-        #endregion
+        #endregion Private Classes
     }
 }

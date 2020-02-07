@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FileHelpers;
+﻿using FileHelpers;
 
 namespace DXF_Light.Model
 {
@@ -20,14 +15,11 @@ namespace DXF_Light.Model
 
         public InternalCut()
         {
-            
         }
 
-        public InternalCut(double  cut)
+        public InternalCut(double cut)
         {
             Cut = cut;
         }
-
     }
-
 }

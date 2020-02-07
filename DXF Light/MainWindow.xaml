@@ -22,7 +22,6 @@
     lex:ResxLocalizationProvider.DefaultAssembly="DXFWorkshop"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     DataContext="{Binding Main, Source={StaticResource Locator}}"
-    GlowBrush="{DynamicResource AccentColorBrush}"
     ShowIconOnTitleBar="True"
     Topmost="{Binding Pinned, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
     WindowStartupLocation="CenterScreen"
@@ -72,15 +71,6 @@
                     <MenuItem Command="{Binding PolishCommand}" Header="{lex:Loc Key=Polish}" />
                 </MenuItem>
             </Menu>
-            <mah:ToggleSwitch
-                Margin="5,0"
-                HorizontalAlignment="Right"
-                CheckChangedCommand="Close"
-                CheckChangedCommandParameter="1"
-                DockPanel.Dock="Bottom"
-                IsCheckedChanged="ToggleSwitch_OnIsCheckedChanged"
-                OffLabel="{lex:Loc Key=LightTheme}"
-                OnLabel="{lex:Loc Key=DarkTheme}" />
         </DockPanel>
         <mah:MetroTabControl Grid.Row="1">
             <TabItem
@@ -122,10 +112,6 @@
                 Header="{lex:Loc Key=XinTab}">
                 <local:XinView />
             </TabItem>
-
         </mah:MetroTabControl>
     </Grid>
-
-
 </mah:MetroWindow>
-

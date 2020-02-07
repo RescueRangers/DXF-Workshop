@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Reflection;
-using System.Threading;
 using System.Windows;
-using System.Windows.Interop;
 using DXF_Light.ViewModel;
-using GalaSoft.MvvmLight.Threading;
 
 namespace DXF_Light
 {
@@ -39,7 +33,7 @@ namespace DXF_Light
         public bool SignalExternalCommandLineArgs(IList<string> args)
         {
             if (args.Count <= 0) return true;
-            var viewModel = (MainViewModel) Current.MainWindow.DataContext;
+            var viewModel = (MainViewModel)Current.MainWindow.DataContext;
             viewModel.StartupArgument = args[1];
 
             return true;

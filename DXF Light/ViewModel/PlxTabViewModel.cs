@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using DXF_Light.Model;
@@ -48,7 +45,6 @@ namespace DXF_Light.ViewModel
         {
             _ioService = ioService;
             LoadCommands();
-
         }
 
         private void LoadCommands()
@@ -89,7 +85,6 @@ namespace DXF_Light.ViewModel
 
             _ioService.Message(Properties.Resources.FileSavedMessage + $"{SavePath}", Properties.Resources.FileSavedTitle);
             ClearData();
-
         }
 
         private void ClearData()
@@ -121,12 +116,10 @@ namespace DXF_Light.ViewModel
             {
                 AddDxfsFromPath(dragFileList);
             }
-
         }
 
         private void AddDxfsFromPath(List<string> fileList)
         {
-
             _ioService.GetDxfFilesFromPaths((dxfFiles, directory, exception) =>
             {
                 if (exception != null)
@@ -150,7 +143,7 @@ namespace DXF_Light.ViewModel
 
         private void AddDxfsFromPath(string file)
         {
-            var fileList = new List<string> {file};
+            var fileList = new List<string> { file };
 
             _ioService.GetDxfFilesFromPaths((dxfFiles, directory, exception) =>
             {

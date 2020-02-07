@@ -1,24 +1,14 @@
-﻿using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using DXF_Light.Model;
-using GalaSoft.MvvmLight.CommandWpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Threading;
-using DXF_Light.Servicess;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Data;
-using System.Windows.Navigation;
-using GongSolutions.Wpf.DragDrop;
-using Microsoft.Practices.ServiceLocation;
+using System.Windows.Input;
+using DXF_Light.Model;
+using DXF_Light.Servicess;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using WPFLocalizeExtension.Engine;
 
 namespace DXF_Light.ViewModel
@@ -31,7 +21,6 @@ namespace DXF_Light.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        private readonly IDataService _dataService;
         private readonly IIOService _ioService;
         private List<string> _arguments;
 
@@ -62,7 +51,7 @@ namespace DXF_Light.ViewModel
 
         private void AddDxfsFromPath(string startupArgument)
         {
-            var arguments = new List<string> {startupArgument};
+            var arguments = new List<string> { startupArgument };
             _ioService.GetDxfFilesFromPaths((dxfFiles, directory, exception) =>
             {
                 if (exception != null)
@@ -83,7 +72,7 @@ namespace DXF_Light.ViewModel
         private bool _pinned;
 
         public ObservableCollection<object> Children { get { return _children; } }
-        
+
         public ICommand ExitCommand { get; private set; }
         public ICommand EnglishCommand { get; private set; }
         public ICommand PolishCommand { get; private set; }
@@ -97,12 +86,11 @@ namespace DXF_Light.ViewModel
         public MainViewModel(IDataService dataService)
         {
             _ioService = new IOService();
-            _dataService = dataService;
             LoadCommands();
 
             _children = new ObservableCollection<object>
             {
-                new PlxTabViewModel(_ioService), 
+                new PlxTabViewModel(_ioService),
                 new DxfTabViewModel(dataService, _ioService),
                 new PlyTabVewModel(dataService, _ioService),
                 new NoContourDxfViewModel(dataService, _ioService),
@@ -147,16 +135,16 @@ namespace DXF_Light.ViewModel
                 }, _arguments);
             }
         }
-        
+
         private void English()
         {
-            LocalizeDictionary.Instance.SetCurrentThreadCulture = true;    
-            LocalizeDictionary.Instance.Culture = new CultureInfo("en");    
+            LocalizeDictionary.Instance.SetCurrentThreadCulture = true;
+            LocalizeDictionary.Instance.Culture = new CultureInfo("en");
         }
 
         private void Polish()
         {
-            LocalizeDictionary.Instance.SetCurrentThreadCulture = true;    
+            LocalizeDictionary.Instance.SetCurrentThreadCulture = true;
             LocalizeDictionary.Instance.Culture = new CultureInfo("pl");
         }
 

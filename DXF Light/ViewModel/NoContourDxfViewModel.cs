@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -104,7 +102,6 @@ namespace DXF_Light.ViewModel
                 }
 
                 NoContourDxf.InternalCuts = new ObservableCollection<InternalCut>(cuts);
-
             }), _filePath, _delimiter, _headers ? 1 : 0);
 
             Settings.Default.InitialFolder = new FileInfo(_filePath).DirectoryName;
@@ -131,12 +128,11 @@ namespace DXF_Light.ViewModel
                     }
 
                     _savePath = item;
-
                 });
 
             if (_savePath == null) return;
 
-            await Task.Run( () =>_ioService.CreateNCDxf((error) =>
+            await Task.Run(() => _ioService.CreateNCDxf((error) =>
             {
                 if (error != null)
                 {
@@ -176,7 +172,6 @@ namespace DXF_Light.ViewModel
                 _filePath = dragFileList.First();
                 ReadCsv();
             }
-
         }
     }
 }
