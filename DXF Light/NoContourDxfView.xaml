@@ -86,6 +86,7 @@
         </Button>
 
         <Button VerticalAlignment="Center"
+                Margin="5 0"
                 Grid.Row="3"
                 Grid.Column="5"
                 Command="{Binding CreateNcDxfCommand}">

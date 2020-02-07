@@ -27,6 +27,7 @@
 
         <Button Command="{Binding GetDxfFiles}"
                 Grid.Column="0"
+                Margin="5 0"
                 Grid.Row="3"
                 VerticalAlignment="Center">
 
@@ -44,6 +45,7 @@
 
         <Button VerticalAlignment="Center"
                 Grid.Row="3"
+                Margin="5 0"
                 Grid.Column="4"
                 Command="{Binding CreateXinFiles}">
 
