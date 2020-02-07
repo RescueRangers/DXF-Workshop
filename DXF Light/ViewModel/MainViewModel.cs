@@ -44,6 +44,22 @@ namespace DXF_Light.ViewModel
             }
         }
 
+        public bool Pinned
+        {
+            get { return _pinned; }
+            set
+            {
+                if (_pinned != value)
+                {
+                    _pinned = value;
+                    RaisePropertyChanged(nameof(Pinned));
+                    RaisePropertyChanged(nameof(PinIcon));
+                }
+            }
+        }
+
+        public string PinIcon { get => Pinned ? "Pin" : "PinOff"; }
+
         private void AddDxfsFromPath(string startupArgument)
         {
             var arguments = new List<string> {startupArgument};
@@ -64,6 +80,7 @@ namespace DXF_Light.ViewModel
 
         private static string _startupArgument;
         private ObservableCollection<object> _children;
+        private bool _pinned;
 
         public ObservableCollection<object> Children { get { return _children; } }
         
@@ -71,6 +88,7 @@ namespace DXF_Light.ViewModel
         public ICommand EnglishCommand { get; private set; }
         public ICommand PolishCommand { get; private set; }
         public ICommand LoadedCommand { get; private set; }
+        public ICommand TogglePinCommand { get; private set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -98,6 +116,12 @@ namespace DXF_Light.ViewModel
             PolishCommand = new RelayCommand(Polish, () => true);
             EnglishCommand = new RelayCommand(English, () => true);
             LoadedCommand = new RelayCommand(Loaded, () => true);
+            TogglePinCommand = new RelayCommand(TogglePin, () => true);
+        }
+
+        private void TogglePin()
+        {
+            Pinned = !Pinned;
         }
 
         private void Loaded()

@@ -24,8 +24,19 @@
     DataContext="{Binding Main, Source={StaticResource Locator}}"
     GlowBrush="{DynamicResource AccentColorBrush}"
     ShowIconOnTitleBar="True"
+    Topmost="{Binding Pinned, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d ignore">
+
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button Command="{Binding TogglePinCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterial Kind="{Binding PinIcon}" />
+                </StackPanel>
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
