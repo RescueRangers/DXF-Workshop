@@ -38,7 +38,7 @@
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" HorizontalAlignment="Left">
 
             <TextBlock Text="{lex:Loc Key=Name}"
                        VerticalAlignment="Center"
