@@ -45,6 +45,7 @@
         <Button Command="{Binding GetFilesCommand}"
                 Grid.Column="0"
                 Grid.Row="3"
+                Margin="5"
                 VerticalAlignment="Center"
                 Style="{StaticResource AccentedSquareButtonStyle}">
 
@@ -64,6 +65,7 @@
 
         <Button VerticalAlignment="Center"
                 Grid.Row="3"
+                Margin="5"
                 Grid.Column="3"
                 Command="{Binding CreatePlxCommand}"
                 Style="{StaticResource AccentedSquareButtonStyle}">

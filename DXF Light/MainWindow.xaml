@@ -71,7 +71,7 @@
                 OffLabel="{lex:Loc Key=LightTheme}"
                 OnLabel="{lex:Loc Key=DarkTheme}" />
         </DockPanel>
-        <TabControl Grid.Row="1">
+        <mah:MetroTabControl Grid.Row="1">
             <TabItem
                 dd:DragDrop.DropHandler="{Binding}"
                 dd:DragDrop.IsDropTarget="True"
@@ -112,7 +112,7 @@
                 <local:XinView />
             </TabItem>
 
-        </TabControl>
+        </mah:MetroTabControl>
     </Grid>
 
 

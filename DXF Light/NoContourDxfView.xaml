@@ -69,6 +69,7 @@
 
         <Button VerticalAlignment="Center"
                 Grid.Row="3"
+                Margin="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 Command="{Binding LoadCutsCommand}"

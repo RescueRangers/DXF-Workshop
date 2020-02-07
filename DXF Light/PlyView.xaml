@@ -73,6 +73,7 @@
 
         <Button VerticalAlignment="Center"
                 Grid.Row="3"
+                Margin="5"
                 Grid.Column="5"
                 Command="{Binding CreatePliesCommand}"
                 Style="{StaticResource AccentedSquareButtonStyle}">
