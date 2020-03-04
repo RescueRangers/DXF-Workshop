@@ -15,7 +15,6 @@ namespace DXF_Light.ViewModel
     {
         private readonly IIOService _ioService;
         private PlxOptions _plxOptions = new PlxOptions();
-        private string _savePath;
         private PlxFile _plxFile;
         private string _plxFileName;
 
@@ -39,7 +38,7 @@ namespace DXF_Light.ViewModel
 
         public ICommand CreatePlxCommand { get; private set; }
         public ICommand GetFilesCommand { get; private set; }
-        public string SavePath { get => _savePath; set => _savePath = value; }
+        public string SavePath { get; set; }
 
         public PlxTabViewModel(IIOService ioService)
         {
@@ -50,7 +49,7 @@ namespace DXF_Light.ViewModel
         private void LoadCommands()
         {
             CreatePlxCommand = new RelayCommand(CreatePlx,
-                            () => PlxFile != null && PlxFile.DxfFiles.Any() && !string.IsNullOrWhiteSpace(PlxFileName));
+                            () => PlxFile != null && PlxFile.DxfFiles.Any() && !string.IsNullOrWhiteSpace(PlxFileName) || PlxOptions.OnePlx);
             GetFilesCommand = new RelayCommand(GetFiles, () => true);
         }
 
@@ -78,10 +77,22 @@ namespace DXF_Light.ViewModel
 
         private void CreatePlx()
         {
-            var fileContents = PlxFile.CreateFile(_plxFileName, _plxOptions);
-            var fullSavePath = $"{SavePath}\\{PlxFileName}.plx";
+            if (PlxOptions.OnePlx)
+            {
+                foreach (var dxf in PlxFile.DxfFiles)
+                {
+                    var fileContents = PlxFile.CreateOnePlxPerDxf(PlxOptions, dxf);
+                    var fullSavePath = $"{SavePath}\\{dxf.Name}({dxf.Width + 100}).plx";
+                    File.AppendAllLines(fullSavePath, fileContents);
+                }
+            }
+            else
+            {
+                var fileContents = PlxFile.CreateFile(_plxFileName, _plxOptions);
+                var fullSavePath = $"{SavePath}\\{PlxFileName}.plx";
 
-            File.AppendAllLines(fullSavePath, fileContents);
+                File.AppendAllLines(fullSavePath, fileContents);
+            }
 
             _ioService.Message(Properties.Resources.FileSavedMessage + $"{SavePath}", Properties.Resources.FileSavedTitle);
             ClearData();
@@ -120,31 +131,6 @@ namespace DXF_Light.ViewModel
 
         private void AddDxfsFromPath(List<string> fileList)
         {
-            _ioService.GetDxfFilesFromPaths((dxfFiles, directory, exception) =>
-            {
-                if (exception != null)
-                {
-                    _ioService.Message(exception.Message, Properties.Resources.Error);
-                    return;
-                }
-
-                if (PlxFile == null)
-                {
-                    PlxFile = new PlxFile(dxfFiles);
-                }
-                else
-                {
-                    PlxFile.AddDxfToFile(dxfFiles);
-                }
-
-                SavePath = directory;
-            }, fileList);
-        }
-
-        private void AddDxfsFromPath(string file)
-        {
-            var fileList = new List<string> { file };
-
             _ioService.GetDxfFilesFromPaths((dxfFiles, directory, exception) =>
             {
                 if (exception != null)

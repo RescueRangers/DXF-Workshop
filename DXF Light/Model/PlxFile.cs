@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using GalaSoft.MvvmLight;
@@ -143,14 +144,21 @@ EOF";
 
         public IEnumerable<string> CreateFile(string plxFileName, PlxOptions options)
         {
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+
             var plxFile = new StringBuilder(Top);
             plxFile = plxFile.Replace("__NAME__", plxFileName);  //Replace with the actual name
             var maxGroup = DxfFiles.Select(d => d.Group).Max();
             var safeLength = options.Length * 10;
             var safeWidth = options.Width * 10;
-            plxFile = plxFile.Replace("__GROUPS__", maxGroup.ToString());  //Replace with the number of different groups
-            plxFile = plxFile.Replace("__LENGTH__", safeLength.ToString("####")); //Replace length of material with actual value
-            plxFile = plxFile.Replace("__WIDTH__", safeWidth.ToString("####")); // replace width of material with actual value
+            plxFile = plxFile.Replace("__GROUPS__", maxGroup.ToString(CultureInfo.InvariantCulture))
+                .Replace("__LENGTH__", safeLength.ToString("####", CultureInfo.InvariantCulture))
+                .Replace("__WIDTH__", safeWidth.ToString("####", CultureInfo.InvariantCulture));  //Replace with the number of different groups
+                                                                                                  //Replace length of material with actual value
+                                                                                                  // replace width of material with actual value
             var i = 0;
             var j = 0;
             foreach (var dxfFile in DxfFiles)
@@ -177,6 +185,51 @@ EOF";
             plxFile.AppendLine(_vart.ToString());
             plxFile.AppendLine(Middle);
             plxFile.AppendLine(_iba.ToString());
+            plxFile.AppendLine(Bottom);
+
+            return plxFile.ToString().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+        }
+
+        public IEnumerable<string> CreateOnePlxPerDxf(PlxOptions options, DxfFile dxf)
+        {
+            if (dxf == null)
+            {
+                throw new ArgumentNullException(nameof(dxf));
+            }
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+
+            var plxFile = new StringBuilder(Top);
+            var safeLength = options.Length * 10;
+            string plxFileName;
+
+            if (options.SameWidth)
+            {
+                plxFileName = $"{dxf.Name}({options.Width})";
+
+                plxFile = plxFile.Replace("__GROUPS__", "1")                                              //Replace with the number of different groups
+                .Replace("__LENGTH__", safeLength.ToString("####", CultureInfo.InvariantCulture))    //Replace length of material with actual value
+                .Replace("__WIDTH__", $"{options.Width * 10}");                                 // replace width of material with actual value
+            }
+            else
+            {
+                plxFileName = options.SameWidth ? $"{dxf.Name}({options.Width})" : $"{dxf.Name}({dxf.Width + 100})";
+
+                plxFile = plxFile.Replace("__GROUPS__", "1")                                              //Replace with the number of different groups
+                .Replace("__LENGTH__", safeLength.ToString("####", CultureInfo.InvariantCulture))    //Replace length of material with actual value
+                .Replace("__WIDTH__", $"{(dxf.Width + 10) * 10}");                                 // replace width of material with actual value
+            }
+
+            plxFile = plxFile.Replace("__NAME__", plxFileName);  //Replace with the actual name
+
+            var vartLine = $"12:1:1:{dxf.Qty}:{dxf.Group}:0:0:{dxf.Name}:dxf";
+            var ibaLine = $"14:1:1:1:{dxf.Name}::{dxf.Name}:::7:0:0:0:0";
+
+            plxFile.AppendLine(vartLine);
+            plxFile.AppendLine(Middle);
+            plxFile.AppendLine(ibaLine);
             plxFile.AppendLine(Bottom);
 
             return plxFile.ToString().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);

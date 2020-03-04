@@ -358,6 +358,15 @@ namespace DXF_Light.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to One PLX per DXF.
+        /// </summary>
+        public static string OnePlxOption {
+            get {
+                return ResourceManager.GetString("OnePlxOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open.
         /// </summary>
         public static string OpenButton {
@@ -417,6 +426,15 @@ namespace DXF_Light.Properties {
         public static string Qty {
             get {
                 return ResourceManager.GetString("Qty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Same width for all plx.
+        /// </summary>
+        public static string SameWidthOption {
+            get {
+                return ResourceManager.GetString("SameWidthOption", resourceCulture);
             }
         }
         

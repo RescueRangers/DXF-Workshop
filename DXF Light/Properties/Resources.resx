@@ -255,4 +255,10 @@
   <data name="XinTab" xml:space="preserve">
     <value>Create xin</value>
   </data>
+  <data name="OnePlxOption" xml:space="preserve">
+    <value>One PLX per DXF</value>
+  </data>
+  <data name="SameWidthOption" xml:space="preserve">
+    <value>Same width for all plx</value>
+  </data>
 </root>
