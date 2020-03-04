@@ -12,8 +12,8 @@ namespace DXF_Light.Design
 
             var item = new DxfFile()
             {
-                Length = 1500,
-                Width = 1270,
+                Length = "1500",
+                Width = "1270",
                 Name = "Ply-01"
             };
 

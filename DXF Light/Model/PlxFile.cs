@@ -215,11 +215,11 @@ EOF";
             }
             else
             {
-                plxFileName = options.SameWidth ? $"{dxf.Name}({options.Width})" : $"{dxf.Name}({dxf.Width + 100})";
+                plxFileName = options.SameWidth ? $"{dxf.Name}({options.Width})" : $"{dxf.Name}({double.Parse(dxf.Width, CultureInfo.InvariantCulture) + 100})";
 
                 plxFile = plxFile.Replace("__GROUPS__", "1")                                              //Replace with the number of different groups
-                .Replace("__LENGTH__", safeLength.ToString("####", CultureInfo.InvariantCulture))    //Replace length of material with actual value
-                .Replace("__WIDTH__", $"{(dxf.Width + 10) * 10}");                                 // replace width of material with actual value
+                .Replace("__LENGTH__", safeLength.ToString("####", CultureInfo.InvariantCulture))        //Replace length of material with actual value
+                .Replace("__WIDTH__", $"{(double.Parse(dxf.Width, CultureInfo.InvariantCulture) + 10) * 10}");                                      // replace width of material with actual value
             }
 
             plxFile = plxFile.Replace("__NAME__", plxFileName);  //Replace with the actual name
