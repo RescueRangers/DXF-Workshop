@@ -263,6 +263,14 @@
           <target xml:lang="pl" state="translated">Stwórz xin</target>
           <?sid 915164583-0?>
         </trans-unit>
+        <trans-unit id="OnePlxOption" translate="yes" xml:space="preserve">
+          <source>One PLX per DXF</source>
+          <target state="new">One PLX per DXF</target>
+        </trans-unit>
+        <trans-unit id="SameWidthOption" translate="yes" xml:space="preserve">
+          <source>Same width for all plx</source>
+          <target state="new">Same width for all plx</target>
+        </trans-unit>
       </group>
     </body>
   </file>

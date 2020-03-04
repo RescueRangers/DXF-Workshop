@@ -82,7 +82,7 @@ namespace DXF_Light.ViewModel
                 foreach (var dxf in PlxFile.DxfFiles)
                 {
                     var fileContents = PlxFile.CreateOnePlxPerDxf(PlxOptions, dxf);
-                    var fullSavePath = $"{SavePath}\\{dxf.Name}({dxf.Width + 100}).plx";
+                    var fullSavePath = PlxOptions.SameWidth ? $"{SavePath}\\{dxf.Name}({PlxOptions.Width}).plx" : $"{SavePath}\\{dxf.Name}({dxf.Width + 100}).plx";
                     File.AppendAllLines(fullSavePath, fileContents);
                 }
             }
@@ -111,7 +111,7 @@ namespace DXF_Light.ViewModel
             dropInfo.Effects = dragFileList.Any(item =>
             {
                 var extension = Path.GetExtension(item);
-                return extension != null && extension.Equals(".dxf");
+                return extension != null && extension.Equals(".dxf", System.StringComparison.InvariantCultureIgnoreCase);
             }) ? DragDropEffects.Copy : DragDropEffects.None;
         }
 
@@ -122,7 +122,7 @@ namespace DXF_Light.ViewModel
             if (dragFileList.Any(item =>
             {
                 var extension = Path.GetExtension(item);
-                return extension != null && extension.Equals(".dxf");
+                return extension != null && extension.Equals(".dxf", System.StringComparison.InvariantCultureIgnoreCase);
             }))
             {
                 AddDxfsFromPath(dragFileList);
