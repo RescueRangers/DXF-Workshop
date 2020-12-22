@@ -854,7 +854,7 @@ EOF";
 
         private bool ValidateDxf()
         {
-            if (Height != 0 && !string.IsNullOrWhiteSpace(Name) && InternalCuts.Count > 1)
+            if (!string.IsNullOrWhiteSpace(Name) && InternalCuts.Count > 1)
             {
                 return AreAllCutsPositive();
             }
