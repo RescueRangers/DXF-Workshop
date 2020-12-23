@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using DXF_Light.Model;
@@ -32,7 +33,7 @@ namespace DXF_Light.ViewModel
                 AddDxfsFromPath(_startupArgument);
             }
         }
-
+        
         public bool Pinned
         {
             get { return _pinned; }
@@ -46,6 +47,8 @@ namespace DXF_Light.ViewModel
                 }
             }
         }
+
+        public string Version { get; set; }
 
         public string PinIcon { get => Pinned ? "Pin" : "PinOff"; }
 
@@ -96,6 +99,8 @@ namespace DXF_Light.ViewModel
                 new NoContourDxfViewModel(dataService, _ioService),
                 new XinTabViewModel(dataService, _ioService)
             };
+
+            Version = Assembly.GetEntryAssembly().GetName().Version.ToString();
         }
 
         private void LoadCommands()

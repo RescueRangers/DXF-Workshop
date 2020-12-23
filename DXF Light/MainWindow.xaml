@@ -29,6 +29,7 @@
 
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
+            <Label Foreground="White" Content="{Binding Version}" />
             <Button Command="{Binding TogglePinCommand}">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconMaterial Kind="{Binding PinIcon}" />
