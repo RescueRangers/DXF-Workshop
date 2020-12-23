@@ -89,9 +89,9 @@ namespace DXF_Light.ViewModel
 
         private void LoadCuts()
         {
-            var defaultPath = string.IsNullOrWhiteSpace(Properties.Settings.Default.InitialFolder)
+            var defaultPath = string.IsNullOrWhiteSpace(Settings.Default.InitialFolder)
                 ? _appFilePath
-                : Properties.Settings.Default.InitialFolder;
+                : Settings.Default.InitialFolder;
 
             FilePath = _ioService.OpenFileDialog(defaultPath, CsvFiles);
 
@@ -106,7 +106,7 @@ namespace DXF_Light.ViewModel
             {
                 if (exception != null)
                 {
-                    _ioService.Message(exception.Message, Properties.Resources.Error);
+                    _ioService.Message(exception.Message, Resources.Error);
                     return;
                 }
 
@@ -131,7 +131,7 @@ namespace DXF_Light.ViewModel
                     if (error != null)
                     {
                         // Report error here
-                        _ioService.Message(error.Message, Properties.Resources.Error);
+                        _ioService.Message(error.Message, Resources.Error);
                         _savePath = null;
                         return;
                     }
@@ -140,7 +140,7 @@ namespace DXF_Light.ViewModel
                 });
 
             if (_savePath == null) return;
-
+            NoContourDxf.Height = Height;
             await Task.Run(() => _ioService.CreateNCDxf((error) =>
             {
                 if (error != null)
