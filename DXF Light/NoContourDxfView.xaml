@@ -57,7 +57,7 @@
                        HorizontalAlignment="Left"
                        Margin="5 12" />
 
-            <TextBox Text="{Binding NoContourDxf.Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox Text="{Binding Height, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                       Margin="5 0"
                                       VerticalAlignment="Center"
                                       Width="200"

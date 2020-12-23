@@ -27,6 +27,7 @@ namespace DXF_Light.ViewModel
         private double _cutLength;
         private const string CsvFiles = "Pliki csv (.csv)|*.csv";
         private string _savePath;
+        private int _height;
 
         public double CutLength
         {
@@ -52,6 +53,14 @@ namespace DXF_Light.ViewModel
             set => Set(ref _filePath, value);
         }
 
+        public int Height
+        {
+            get => _height; set
+            {
+                Set(ref _height, value);
+            }
+        }
+
         public string Delimiter
         {
             get => _delimiter;
@@ -73,7 +82,7 @@ namespace DXF_Light.ViewModel
 
         private void LoadCommands()
         {
-            CreateNcDxfCommand = new RelayCommand(CreateNcDxf, () => NoContourDxf.IsValid);
+            CreateNcDxfCommand = new RelayCommand(CreateNcDxf, () => NoContourDxf.IsValid && Height > 0);
             AddCutsCommand = new RelayCommand(AddCuts, () => CutLength > 0 && NumberOfCuts > 0);
             LoadCutsCommand = new RelayCommand(LoadCuts, () => true);
         }
@@ -136,11 +145,11 @@ namespace DXF_Light.ViewModel
             {
                 if (error != null)
                 {
-                    _ioService.Message(error.Message, Properties.Resources.Error);
+                    _ioService.Message(error.Message, Resources.Error);
                 }
 
-                _ioService.Message(Properties.Resources.Success + _savePath, Properties.Resources.FileOperation);
-            }, NoContourDxf, _savePath));
+                _ioService.Message(Resources.Success + _savePath, Resources.FileOperation);
+            }, NoContourDxf, _savePath)).ConfigureAwait(false);
 
             NoContourDxf = new NoContourDxf();
         }
@@ -170,6 +179,8 @@ namespace DXF_Light.ViewModel
             }))
             {
                 _filePath = dragFileList.First();
+                var fInfo = new FileInfo(dragFileList.First());
+                NoContourDxf.Name = fInfo.Name.Remove(fInfo.Name.LastIndexOf('.'));
                 ReadCsv();
             }
         }
