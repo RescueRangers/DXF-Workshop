@@ -430,6 +430,24 @@ namespace DXF_Light.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patches nesting.
+        /// </summary>
+        public static string RealizeNestingOption {
+            get {
+                return ResourceManager.GetString("RealizeNestingOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort files in ascending order.
+        /// </summary>
+        public static string RealizeSorting {
+            get {
+                return ResourceManager.GetString("RealizeSorting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Same width for all plx.
         /// </summary>
         public static string SameWidthOption {

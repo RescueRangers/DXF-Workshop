@@ -6,13 +6,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
-    xmlns:local="clr-namespace:DXF_Light"
+    xmlns:local="clr-namespace:DXF_Light.Converters"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <local:ReverseBoolConverter x:Key="ReverseBoolConverter" />
+    </UserControl.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -208,7 +212,8 @@
                     Margin="5"
                     VerticalAlignment="Center"
                     FontSize="12"
-                    IsChecked="{Binding PlxOptions.OnePlx}" />
+                    IsChecked="{Binding PlxOptions.OnePlx}"
+                    IsEnabled="{Binding PlxOptions.PatchesNesting, Converter={StaticResource ReverseBoolConverter}}" />
 
                 <Separator
                     Grid.Row="3"
@@ -230,10 +235,55 @@
                     Margin="5"
                     VerticalAlignment="Center"
                     FontSize="12"
-                    IsChecked="{Binding PlxOptions.SameWidth}" />
+                    IsChecked="{Binding PlxOptions.SameWidth}"
+                    IsEnabled="{Binding PlxOptions.PatchesNesting, Converter={StaticResource ReverseBoolConverter}}" />
 
                 <Separator
                     Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    VerticalAlignment="Bottom" />
+
+                <TextBlock
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="{lex:Loc Key=RealizeNestingOption}"
+                    TextAlignment="Left"
+                    TextWrapping="Wrap" />
+
+                <CheckBox
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    FontSize="12"
+                    IsChecked="{Binding PlxOptions.PatchesNesting}" />
+
+                <Separator
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    VerticalAlignment="Bottom" />
+
+                <TextBlock
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="{lex:Loc Key=RealizeSorting}"
+                    TextAlignment="Left"
+                    TextWrapping="Wrap" />
+
+                <CheckBox
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Margin="5"
+                    VerticalAlignment="Center"
+                    FontSize="12"
+                    IsChecked="{Binding PlxOptions.RealizeAscending}" />
+
+                <Separator
+                    Grid.Row="6"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     VerticalAlignment="Bottom" />

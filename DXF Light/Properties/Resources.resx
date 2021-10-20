@@ -261,4 +261,10 @@
   <data name="SameWidthOption" xml:space="preserve">
     <value>Same width for all plx</value>
   </data>
+  <data name="RealizeNestingOption" xml:space="preserve">
+    <value>Patches nesting</value>
+  </data>
+  <data name="RealizeSorting" xml:space="preserve">
+    <value>Sort files in ascending order</value>
+  </data>
 </root>

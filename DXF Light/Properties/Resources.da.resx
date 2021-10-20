@@ -12,4 +12,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CsvFile" xml:space="preserve">
+    <value>CSV-fil</value>
+  </data>
+  <data name="Delimiter" xml:space="preserve">
+    <value>Afgrænser</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Engelsk</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Afslut</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>Fil</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Gruppe</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Højde</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Sprog</value>
+  </data>
+  <data name="Material" xml:space="preserve">
+    <value>Materiale</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Navngiv</value>
+  </data>
+  <data name="OpenButton" xml:space="preserve">
+    <value>Åbn</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Indstillinger</value>
+  </data>
+  <data name="PlxFileName" xml:space="preserve">
+    <value>Arkivnavn:</value>
+  </data>
+  <data name="Polish" xml:space="preserve">
+    <value>Polsk</value>
+  </data>
+  <data name="Qty" xml:space="preserve">
+    <value>Ant.</value>
+  </data>
+  <data name="SelectFileButton" xml:space="preserve">
+    <value>Vælg fil</value>
+  </data>
+  <data name="SelectFilesButton" xml:space="preserve">
+    <value>Vælg filer</value>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>Bredde</value>
+  </data>
+  <data name="FileSaved" xml:space="preserve">
+    <value>Filen er gemt</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>ERROR</value>
+  </data>
+  <data name="FileSavedTitle" xml:space="preserve">
+    <value>Lagring</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Længde</value>
+  </data>
+  <data name="FileNotExist" xml:space="preserve">
+    <value>Filen findes ikke.</value>
+  </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>Mørkt tema</value>
+  </data>
+  <data name="LightTheme" xml:space="preserve">
+    <value>Lyst tema</value>
+  </data>
 </root>

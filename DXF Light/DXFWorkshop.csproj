@@ -239,6 +239,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\ReverseBoolConverter.cs" />
     <Compile Include="netfx\System\Guard.cs" />
     <Compile Include="ViewModel\XinTabViewModel.cs" />
     <Compile Include="XinView.xaml.cs">

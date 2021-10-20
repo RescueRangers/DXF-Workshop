@@ -12,24 +12,11 @@ namespace DXF_Light.Model
     {
         #region PlxContents
 
-        private const string Top =
+        private const string _top =
 @"#!/usr/lectra/bin/lanceplx
 # File generated with DXF workshop by Radoslaw Radomski
 #
-UNT:UPOS:USRF:UANG:CVER:UVER:UKEY
-PLC:PNUM:TNUM:PNAM:PCOD:PTMC:PDAC:PTMT:PDAT:PCOM
-PGEO:PNUM:PESP:PDEP:PROT:PEFD:PVEC
-PQTY:PNUM:PNGR:PNVT:PNIB:PPNP:PCHV
-PSTA:PNUM:PNCP:PLGR:PLRD:PEFR:PPER:PLID:PLIC:PPSV:PAIR:PANG:PCRA:PNPT
-TIS:TNUM:KNUM:TCON:TNAM:TCOD:TTYP:TCOU
-LEZ:TNUM:LLEZ:LLNG:LLIS:LLPX:LLNX:LLPY:LLNY
-EXP:PNUM:XMOD:XTMP:XESS:XPAR:XSHA
-ACCESS:PNUM:CMDL:CVET:CIBA:CCTR:CALP
-OPT:PNUM:OQUA:OCRI:OCRV
-KARO:KNUM:KTIS:KDEY:KORY:KPTX:KPTY
-VART:VNUM:PNUM:VQTY:VGRP:VGEN:VSNS:VGFN:VEXT:VCAN:VCOD:VCNF:VSTA:VCOM
-VOPT:VNUM:VENT:VPAR:VNTP:VNPC
-IBA:INUM:VNUM:INLV:INAM:IEXT:IART:ICAN:ISIG:IFLG:IFLP:ISSS:ISPD:IFI1
+__CONTENTS__
 #
 #
 # UNT:UPOS:USRF:UANG:CVER:UVER:UKEY
@@ -90,8 +77,26 @@ IBA:INUM:VNUM:INLV:INAM:IEXT:IART:ICAN:ISIG:IFLG:IFLP:ISSS:ISPD:IFI1
 # VART:VNUM:PNUM:VQTY:VGRP:VGEN:VSNS:VGFN:VEXT:VCAN:VCOD:VCNF:VSTA:VCOM
 #
 ";
+        private const string _fileContents = @"
+UNT:UPOS:USRF:UANG:CVER:UVER:UKEY
+PLC:PNUM:TNUM:PNAM:PCOD:PTMC:PDAC:PTMT:PDAT:PCOM
+PGEO:PNUM:PESP:PDEP:PROT:PEFD:PVEC
+PQTY:PNUM:PNGR:PNVT:PNIB:PPNP:PCHV
+PSTA:PNUM:PNCP:PLGR:PLRD:PEFR:PPER:PLID:PLIC:PPSV:PAIR:PANG:PCRA:PNPT
+TIS:TNUM:KNUM:TCON:TNAM:TCOD:TTYP:TCOU
+LEZ:TNUM:LLEZ:LLNG:LLIS:LLPX:LLNX:LLPY:LLNY
+EXP:PNUM:XMOD:XTMP:XESS:XPAR:XSHA
+ACCESS:PNUM:CMDL:CVET:CIBA:CCTR:CALP
+OPT:PNUM:OQUA:OCRI:OCRV
+KARO:KNUM:KTIS:KDEY:KORY:KPTX:KPTY
+VART:VNUM:PNUM:VQTY:VGRP:VGEN:VSNS:VGFN:VEXT:VCAN:VCOD:VCNF:VSTA:VCOM
+VOPT:VNUM:VENT:VPAR:VNTP:VNPC
+IBA:INUM:VNUM:INLV:INAM:IEXT:IART:ICAN:ISIG:IFLG:IFLP:ISSS:ISPD:IFI1
+";
+        private const string _igeoContent = "IGEO:INUM:IXOR:IXOD:IYOR:IYOD:IXDI:IYDI:ISRF:IPER:IGRS:IGRF:IIRS:IIRF:IFRS:IFRF:IVRS:IVRF";
+        private const string _imopContent = "IMOP:INUM:ISVX:ISVY:ISDX:ISDY:IPAX:IPAY:ICUT:ICRA:ISNS:CNAM:IFSD";
 
-        private const string Middle =
+        private const string _middle =
 @"#
 #
 # VOPT:VNUM:VENT:VPAR:VNTP:VNPC
@@ -108,7 +113,18 @@ IBA:INUM:VNUM:INLV:INAM:IEXT:IART:ICAN:ISIG:IFLG:IFLP:ISSS:ISPD:IFI1
 #
 ";
 
-        private const string Bottom = @"#
+        private const string _igeoLine = @"
+#
+# IGEO:INUM:IXOR:IXOD:IYOR:IYOD:IXDI:IYDI:ISRF:IPER:IGRS:IGRF:IIRS:IIRF:IFRS:IFRF:IVRS:IVRF
+#
+";
+        private const string _imopLine = @"
+#
+# IMOP:INUM:ISVX:ISVY:ISDX:ISDY:IPAX:IPAY:ICUT:ICRA:ISNS:CNAM:IFSD
+#
+";
+
+        private const string _bottom = @"#
 EOF";
 
         #endregion PlxContents
@@ -116,11 +132,14 @@ EOF";
         public ObservableCollection<DxfFile> DxfFiles
         {
             get => _dxfFiles;
-            set => Set(ref _dxfFiles, value);
+            set => _dxfFiles = value;
         }
 
         private readonly StringBuilder _vart = new StringBuilder();
         private readonly StringBuilder _iba = new StringBuilder();
+        private readonly StringBuilder _igeo = new StringBuilder();
+        private readonly StringBuilder _imop = new StringBuilder();
+        private readonly StringBuilder _content = new StringBuilder(_fileContents);
         private ObservableCollection<DxfFile> _dxfFiles;
 
         public PlxFile(IList<DxfFile> dxfFiles)
@@ -137,8 +156,15 @@ EOF";
 
         #region Methods
 
+        /// <summary>
+        /// Add Dxf files to be processed in to plx file. Throws <see cref="ArgumentNullException"/> if <paramref name="dxfFiles"/> is null or empty.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">The <paramref name="dxfFiles"/> can not be null or empty.</exception>
+        /// <param name="dxfFiles"></param>
         public void AddDxfToFile(IEnumerable<DxfFile> dxfFiles)
         {
+            if (dxfFiles?.Any() != true) throw new ArgumentNullException(nameof(dxfFiles));
+
             DxfFiles.AddRange(dxfFiles);
         }
 
@@ -149,7 +175,7 @@ EOF";
                 throw new ArgumentNullException(nameof(options));
             }
 
-            var plxFile = new StringBuilder(Top);
+            var plxFile = new StringBuilder(_top);
             plxFile = plxFile.Replace("__NAME__", plxFileName);  //Replace with the actual name
             var maxGroup = DxfFiles.Select(d => d.Group).Max();
             var safeLength = options.Length * 10;
@@ -158,15 +184,64 @@ EOF";
                 .Replace("__LENGTH__", safeLength.ToString("####", CultureInfo.InvariantCulture))
                 .Replace("__WIDTH__", safeWidth.ToString("####", CultureInfo.InvariantCulture));  //Replace with the number of different groups
                                                                                                   //Replace length of material with actual value
-                                                                                                  // replace width of material with actual value
+                                                                                                  //replace width of material with actual value
+            FilllNestingFile(options);
+
+            plxFile.AppendLine(_vart.ToString());
+            plxFile.AppendLine(_middle);
+            plxFile.AppendLine(_iba.ToString());
+            if (options.PatchesNesting)
+            {
+                _content.AppendLine(_igeoContent);
+                _content.AppendLine(_imopContent);
+                plxFile.AppendLine(_igeoLine);
+                plxFile.AppendLine(_igeo.ToString());
+                plxFile.AppendLine(_imopLine);
+                plxFile.AppendLine(_imop.ToString());
+            }
+            plxFile.Replace("__CONTENTS__", _content.ToString());
+            plxFile.AppendLine(_bottom);
+
+            return plxFile.ToString().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+        }
+
+        private void FilllNestingFile(PlxOptions options)
+        {
             var i = 0;
             var j = 0;
-            foreach (var dxfFile in DxfFiles)
+            var currentLength = 0;
+            IEnumerable<DxfFile> sortedDxfs = null;
+            if (options.RealizeAscending)
             {
+                sortedDxfs = DxfFiles.OrderBy(x => x.Name);
+            }
+            else
+            {
+                sortedDxfs = DxfFiles.OrderByDescending(x => x.Name);
+            }
+            foreach (var dxfFile in sortedDxfs)
+            {
+                var ibaLine = "";
                 var vartLine = $"12:{i + 1}:1:{dxfFile.Qty}:{dxfFile.Group}:0:0:{dxfFile.Name}:dxf";
-                var ibaLine = $"14:{j + 1}:1:{j}:{dxfFile.Name}::{dxfFile.Name}:::7:0:0:0:0";
+                if (options.PatchesNesting)
+                {
+                    ibaLine = $"14:{j + 1}:1:{j}:{dxfFile.Name}::{dxfFile.Name}:::0:0:0:0:0";
+                }
+                else
+                {
+                    ibaLine = $"14:{j + 1}:1:{j}:{dxfFile.Name}::{dxfFile.Name}:::7:0:0:0:0";
+                }
                 _vart.AppendLine(vartLine);
                 _iba.AppendLine(ibaLine);
+
+                if (options.PatchesNesting && double.TryParse(dxfFile.Length, out var length) && double.TryParse(dxfFile.Width, out var width))
+                {
+                    var igeoLine = $"15:{j + 1}:{currentLength}:{currentLength}:50:50:{(j == 0 ? length * 10 : currentLength+(j * 10) + 40)}:{(int)(width * 10)}:{j}:0:0:0:0:0:0:0:0:0";
+                    var imopLine = $"16:{j + 1}:{currentLength + ((length / 2)*10)}:-50:500:{options.Width * 10}:-1:-1:0:0:0::0";
+                    _igeo.AppendLine(igeoLine);
+                    _imop.AppendLine(imopLine);
+                    currentLength += (int)(length * 10);
+                }
 
                 if (dxfFile.Qty > 1)
                 {
@@ -181,16 +256,9 @@ EOF";
                 i++;
                 j++;
             }
-
-            plxFile.AppendLine(_vart.ToString());
-            plxFile.AppendLine(Middle);
-            plxFile.AppendLine(_iba.ToString());
-            plxFile.AppendLine(Bottom);
-
-            return plxFile.ToString().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
         }
 
-        public IEnumerable<string> CreateOnePlxPerDxf(PlxOptions options, DxfFile dxf)
+        public static IEnumerable<string> CreateOnePlxPerDxf(PlxOptions options, DxfFile dxf)
         {
             if (dxf == null)
             {
@@ -201,7 +269,7 @@ EOF";
                 throw new ArgumentNullException(nameof(options));
             }
 
-            var plxFile = new StringBuilder(Top);
+            var plxFile = new StringBuilder(_top);
             var safeLength = options.Length * 10;
             string plxFileName;
 
@@ -228,9 +296,9 @@ EOF";
             var ibaLine = $"14:1:1:1:{dxf.Name}::{dxf.Name}:::7:0:0:0:0";
 
             plxFile.AppendLine(vartLine);
-            plxFile.AppendLine(Middle);
+            plxFile.AppendLine(_middle);
             plxFile.AppendLine(ibaLine);
-            plxFile.AppendLine(Bottom);
+            plxFile.AppendLine(_bottom);
 
             return plxFile.ToString().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
         }

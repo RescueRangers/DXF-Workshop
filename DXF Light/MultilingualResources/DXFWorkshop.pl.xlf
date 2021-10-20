@@ -271,6 +271,14 @@
           <source>Same width for all plx</source>
           <target state="new">Same width for all plx</target>
         </trans-unit>
+        <trans-unit id="RealizeNestingOption" translate="yes" xml:space="preserve">
+          <source>Patches nesting</source>
+          <target state="new">Patches nesting</target>
+        </trans-unit>
+        <trans-unit id="RealizeSorting" translate="yes" xml:space="preserve">
+          <source>Sort files in ascending order</source>
+          <target state="new">Sort files in ascending order</target>
+        </trans-unit>
       </group>
     </body>
   </file>
