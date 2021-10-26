@@ -237,7 +237,7 @@ EOF";
                 if (options.PatchesNesting && double.TryParse(dxfFile.Length, out var length) && double.TryParse(dxfFile.Width, out var width))
                 {
                     var igeoLine = $"15:{j + 1}:{currentLength}:{currentLength}:50:50:{(j == 0 ? length * 10 : currentLength+(j * 10) + 40)}:{(int)(width * 10)}:{j}:0:0:0:0:0:0:0:0:0";
-                    var imopLine = $"16:{j + 1}:{currentLength + ((length / 2)*10)}:-50:500:{options.Width * 10}:-1:-1:0:0:0::0";
+                    var imopLine = $"16:{j + 1}:{length / 2*10}:-50:500:{options.Width * 10}:-1:-1:0:0:0::0";
                     _igeo.AppendLine(igeoLine);
                     _imop.AppendLine(imopLine);
                     currentLength += (int)(length * 10);
