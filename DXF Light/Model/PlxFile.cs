@@ -139,7 +139,7 @@ EOF";
         private readonly StringBuilder _iba = new StringBuilder();
         private readonly StringBuilder _igeo = new StringBuilder();
         private readonly StringBuilder _imop = new StringBuilder();
-        private readonly StringBuilder _content = new StringBuilder(_fileContents);
+        private static readonly StringBuilder _content = new StringBuilder(_fileContents);
         private ObservableCollection<DxfFile> _dxfFiles;
 
         public PlxFile(IList<DxfFile> dxfFiles)
@@ -299,6 +299,7 @@ EOF";
             plxFile.AppendLine(_middle);
             plxFile.AppendLine(ibaLine);
             plxFile.AppendLine(_bottom);
+            plxFile.Replace("__CONTENTS__", _content.ToString());
 
             return plxFile.ToString().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
         }
