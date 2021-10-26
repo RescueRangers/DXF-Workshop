@@ -31,12 +31,12 @@ __CONTENTS__
 #
 # PGEO:PNUM:PESP:PDEP:PROT:PEFD:PVEC
 #
-3:1:0:0:0:0:0
+3:1:0:0:0:0:1
 #
 #
 # PQTY:PNUM:PNGR:PNVT:PNIB:PPNP:PCHV
 #
-4:1:__GROUPS__:10:10:0:0
+4:1:__GROUPS__:5:5:0:0
 #
 #
 # PSTA:PNUM:PNCP:PLGR:PLRD:PEFR:PPER:PLID:PLIC:PPSV:PAIR:PANG:PCRA:PNPT
@@ -96,18 +96,14 @@ IBA:INUM:VNUM:INLV:INAM:IEXT:IART:ICAN:ISIG:IFLG:IFLP:ISSS:ISPD:IFI1
         private const string _igeoContent = "IGEO:INUM:IXOR:IXOD:IYOR:IYOD:IXDI:IYDI:ISRF:IPER:IGRS:IGRF:IIRS:IIRF:IFRS:IFRF:IVRS:IVRF";
         private const string _imopContent = "IMOP:INUM:ISVX:ISVY:ISDX:ISDY:IPAX:IPAY:ICUT:ICRA:ISNS:CNAM:IFSD";
 
-        private const string _middle =
+        private const string _vopt =
 @"#
 #
 # VOPT:VNUM:VENT:VPAR:VNTP:VNPC
 #
-13:1:0:0:0:0
-13:2:0:0:0:0
-13:3:0:0:0:0
-13:4:0:0:0:0
-13:5:0:0:0:0
-13:6:0:0:0:0
-#
+";
+
+        private const string _iba = @"#
 #
 # IBA:INUM:VNUM:INLV:INAM:IEXT:IART:ICAN:ISIG:IFLG:IFLP:ISSS:ISPD:IFI1
 #
@@ -135,11 +131,12 @@ EOF";
             set => _dxfFiles = value;
         }
 
-        private readonly StringBuilder _vart = new StringBuilder();
-        private readonly StringBuilder _iba = new StringBuilder();
-        private readonly StringBuilder _igeo = new StringBuilder();
-        private readonly StringBuilder _imop = new StringBuilder();
-        private static readonly StringBuilder _content = new StringBuilder(_fileContents);
+        private readonly StringBuilder _vartSB = new StringBuilder();
+        private readonly StringBuilder _ibaSB = new StringBuilder(_iba);
+        private readonly StringBuilder _igeoSB = new StringBuilder();
+        private readonly StringBuilder _imopSB = new StringBuilder();
+        private readonly StringBuilder _voptSB = new StringBuilder(_vopt);
+        private readonly StringBuilder _contentSB = new StringBuilder(_fileContents);
         private ObservableCollection<DxfFile> _dxfFiles;
 
         public PlxFile(IList<DxfFile> dxfFiles)
@@ -187,19 +184,19 @@ EOF";
                                                                                                   //replace width of material with actual value
             FilllNestingFile(options);
 
-            plxFile.AppendLine(_vart.ToString());
-            plxFile.AppendLine(_middle);
-            plxFile.AppendLine(_iba.ToString());
+            plxFile.AppendLine(_vartSB.ToString());
+            plxFile.AppendLine(_voptSB.ToString());
+            plxFile.AppendLine(_ibaSB.ToString());
             if (options.PatchesNesting)
             {
-                _content.AppendLine(_igeoContent);
-                _content.AppendLine(_imopContent);
+                _contentSB.AppendLine(_igeoContent);
+                _contentSB.AppendLine(_imopContent);
                 plxFile.AppendLine(_igeoLine);
-                plxFile.AppendLine(_igeo.ToString());
+                plxFile.AppendLine(_igeoSB.ToString());
                 plxFile.AppendLine(_imopLine);
-                plxFile.AppendLine(_imop.ToString());
+                plxFile.AppendLine(_imopSB.ToString());
             }
-            plxFile.Replace("__CONTENTS__", _content.ToString());
+            plxFile.Replace("__CONTENTS__", _contentSB.ToString());
             plxFile.AppendLine(_bottom);
 
             return plxFile.ToString().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
@@ -207,6 +204,7 @@ EOF";
 
         private void FilllNestingFile(PlxOptions options)
         {
+            var ibaSB = new StringBuilder(_iba);
             var i = 0;
             var j = 0;
             var currentLength = 0;
@@ -223,23 +221,24 @@ EOF";
             {
                 var ibaLine = "";
                 var vartLine = $"12:{i + 1}:1:{dxfFile.Qty}:{dxfFile.Group}:0:0:{dxfFile.Name}:dxf";
+                _voptSB.AppendLine($"13:{i + 1}:1:0:1:1");
                 if (options.PatchesNesting)
                 {
-                    ibaLine = $"14:{j + 1}:1:{j}:{dxfFile.Name}::{dxfFile.Name}:::0:0:0:0:0";
+                    ibaLine = $"14:{j + 1}:{j + 1}:{j}:{dxfFile.Name}::{dxfFile.Name}:::0:0:0:0:0";
                 }
                 else
                 {
                     ibaLine = $"14:{j + 1}:1:{j}:{dxfFile.Name}::{dxfFile.Name}:::7:0:0:0:0";
                 }
-                _vart.AppendLine(vartLine);
-                _iba.AppendLine(ibaLine);
+                _vartSB.AppendLine(vartLine);
+                _ibaSB.AppendLine(ibaLine);
 
                 if (options.PatchesNesting && double.TryParse(dxfFile.Length, out var length) && double.TryParse(dxfFile.Width, out var width))
                 {
                     var igeoLine = $"15:{j + 1}:{currentLength}:{currentLength}:50:50:{(j == 0 ? length * 10 : currentLength+(j * 10) + 40)}:{(int)(width * 10)}:{j}:0:0:0:0:0:0:0:0:0";
                     var imopLine = $"16:{j + 1}:{length / 2*10}:-50:500:{options.Width * 10}:-1:-1:0:0:0::0";
-                    _igeo.AppendLine(igeoLine);
-                    _imop.AppendLine(imopLine);
+                    _igeoSB.AppendLine(igeoLine);
+                    _imopSB.AppendLine(imopLine);
                     currentLength += (int)(length * 10);
                 }
 
@@ -249,7 +248,7 @@ EOF";
                     {
                         j++;
                         var ibaLineMultiple = $"14:{j + 1}:1:{j}:{dxfFile.Name}::{dxfFile.Name}:::7:0:0:0:0";
-                        _iba.AppendLine(ibaLineMultiple);
+                        _ibaSB.AppendLine(ibaLineMultiple);
                     }
                 }
 
@@ -258,7 +257,7 @@ EOF";
             }
         }
 
-        public static IEnumerable<string> CreateOnePlxPerDxf(PlxOptions options, DxfFile dxf)
+        public IEnumerable<string> CreateOnePlxPerDxf(PlxOptions options, DxfFile dxf)
         {
             if (dxf == null)
             {
@@ -293,13 +292,16 @@ EOF";
             plxFile = plxFile.Replace("__NAME__", plxFileName);  //Replace with the actual name
 
             var vartLine = $"12:1:1:{dxf.Qty}:{dxf.Group}:0:0:{dxf.Name}:dxf";
-            var ibaLine = $"14:1:1:1:{dxf.Name}::{dxf.Name}:::7:0:0:0:0";
+            var vopt = new StringBuilder(_voptSB.ToString());
+            vopt.AppendLine("13:1:1:0:1:1");
+            var iba = new StringBuilder(_ibaSB.ToString());
+            iba.AppendLine($"14:1:1:1:{dxf.Name}::{dxf.Name}:::7:0:0:0:0");
 
             plxFile.AppendLine(vartLine);
-            plxFile.AppendLine(_middle);
-            plxFile.AppendLine(ibaLine);
+            plxFile.AppendLine(vopt.ToString());
+            plxFile.AppendLine(iba.ToString());
             plxFile.AppendLine(_bottom);
-            plxFile.Replace("__CONTENTS__", _content.ToString());
+            plxFile.Replace("__CONTENTS__", _contentSB.ToString());
 
             return plxFile.ToString().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
         }
