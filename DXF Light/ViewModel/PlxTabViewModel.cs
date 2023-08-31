@@ -3,15 +3,15 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using DXF_Light.Model;
 using DXF_Light.Servicess;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
 using GongSolutions.Wpf.DragDrop;
 
 namespace DXF_Light.ViewModel
 {
-    public class PlxTabViewModel : ViewModelBase, IDropTarget
+    public class PlxTabViewModel : ObservableObject, IDropTarget
     {
         private readonly IIOService _ioService;
         private PlxOptions _plxOptions = new PlxOptions();
@@ -21,19 +21,19 @@ namespace DXF_Light.ViewModel
         public PlxOptions PlxOptions
         {
             get => _plxOptions;
-            set => Set(ref _plxOptions, value);
+            set => SetProperty(ref _plxOptions, value);
         }
 
         public string PlxFileName
         {
             get => _plxFileName;
-            set => Set(ref _plxFileName, value);
+            set => SetProperty(ref _plxFileName, value);
         }
 
         public PlxFile PlxFile
         {
             get => _plxFile;
-            set => Set(ref _plxFile, value);
+            set => SetProperty(ref _plxFile, value);
         }
 
         public ICommand CreatePlxCommand { get; private set; }
@@ -151,5 +151,13 @@ namespace DXF_Light.ViewModel
                 SavePath = directory;
             }, fileList);
         }
-    }
+
+		public void DragEnter(IDropInfo dropInfo)
+		{
+		}
+
+		public void DragLeave(IDropInfo dropInfo)
+		{
+		}
+	}
 }

@@ -8,13 +8,13 @@ using System.Windows.Input;
 using DXF_Light.Model;
 using DXF_Light.Properties;
 using DXF_Light.Servicess;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
+using CommunityToolkit.Mvvm.ComponentModel;
 using GongSolutions.Wpf.DragDrop;
+using CommunityToolkit.Mvvm.Input;
 
 namespace DXF_Light.ViewModel
 {
-    public class NoContourDxfViewModel : ViewModelBase, IDropTarget
+    public class NoContourDxfViewModel : ObservableObject, IDropTarget
     {
         private readonly IDataService _dataService;
         private readonly IIOService _ioService;
@@ -32,45 +32,45 @@ namespace DXF_Light.ViewModel
         public double CutLength
         {
             get => _cutLength;
-            set => Set(ref _cutLength, value);
+            set => SetProperty(ref _cutLength, value);
         }
 
         public int NumberOfCuts
         {
             get => _numberOfCuts;
-            set => Set(ref _numberOfCuts, value);
+            set => SetProperty(ref _numberOfCuts, value);
         }
 
         public NoContourDxf NoContourDxf
         {
             get => _noContourDxf;
-            set => Set(ref _noContourDxf, value);
+            set => SetProperty(ref _noContourDxf, value);
         }
 
         public string FilePath
         {
             get => _filePath;
-            set => Set(ref _filePath, value);
+            set => SetProperty(ref _filePath, value);
         }
 
         public int Height
         {
             get => _height; set
             {
-                Set(ref _height, value);
+				SetProperty(ref _height, value);
             }
         }
 
         public string Delimiter
         {
             get => _delimiter;
-            set => Set(ref _delimiter, value);
+            set => SetProperty(ref _delimiter, value);
         }
 
         public bool Headers
         {
             get => _headers;
-            set => Set(ref _headers, value);
+            set => SetProperty(ref _headers, value);
         }
 
         public NoContourDxfViewModel(IDataService dataService, IIOService ioService)
@@ -184,5 +184,13 @@ namespace DXF_Light.ViewModel
                 ReadCsv();
             }
         }
-    }
+
+		public void DragEnter(IDropInfo dropInfo)
+		{
+		}
+
+		public void DragLeave(IDropInfo dropInfo)
+		{
+		}
+	}
 }

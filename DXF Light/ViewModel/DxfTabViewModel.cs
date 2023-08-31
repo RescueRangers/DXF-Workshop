@@ -5,16 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using DXF_Light.Model;
 using DXF_Light.Properties;
 using DXF_Light.Servicess;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
 using GongSolutions.Wpf.DragDrop;
 
 namespace DXF_Light.ViewModel
 {
-    public class DxfTabViewModel : ViewModelBase, IDropTarget
+    public class DxfTabViewModel : ObservableObject, IDropTarget
     {
         private string _filePath;
         private string _delimiter = ";";
@@ -31,29 +31,29 @@ namespace DXF_Light.ViewModel
         public string FilePath
         {
             get => _filePath;
-            set => Set(ref _filePath, value);
+            set => SetProperty(ref _filePath, value);
         }
 
         public string Delimiter
         {
             get => _delimiter;
-            set => Set(ref _delimiter, value);
+            set => SetProperty(ref _delimiter, value);
         }
 
         public bool Headers
         {
             get => _headers;
-            set => Set(ref _headers, value);
+            set => SetProperty(ref _headers, value);
         }
 
         public ObservableCollection<DxfFile> DxfFiles
         {
             get => _dxfFiles;
-            set => Set(ref _dxfFiles, value);
+            set => SetProperty(ref _dxfFiles, value);
         }
 
-        public ICommand GetFilePathCommand { get; private set; }
-        public ICommand CreateDxfsCommand { get; private set; }
+        public IRelayCommand GetFilePathCommand { get; private set; }
+        public IRelayCommand CreateDxfsCommand { get; private set; }
 
         public DxfTabViewModel(IDataService dataService, IIOService ioService)
         {
@@ -127,7 +127,8 @@ namespace DXF_Light.ViewModel
 
             Settings.Default.InitialFolder = new FileInfo(_filePath.Trim('"')).DirectoryName;
             Settings.Default.Save();
-        }
+            CreateDxfsCommand.NotifyCanExecuteChanged();
+		}
 
         public void DragOver(IDropInfo dropInfo)
         {
@@ -153,5 +154,13 @@ namespace DXF_Light.ViewModel
                 ReadCsv();
             }
         }
-    }
+
+		public void DragEnter(IDropInfo dropInfo)
+		{
+		}
+
+		public void DragLeave(IDropInfo dropInfo)
+		{
+		}
+	}
 }

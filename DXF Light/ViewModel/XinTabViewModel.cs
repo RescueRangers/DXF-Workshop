@@ -4,15 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using DXF_Light.Model;
 using DXF_Light.Servicess;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
 using GongSolutions.Wpf.DragDrop;
 
 namespace DXF_Light.ViewModel
 {
-    public class XinTabViewModel : ViewModelBase, IDropTarget
+    public class XinTabViewModel : ObservableObject, IDropTarget
     {
         private readonly IDataService _dataService;
         private readonly IIOService _ioService;
@@ -24,7 +24,7 @@ namespace DXF_Light.ViewModel
         public ObservableCollection<DxfFile> DxfFiles
         {
             get => _dxfFiles;
-            set => Set(nameof(DxfFiles), ref _dxfFiles, value);
+            set => SetProperty(ref _dxfFiles, value);
         }
 
         public ICommand GetDxfFiles { get; set; }
@@ -113,5 +113,13 @@ namespace DXF_Light.ViewModel
                 SavePath = directory;
             }, dragFileList);
         }
-    }
+
+		public void DragEnter(IDropInfo dropInfo)
+		{
+		}
+
+		public void DragLeave(IDropInfo dropInfo)
+		{
+		}
+	}
 }

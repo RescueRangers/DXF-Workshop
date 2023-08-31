@@ -8,9 +8,10 @@ using System.Windows;
 using System.Windows.Input;
 using DXF_Light.Model;
 using DXF_Light.Servicess;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
+using CommunityToolkit.Mvvm.ComponentModel;
 using WPFLocalizeExtension.Engine;
+using System.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace DXF_Light.ViewModel
 {
@@ -20,7 +21,7 @@ namespace DXF_Light.ViewModel
     /// See http://www.mvvmlight.net
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ObservableObject
     {
         private readonly IIOService _ioService;
         private List<string> _arguments;
@@ -42,8 +43,8 @@ namespace DXF_Light.ViewModel
                 if (_pinned != value)
                 {
                     _pinned = value;
-                    RaisePropertyChanged(nameof(Pinned));
-                    RaisePropertyChanged(nameof(PinIcon));
+                    OnPropertyChanged(nameof(Pinned));
+					OnPropertyChanged(nameof(PinIcon));
                 }
             }
         }

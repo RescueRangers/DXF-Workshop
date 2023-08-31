@@ -6,6 +6,11 @@ namespace DXF_Light.Model
     [DelimitedRecord(";")]
     public class DxfFile
     {
+
+        public DxfFile()
+        {
+            
+        }
         [FieldOrder(1)]
         public string Name { get; set; }
 
@@ -21,6 +26,16 @@ namespace DXF_Light.Model
         }
 
         [FieldHidden]
+        public decimal WidthValue { 
+            get 
+            { 
+                var result = decimal.TryParse(Width, out var e);
+                if( result) return e;
+                return 0;
+            } 
+        }
+
+        [FieldHidden]
         public string Length
         {
             get { return _length; }
@@ -30,8 +45,19 @@ namespace DXF_Light.Model
                 _length = e.Evaluate().ToString();
             }
         }
+		
+        [FieldHidden]
+		public decimal LengthValue
+		{
+			get
+			{
+				var result = decimal.TryParse(Length, out var e);
+				if (result) return e;
+				return 0;
+			}
+		}
 
-        [FieldOrder(4)]
+		[FieldOrder(4)]
         [FieldOptional]
         public string Material { get; set; }
 

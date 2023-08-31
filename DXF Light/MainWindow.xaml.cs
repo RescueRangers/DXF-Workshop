@@ -1,4 +1,5 @@
 ﻿using DXF_Light.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DXF_Light
 {
@@ -13,7 +14,7 @@ namespace DXF_Light
         public MainWindow()
         {
             InitializeComponent();
-            Closing += (s, e) => ViewModelLocator.Cleanup();
+            this.DataContext = App.Current.Services.GetService<MainViewModel>();
         }
     }
 }

@@ -5,16 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using DXF_Light.Model;
 using DXF_Light.Properties;
 using DXF_Light.Servicess;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
 using GongSolutions.Wpf.DragDrop;
 
 namespace DXF_Light.ViewModel
 {
-    public class PlyTabVewModel : ViewModelBase, IDropTarget
+    public class PlyTabVewModel : ObservableObject, IDropTarget
     {
         private readonly string _appFilePath = AppDomain.CurrentDomain.BaseDirectory;
         private const string CsvFiles = "Pliki csv (.csv)|*.csv";
@@ -31,25 +31,25 @@ namespace DXF_Light.ViewModel
         public string PlyFilePath
         {
             get => _plyFilePath;
-            set => Set(nameof(PlyFilePath), ref _plyFilePath, value);
+            set => SetProperty(ref _plyFilePath, value);
         }
 
         public string Delimiter
         {
             get => _delimiter;
-            set => Set(ref _delimiter, value);
+            set => SetProperty(ref _delimiter, value);
         }
 
         public bool Headers
         {
             get => _headers;
-            set => Set(ref _headers, value);
+            set => SetProperty(ref _headers, value);
         }
 
         public ObservableCollection<PlyFile> PlyFiles
         {
             get => _plyFiles;
-            set => Set(nameof(PlyFiles), ref _plyFiles, value);
+            set => SetProperty(ref _plyFiles, value);
         }
 
         public PlyTabVewModel(IDataService dataService, IIOService ioService)
@@ -155,5 +155,13 @@ namespace DXF_Light.ViewModel
                 ReadPlyCsv();
             }
         }
-    }
+
+		public void DragEnter(IDropInfo dropInfo)
+		{
+		}
+
+		public void DragLeave(IDropInfo dropInfo)
+		{
+		}
+	}
 }

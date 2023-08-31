@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace DXF_Light.Model
 {
@@ -833,19 +833,19 @@ EOF";
         public ObservableCollection<InternalCut> InternalCuts
         {
             get => _internalCuts;
-            set => Set(ref _internalCuts, value);
+            set => SetProperty(ref _internalCuts, value);
         }
 
         public decimal Height
         {
             get => _height;
-            set => Set(ref _height, value);
+            set => SetProperty(ref _height, value);
         }
 
         public string Name
         {
             get => _name;
-            set => Set(ref _name, value);
+            set => SetProperty(ref _name, value);
         }
 
         private ObservableCollection<InternalCut> _internalCuts = new ObservableCollection<InternalCut>();
