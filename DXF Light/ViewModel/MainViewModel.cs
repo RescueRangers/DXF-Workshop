@@ -66,7 +66,15 @@ namespace DXF_Light.ViewModel
 
                 var tab = Children[0] as PlxTabViewModel;
 
-                tab?.PlxFile.DxfFiles.AddRange(dxfFiles);
+                if (tab != null && tab.PlxFile == null)
+                {
+					tab.PlxFile = new PlxFile(dxfFiles);
+				}
+                else
+                {
+					tab?.PlxFile.DxfFiles.AddRange(dxfFiles);
+				}
+                
                 tab.SavePath = directory;
             }, arguments);
         }

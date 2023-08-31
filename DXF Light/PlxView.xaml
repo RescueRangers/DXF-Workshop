@@ -105,7 +105,7 @@
             Margin="5"
             Header="{lex:Loc Key=PlxContents}">
 
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding PlxFile.DxfFiles, Mode=TwoWay}">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding PlxFile.DxfFiles, Mode=TwoWay}" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="*"

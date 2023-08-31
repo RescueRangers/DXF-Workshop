@@ -44,7 +44,7 @@ namespace DXF_Light.ViewModel
         {
             _ioService = ioService;
             LoadCommands();
-        }
+		}
 
         private void LoadCommands()
         {
