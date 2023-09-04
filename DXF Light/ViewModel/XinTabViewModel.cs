@@ -27,8 +27,8 @@ namespace DXF_Light.ViewModel
             set => SetProperty(ref _dxfFiles, value);
         }
 
-        public ICommand GetDxfFiles { get; set; }
-        public ICommand CreateXinFiles { get; set; }
+        public IRelayCommand GetDxfFiles { get; set; }
+        public IRelayCommand CreateXinFiles { get; set; }
 
         public XinTabViewModel(IDataService dataService, IIOService iOService)
         {
@@ -60,7 +60,8 @@ namespace DXF_Light.ViewModel
             }))
             {
                 AddDxfsFromPath(dragFileList);
-            }
+                CreateXinFiles.NotifyCanExecuteChanged();
+			}
         }
 
         private void CreateXin()
@@ -96,7 +97,8 @@ namespace DXF_Light.ViewModel
             if (dxfFileNames == null) return;
 
             DxfFiles.AddRange(dxfFileNames);
-        }
+			CreateXinFiles.NotifyCanExecuteChanged();
+		}
 
         private void AddDxfsFromPath(List<string> dragFileList)
         {

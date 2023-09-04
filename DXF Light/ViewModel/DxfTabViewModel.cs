@@ -47,12 +47,16 @@ namespace DXF_Light.ViewModel
         }
 
         public ObservableCollection<DxfFile> DxfFiles
-        {
-            get => _dxfFiles;
-            set => SetProperty(ref _dxfFiles, value);
-        }
+		{
+			get => _dxfFiles;
+			set
+			{
+				SetProperty(ref _dxfFiles, value);
+				CreateDxfsCommand.NotifyCanExecuteChanged();
+			}
+		}
 
-        public IRelayCommand GetFilePathCommand { get; private set; }
+		public IRelayCommand GetFilePathCommand { get; private set; }
         public IRelayCommand CreateDxfsCommand { get; private set; }
 
         public DxfTabViewModel(IDataService dataService, IIOService ioService)
@@ -60,9 +64,16 @@ namespace DXF_Light.ViewModel
             _dataService = dataService;
             _ioService = ioService;
             LoadCommands();
+
+			DxfFiles.CollectionChanged += DxfFiles_CollectionChanged;
         }
 
-        private void LoadCommands()
+		private void DxfFiles_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			CreateDxfsCommand.NotifyCanExecuteChanged();
+		}
+
+		private void LoadCommands()
         {
             GetFilePathCommand = new RelayCommand(GetFilePath, () => true);
             CreateDxfsCommand = new RelayCommand(CreateDxfs, () => DxfFiles != null && DxfFiles.Count > 0);
@@ -97,7 +108,8 @@ namespace DXF_Light.ViewModel
             }, DxfFiles.ToList(), _savePath));
 
             DxfFiles.Clear();
-        }
+			CreateDxfsCommand.NotifyCanExecuteChanged();
+		}
 
         private void GetFilePath()
         {

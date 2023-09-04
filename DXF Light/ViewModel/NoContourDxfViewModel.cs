@@ -30,24 +30,36 @@ namespace DXF_Light.ViewModel
         private int _height;
 
         public double CutLength
-        {
-            get => _cutLength;
-            set => SetProperty(ref _cutLength, value);
-        }
+		{
+			get => _cutLength;
+			set
+			{
+				SetProperty(ref _cutLength, value);
+                AddCutsCommand.NotifyCanExecuteChanged();
+			}
+		}
 
-        public int NumberOfCuts
-        {
-            get => _numberOfCuts;
-            set => SetProperty(ref _numberOfCuts, value);
-        }
+		public int NumberOfCuts
+		{
+			get => _numberOfCuts;
+			set
+			{
+				SetProperty(ref _numberOfCuts, value);
+                AddCutsCommand.NotifyCanExecuteChanged();
+			}
+		}
 
-        public NoContourDxf NoContourDxf
-        {
-            get => _noContourDxf;
-            set => SetProperty(ref _noContourDxf, value);
-        }
+		public NoContourDxf NoContourDxf
+		{
+			get => _noContourDxf;
+			set
+			{
+				SetProperty(ref _noContourDxf, value);
+				CreateNcDxfCommand.NotifyCanExecuteChanged();
+			}
+		}
 
-        public string FilePath
+		public string FilePath
         {
             get => _filePath;
             set => SetProperty(ref _filePath, value);
@@ -58,7 +70,8 @@ namespace DXF_Light.ViewModel
             get => _height; set
             {
 				SetProperty(ref _height, value);
-            }
+                CreateNcDxfCommand.NotifyCanExecuteChanged();
+			}
         }
 
         public string Delimiter
@@ -82,9 +95,9 @@ namespace DXF_Light.ViewModel
 
         private void LoadCommands()
         {
-            CreateNcDxfCommand = new RelayCommand(CreateNcDxf, () => NoContourDxf.IsValid && Height > 0);
+            CreateNcDxfCommand = new RelayCommand(CreateNcDxf, () => Height > 0);
             AddCutsCommand = new RelayCommand(AddCuts, () => CutLength > 0 && NumberOfCuts > 0);
-            LoadCutsCommand = new RelayCommand(LoadCuts, () => true);
+            LoadCutsCommand = new RelayCommand(LoadCuts);
         }
 
         private void LoadCuts()
@@ -154,9 +167,9 @@ namespace DXF_Light.ViewModel
             NoContourDxf = new NoContourDxf();
         }
 
-        public ICommand CreateNcDxfCommand { get; set; }
-        public ICommand AddCutsCommand { get; set; }
-        public ICommand LoadCutsCommand { get; set; }
+        public IRelayCommand CreateNcDxfCommand { get; set; }
+        public IRelayCommand AddCutsCommand { get; set; }
+        public IRelayCommand LoadCutsCommand { get; set; }
 
         public void DragOver(IDropInfo dropInfo)
         {

@@ -19,15 +19,23 @@ namespace DXF_Light.ViewModel
         private string _plxFileName;
 
         public PlxOptions PlxOptions
-        {
-            get => _plxOptions;
-            set => SetProperty(ref _plxOptions, value);
-        }
+		{
+			get => _plxOptions;
+			set
+			{
+				SetProperty(ref _plxOptions, value);
+                CreatePlxCommand.NotifyCanExecuteChanged();
+			}
+		}
 
-        public string PlxFileName
+		public string PlxFileName
         {
             get => _plxFileName;
-            set => SetProperty(ref _plxFileName, value);
+            set 
+            {
+				SetProperty(ref _plxFileName, value);
+				CreatePlxCommand.NotifyCanExecuteChanged();
+			}
         }
 
         public PlxFile PlxFile
@@ -36,8 +44,8 @@ namespace DXF_Light.ViewModel
             set => SetProperty(ref _plxFile, value);
         }
 
-        public ICommand CreatePlxCommand { get; private set; }
-        public ICommand GetFilesCommand { get; private set; }
+        public IRelayCommand CreatePlxCommand { get; private set; }
+        public IRelayCommand GetFilesCommand { get; private set; }
         public string SavePath { get; set; }
 
         public PlxTabViewModel(IIOService ioService)
