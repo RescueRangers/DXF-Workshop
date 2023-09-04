@@ -50,11 +50,17 @@ namespace DXF_Light.ViewModel
 
         public PlxTabViewModel(IIOService ioService)
         {
+			PlxOptions.OnPlxOptionsUpdate += PlxOptions_OnPlxOptionsUpdate;
             _ioService = ioService;
             LoadCommands();
 		}
 
-        private void LoadCommands()
+		private void PlxOptions_OnPlxOptionsUpdate(object sender, System.EventArgs e)
+		{
+            CreatePlxCommand.NotifyCanExecuteChanged();
+		}
+
+		private void LoadCommands()
         {
             CreatePlxCommand = new RelayCommand(CreatePlx,
                             () => PlxFile != null && PlxFile.DxfFiles.Any() && !string.IsNullOrWhiteSpace(PlxFileName) || PlxOptions.OnePlx);
